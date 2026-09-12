@@ -15,5 +15,6 @@ test('device validation accepts the native version string and rejects mismatched
   for(const patch of [{version:undefined},{testMode:undefined},{testMode:true},{storage:{prepared:false}},{tpm:{present:false,version:'2.0'}},{key:{...info.key,prepared:false}},{key:{...info.key,implementationFlags:3}},{key:{...info.key,exportable:true}},{key:{...info.key,hardwareBacked:false}},{key:{...info.key,provider:'Microsoft Software Key Storage Provider'}},{deviceId:'0'.repeat(64)}]){device.info={...info,...patch};assert.equal(device.validate(),false);}
 });
 test('a helper hash mismatch is blocked before spawning any native command',()=>{
-  const device=new TpmDevice({expectedSha256:'0'.repeat(64)});assert.throws(()=>device._available(),{code:'DEVICE_HELPER_INTEGRITY'});
+  // An existing inert fixture makes this independent of a production helper build.
+  const device=new TpmDevice({helper:__filename,expectedSha256:'0'.repeat(64)});assert.throws(()=>device._available(),{code:'DEVICE_HELPER_INTEGRITY'});
 });

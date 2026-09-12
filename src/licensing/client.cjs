@@ -20,17 +20,38 @@ class LicenseClient {
     Object.assign(this,{protocol,config:config||{},device,directory,transport,wallClock,monotonic,onChange});this.file=path.join(directory,'license-state.json');this.writer=writeState||((value)=>this._writeFile(value));this.body={v:1,license:null,pending:null,clock:null};this.payload=null;this.generation=0;this.ready=false;this.busy=false;this.lastError=null;this.storageError=null;this.clockRecovery=false;this.lastPublished='';this.anchorMono=monotonic();this.anchorTime=wallClock();this.lastCheckpoint=0;
   }
   configured(){return typeof this.config.endpoint==='string'&&Object.keys(this.config.publicKeys||{}).length>0;}
+  _validateState(body){
+    const p=this.protocol,check=(ok)=>{if(!ok)fail('LICENSE_STATE_INVALID','本机授权记录结构无效，请凭原请求编号恢复。');};
+    p.exactKeys(body,['v','license','pending','clock']);check(body.v===1);
+    const pendingTicket=(ticket,mode,requestId,codeHash)=>{
+      if(ticket===null)return;
+      p.exactKeys(ticket,['keyId','payload','signature']);p.fromBase64Url(ticket.signature,64);p.validateTicketPayload(ticket.payload);
+      check(ticket.payload.mode===mode&&ticket.payload.requestId===requestId&&ticket.payload.deviceId===this.device.info.deviceId&&ticket.payload.devicePublicKeySpki===this.device.info.publicKeySpki&&(mode!=='activate'||ticket.payload.codeHash===codeHash));
+    };
+    if(body.license!==null){p.exactKeys(body.license,['keyId','payload','signature']);p.validateLicensePayload(body.license.payload);p.fromBase64Url(body.license.signature,64);check(body.clock!==null);}
+    if(body.clock!==null){p.exactKeys(body.clock,['serverAnchor','highWater']);check(Number.isSafeInteger(body.clock.serverAnchor)&&body.clock.serverAnchor>0&&Number.isSafeInteger(body.clock.highWater)&&body.clock.highWater>=body.clock.serverAnchor);}
+    if(body.pending!==null){
+      const pending=body.pending;check(pending.mode==='activate'||pending.mode==='recover');
+      p.exactKeys(pending,pending.mode==='activate'?['requestId','mode','codeHash','phase','ticket']:['requestId','mode','phase','ticket','activation']);p.validateRequestId(pending.requestId);
+      check(['checking','prechecked','confirming'].includes(pending.phase)&&(pending.phase==='checking'||pending.ticket!==null));
+      if(pending.mode==='activate')p.validateDigest(pending.codeHash);
+      else if(pending.activation!==null){const activation=pending.activation;p.exactKeys(activation,['requestId','codeHash','ticket']);check(activation.requestId===pending.requestId);p.validateDigest(activation.codeHash);pendingTicket(activation.ticket,'activate',activation.requestId,activation.codeHash);}
+      pendingTicket(pending.ticket,pending.mode,pending.requestId,pending.codeHash);
+    }
+    return body;
+  }
   _stateBytes(body){return Buffer.from('LIANPU-LICENSING/v1/local-state\0'+this.protocol.canonicalJson(body));}
   _writeFile(value){let temporary;try{if(!fs.existsSync(this.directory))fail('LICENSE_PREPARATION','尚未准备本机授权目录，请完成设备准备。');temporary=path.join(this.directory,randomUUID()+'.tmp');const descriptor=fs.openSync(temporary,'wx',0o600);try{fs.writeFileSync(descriptor,JSON.stringify(value));fs.fsyncSync(descriptor);}finally{fs.closeSync(descriptor);}fs.renameSync(temporary,this.file);}catch(error){if(temporary)try{fs.unlinkSync(temporary);}catch{}if(error instanceof LicenseError)throw error;fail('LICENSE_SAVE_FAILED','本机授权记录尚未保存。云端已确认的授权可用原请求编号恢复。',true);}}
-  _save(body){const signature=this.device.signSync(this._stateBytes(body)).toString('base64url');this.writer({v:1,deviceId:this.device.info.deviceId,body,signature});this.body=structuredClone(body);this.storageError=null;}
+  _save(body){this._validateState(body);const signature=this.device.signSync(this._stateBytes(body)).toString('base64url');this.writer({v:1,deviceId:this.device.info.deviceId,body,signature});this.body=structuredClone(body);this.storageError=null;}
   async initialize(){
     await this.device.status();this.ready=this.device.validate();if(this.ready&&fs.existsSync(this.file))try{
       if(fs.statSync(this.file).size>262144)fail('LICENSE_STATE_INVALID','本机授权记录无效，请恢复原授权。');const stored=JSON.parse(fs.readFileSync(this.file,'utf8'));
-      if(stored.v!==1||stored.deviceId!==this.device.info.deviceId||!stored.body||stored.body.v!==1||typeof stored.signature!=='string'||!this.device.verify(this._stateBytes(stored.body),Buffer.from(stored.signature,'base64url')))fail('LICENSE_STATE_INVALID','本机授权记录无法通过设备核验，请恢复原授权。');
-      this.body=stored.body;if(this.body.license)this.payload=await this._validateLicense(this.body.license);
+      this.protocol.exactKeys(stored,['v','deviceId','body','signature']);const signature=this.protocol.fromBase64Url(stored.signature,64);
+      if(stored.v!==1||stored.deviceId!==this.device.info.deviceId||!this.device.verify(this._stateBytes(stored.body),signature))fail('LICENSE_STATE_INVALID','本机授权记录无法通过设备核验，请恢复原授权。');
+      const body=this._validateState(stored.body),payload=body.license?await this._validateLicense(body.license):null;this.body=body;this.payload=payload;this.storageError=null;
       const clock=this.body.clock;if(clock&&(!Number.isSafeInteger(clock.highWater)||!Number.isSafeInteger(clock.serverAnchor)||clock.highWater<clock.serverAnchor))fail('LICENSE_STATE_INVALID','本机授权时间记录无效，请联网恢复原授权。');
       this.anchorTime=Math.max(this.wallClock(),clock?.highWater||0);this.anchorMono=this.monotonic();this.lastCheckpoint=clock?.highWater||0;
-    }catch{this.payload=null;this.storageError='LICENSE_STATE_INVALID';this.lastError='本机授权记录无法恢复，请凭原请求编号向云端找回授权。';}
+    }catch{this.payload=null;this.body={v:1,license:null,pending:null,clock:null};this.storageError='LICENSE_STATE_INVALID';this.lastError='本机授权记录无法恢复，请凭原请求编号向云端找回授权。';}
     return this.status();
   }
   _effectiveTime(){const elapsed=Math.max(0,this.monotonic()-this.anchorMono),expected=this.anchorTime+elapsed,wall=this.wallClock(),high=this.body.clock?.highWater||0;if(this.payload&&(wall+ROLLBACK_TOLERANCE<high||wall+ROLLBACK_TOLERANCE<expected))this.clockRecovery=true;return Math.max(wall,expected,high);}
@@ -55,7 +76,7 @@ class LicenseClient {
   async _ticket(mode,requestId,code){
     const data=await this.transport(this.config.endpoint,'/v1/precheck',{v:1,mode,requestId,devicePublicKeySpki:this.device.info.publicKeySpki,...(mode==='activate'?{code}:{})});
     const payload=await this.protocol.verifyEnvelope(data.ticket,'ticket',this.config.publicKeys);this.protocol.validateTicketPayload(payload);
-    if(payload.mode!==mode||payload.requestId!==requestId||payload.deviceId!==this.device.info.deviceId||payload.devicePublicKeySpki!==this.device.info.publicKeySpki||mode==='activate'&&payload.codeHash!==await this.protocol.hashCode(code))fail('LICENSE_TICKET_MISMATCH','云端核对结果不属于本次设备兑换。');
+    if(payload.mode!==mode||payload.requestId!==requestId||payload.deviceId!==this.device.info.deviceId||payload.devicePublicKeySpki!==this.device.info.publicKeySpki||mode==='activate'&&(payload.codeHash!==await this.protocol.hashCode(code)||payload.plan!==this.protocol.planFromCode(code)))fail('LICENSE_TICKET_MISMATCH','云端核对结果不属于本次设备兑换。');
     const bytes=Buffer.from(this.protocol.ticketProofBytes(data.ticket));if(data.challenge?.algorithm!=='ECDSA-P256-SHA256'||data.challenge.bytes!==bytes.toString('base64url')||data.challenge.expiresAt!==payload.expiresAt)fail('LICENSE_CHALLENGE','云端挑战与已签名核对结果不一致。');
     return {ticket:data.ticket,preview:{mode:payload.mode,plan:payload.plan,periodDays:payload.plan?this.protocol.PERIOD_DAYS[payload.plan]:null},payload};
   }
@@ -69,12 +90,12 @@ class LicenseClient {
   async _validateLicense(envelope,requestId){const payload=await this.protocol.verifyEnvelope(envelope,'license',this.config.publicKeys);this.protocol.validateLicensePayload(payload);if(payload.deviceId!==this.device.info.deviceId||payload.devicePublicKeySpki!==this.device.info.publicKeySpki||requestId&&payload.requestId!==requestId)fail('LICENSE_DEVICE_MISMATCH','授权不属于当前设备或本次请求。');return payload;}
   async _finalize(pending,route){
     const ticketPayload=await this.protocol.verifyEnvelope(pending.ticket,'ticket',this.config.publicKeys);this.protocol.validateTicketPayload(ticketPayload);
-    if(ticketPayload.requestId!==pending.requestId||ticketPayload.deviceId!==this.device.info.deviceId)fail('LICENSE_TICKET_MISMATCH','原请求与当前设备不一致。');
+    if(ticketPayload.requestId!==pending.requestId||ticketPayload.deviceId!==this.device.info.deviceId||ticketPayload.devicePublicKeySpki!==this.device.info.publicKeySpki||ticketPayload.mode!==pending.mode||route!==(pending.mode==='activate'?'/v1/confirm':'/v1/recover')||pending.mode==='activate'&&ticketPayload.codeHash!==pending.codeHash)fail('LICENSE_TICKET_MISMATCH','原请求与当前设备不一致。');
     this._save({...this.body,pending:{...pending,phase:'confirming'}});this._publish();
     const signature=this.device.signSync(Buffer.from(this.protocol.ticketProofBytes(pending.ticket))).toString('base64url');
     const result=await this.transport(this.config.endpoint,route,{v:1,ticket:pending.ticket,proof:{algorithm:'ECDSA-P256-SHA256',signature}});
     const payload=await this._validateLicense(result.license,pending.requestId);
-    if(this.payload&&(payload.revision<this.payload.revision||this.payload.expiresAt===null&&payload.expiresAt!==null||this.payload.expiresAt!==null&&payload.expiresAt!==null&&payload.expiresAt<this.payload.expiresAt))fail('LICENSE_STALE','此授权早于本机已有授权，已保留当前许可。');
+    if(this.payload&&(payload.licenseId!==this.payload.licenseId||payload.firstActivatedAt!==this.payload.firstActivatedAt||payload.revision<this.payload.revision||payload.revision===this.payload.revision&&this.protocol.canonicalJson(payload)!==this.protocol.canonicalJson(this.payload)||this.payload.expiresAt===null&&payload.expiresAt!==null||this.payload.expiresAt!==null&&payload.expiresAt!==null&&payload.expiresAt<this.payload.expiresAt))fail('LICENSE_STALE','此授权与本机已有授权不一致或更早，已保留当前许可。');
     const serverTime=ticketPayload.issuedAt,body={v:1,license:result.license,pending:null,clock:{serverAnchor:serverTime,highWater:serverTime}};
     this._save(body);this.payload=payload;this.anchorTime=serverTime;this.anchorMono=this.monotonic();this.lastCheckpoint=serverTime;this.clockRecovery=false;this.lastError=null;
     return {status:'activated',recovered:result.recovered===true,license:this.status()};

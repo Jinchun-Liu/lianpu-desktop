@@ -523,8 +523,23 @@ class Service {
       try{
         if(account.space==='test'&&!this.connector?.testOnly&&!this.connector?.supportsTest){const status=account.testOutcome||'sent';response={status,receiptId:status==='sent'?`test-${attemptId}`:undefined,reason:'隔离试运行结果，未修改真实商品。'};}
         else if(!this.connector?.mutateProduct)response={status:'blocked',reason:'当前账号未取得商品修改能力。'};
-        else response=await this.connector.mutateProduct({account,product,changes:batch.changes,idempotencyKey:attemptId});
-      }catch{response={status:'unknown',reason:'连接中断，商品操作结果未知，请先人工核验。'};}
+        else {
+          // An adapter that queues work must recheck immediately before its
+          // actual platform submission, just as the message adapter does.
+          const authorize=()=>{
+            try{
+            this._fresh(actor,generation);
+            const currentAccount=this._record('accounts',account.id,actor,'operate');
+            const currentProduct=this._record('products',product.id,actor,'operate');
+            const currentBatch=this.store.get('batches',batch.id);
+            if(currentAccount.paused||currentAccount.archived||currentAccount.sessionVersion!==account.sessionVersion||currentBatch?.paused||!currentBatch||hash(currentProduct)!==hash(product))fail('PAUSED','账号、商品或批量任务已变更，停止尚未提交的商品操作。');
+            return true;
+            }catch(error){error.licensePreSubmission=true;throw error;}
+          };
+          authorize();response=await this.connector.mutateProduct({account,product,changes:batch.changes,idempotencyKey:attemptId,authorize});
+        }
+        if(account.space==='live'&&response?.status==='sent'&&!(typeof response.receiptId==='string'&&response.receiptId.trim()))response={status:'unknown',reason:'商品操作缺少可追溯回执，保留待核验状态。'};
+      }catch(error){response=error?.licensePreSubmission===true?{status:'rejected',reason:sanitizeText(error.message)}:{status:'unknown',reason:'连接中断，商品操作结果未知，请先人工核验。'};}
       batch=this.store.get('batches',batch.id);const status=['sent','accepted','rejected','unknown','rate_limited','blocked'].includes(response?.status)?response.status:'unknown';
       batch.results[index]={...item,status,attemptId,reason:sanitizeText(response?.reason),receiptId:response?.receiptId};batch.updatedAt=now();
       this.store.transaction(()=>{

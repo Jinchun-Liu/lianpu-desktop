@@ -1,14 +1,14 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:eaa54907-a51c-4d30-8b03-15a8de0def3b",
+  "serialNumber": "urn:uuid:625cca42-079c-4ede-a988-4b7a7a492f12",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-12T07:54:28.171Z",
+    "timestamp": "2026-09-12T13:18:48.985Z",
     "component": {
       "type": "application",
       "name": "lianpu-desktop",
-      "version": "0.5.3"
+      "version": "0.5.4"
     }
   },
   "components": [
@@ -18249,7 +18249,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "aa0d7ba3ffd6c3ac64c9ceda443f516575f9ab7b3064c102463bc34172ec56d9"
+          "content": "ac2328658a4c36c7974db305f723f76bfe6c8b88db56df05173c57c5a2bb5e33"
         }
       ],
       "properties": [

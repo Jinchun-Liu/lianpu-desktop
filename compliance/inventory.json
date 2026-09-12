@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-09-12T07:54:28.171Z",
-  "packageLockSha256": "84074a289e49a75f01e3fd78422ff668ecad60327c871ea352e6ff64738b73a3",
+  "generatedAt": "2026-09-12T13:18:48.985Z",
+  "packageLockSha256": "f780458d72c974ab282613020061f274a745a185b6d0cc5c3a2b627182b664b3",
   "components": [
     {
       "name": "@electron-internal/extract-zip",
@@ -2612,7 +2612,7 @@
     },
     {
       "name": "项目自绘图形与图标",
-      "version": "0.5.3",
+      "version": "0.5.4",
       "bundled": true,
       "source": "本项目绘制的图形独立登记；UI 模板参考/适配的第三方归属另见 uiReuse，不将模板组件宣称为原创",
       "license": "proprietary-undetermined-by-owner",
@@ -2790,8 +2790,8 @@
           {
             "path": "src/renderer/app.js",
             "exists": true,
-            "sha256": "9a9de472811ffe43dbf262941fded659b1f8f79607969f259e0181c827f9e138",
-            "bytes": 157193
+            "sha256": "64f4b322a4c5551973623029a6f50bd4b08df30af2f063f01a3ec7a59be82577",
+            "bytes": 157572
           }
         ],
         "localSections": [
@@ -2838,8 +2838,8 @@
           {
             "path": "src/renderer/app.js",
             "exists": true,
-            "sha256": "9a9de472811ffe43dbf262941fded659b1f8f79607969f259e0181c827f9e138",
-            "bytes": 157193
+            "sha256": "64f4b322a4c5551973623029a6f50bd4b08df30af2f063f01a3ec7a59be82577",
+            "bytes": 157572
           }
         ],
         "localSections": [

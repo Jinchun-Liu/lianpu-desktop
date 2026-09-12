@@ -1,17 +1,17 @@
 {
-  "build": "0.5.3-f7eece5293e7",
+  "build": "0.5.4-75ece771b6a1",
   "branding": {
     "originalSha256": "e048632e03fabc96de5e10afbebc0aa31f4e1674155ea3d270597fe7523f9d80",
-    "brandedSha256": "e6c428f9c07324719e2a1e22f94290009f7eb37902c7a7e4a4d96c20cbf67522",
+    "brandedSha256": "d4dc947a3fbd9525d7fbf3557839eaab826028dbe12b818bdb22ede481345663",
     "iconSha256": "ff69f3e94ad8a8f47f0eb51d022112bc71afdd4e43c6a29818363ade65d7fa29",
     "modifications": "Only Win32 icon and product version resources; runtime code unchanged",
     "status": "resource metadata verified",
-    "at": "2026-09-12T07:54:29.461Z"
+    "at": "2026-09-12T13:18:50.566Z"
   },
   "protection": {
-    "asarSha256": "f67e770534b527b27242d8a0bb0cbf9440d80e8ba5bc7491fa0da717c2631104",
-    "headerSha256": "b63deef1d24252109d5674631306e36ee3ba4aabdf2d84f08b6ee3c749f81a13",
-    "executableSha256": "aa0d7ba3ffd6c3ac64c9ceda443f516575f9ab7b3064c102463bc34172ec56d9",
+    "asarSha256": "98f8fd5d70ec55981965567c17464227d6a89dded1a10988bda0089ddfdfe3ca",
+    "headerSha256": "9a270ba1bfca0c3dfdceddc2ba271834c6099df2f33d99f96286ec0fbf53f39f",
+    "executableSha256": "ac2328658a4c36c7974db305f723f76bfe6c8b88db56df05173c57c5a2bb5e33",
     "resourceReadbackVerified": true,
     "fuses": {
       "0": 48,
@@ -21,7 +21,7 @@
       "4": 49,
       "5": 49,
       "6": 48,
-      "7": 49,
+      "7": 48,
       "8": 49,
       "version": "1"
     },
@@ -30,15 +30,20 @@
       "\\README.md",
       "\\docs",
       "\\docs\\changes.md",
+      "\\docs\\feedback-0.5.4.md",
       "\\docs\\provenance.md",
       "\\docs\\requirements-status.json",
+      "\\docs\\security-0.5.4.md",
       "\\docs\\upgrade-retention.md",
       "\\docs\\validation-0.5.2.md",
       "\\docs\\validation-0.5.3.md",
+      "\\docs\\validation-0.5.4.md",
       "\\package.json",
       "\\shared",
       "\\shared\\licensing",
       "\\shared\\licensing\\protocol.mjs",
+      "\\shared\\reports",
+      "\\shared\\reports\\protocol.mjs",
       "\\src",
       "\\src\\auth.cjs",
       "\\src\\core",
@@ -69,6 +74,8 @@
       "\\src\\renderer\\accounts-controller.js",
       "\\src\\renderer\\accounts-views.js",
       "\\src\\renderer\\app.js",
+      "\\src\\renderer\\feedback.css",
+      "\\src\\renderer\\feedback.js",
       "\\src\\renderer\\index.html",
       "\\src\\renderer\\licensing-controller.js",
       "\\src\\renderer\\licensing-views.js",
@@ -77,6 +84,8 @@
       "\\src\\renderer\\ui-behaviors.js",
       "\\src\\renderer\\ui-components.js",
       "\\src\\renderer\\workspace-views.js",
+      "\\src\\security",
+      "\\src\\security\\runtime-policy.cjs",
       "\\src\\services",
       "\\src\\services\\claims.cjs",
       "\\src\\services\\media.cjs",
@@ -84,12 +93,295 @@
       "\\src\\services\\msi-inspect.cjs",
       "\\src\\services\\msi-inspect.ps1",
       "\\src\\services\\notifications.cjs",
+      "\\src\\services\\report-actions.cjs",
+      "\\src\\services\\report-context.cjs",
+      "\\src\\services\\reports.cjs",
       "\\src\\services\\updates.cjs"
     ],
     "libraries": {
+      "electron": "44.3.0",
       "asar": "4.3.0",
       "fuses": "2.1.3"
     },
+    "inputFiles": [
+      {
+        "path": "LICENSE",
+        "sha256": "c033fef22eeed55e8a9dc15a981fc295b154c3772cd12b58c4434d90539a5f15"
+      },
+      {
+        "path": "README.md",
+        "sha256": "05d14c7f9a5118f74499ae09b9c6e2360695dd83db6ea60b574d6dfd9c997f3c"
+      },
+      {
+        "path": "docs/changes.md",
+        "sha256": "b5f27c192b91e914bbc91f9a930a796b1d731cee1832920b75eb694be1391da9"
+      },
+      {
+        "path": "docs/feedback-0.5.4.md",
+        "sha256": "441673bbfe0c176cd5a182786a7fecfefa5556e95d7a7f0cab52b34654c0019f"
+      },
+      {
+        "path": "docs/provenance.md",
+        "sha256": "6a9a2e8468bd9476b892f31bc3c3198f9811213c5810b903f1b58389b2d69d28"
+      },
+      {
+        "path": "docs/requirements-status.json",
+        "sha256": "94c6cfd27d6c276756a9203c4198830ab0fdd9cad480bea1f9a44e56793d170c"
+      },
+      {
+        "path": "docs/security-0.5.4.md",
+        "sha256": "6fc32bc6a9185b5fb16269327b6d7ca0880a39d43a71307b3259e9d0faac7aa9"
+      },
+      {
+        "path": "docs/upgrade-retention.md",
+        "sha256": "b53f767ea09ae3aa568ded7600c73f5a77553e561b3c0a2aa07dbf996c2ae742"
+      },
+      {
+        "path": "docs/validation-0.5.2.md",
+        "sha256": "fe20df9ca5891c4d342955da1b49977e61cb48b3c1c44d69db12381def171d6e"
+      },
+      {
+        "path": "docs/validation-0.5.3.md",
+        "sha256": "192a52fd9045fefd1c5eef0991451d1931fc6506fe5de8fb20919860ef6a8820"
+      },
+      {
+        "path": "docs/validation-0.5.4.md",
+        "sha256": "403743d2c6502572b55c0dbaa66a026a0cd8c0414e7d58cf25a26d8696a29937"
+      },
+      {
+        "path": "package.json",
+        "sha256": "8c3ea969912b880050dea8f726c12b794d771a2aa89c6ef44d20a9d332977fe3"
+      },
+      {
+        "path": "shared/licensing/protocol.mjs",
+        "sha256": "ca8adab1ba27722fcb4ef5c7907bf38719a44dad460b711b6f9e7fd19a9b513c"
+      },
+      {
+        "path": "shared/reports/protocol.mjs",
+        "sha256": "10c6f82947903d6bb27b889d507f58a1433bf91bfa5c9899bfbff6cd8cfd6537"
+      },
+      {
+        "path": "src/auth.cjs",
+        "sha256": "4d25f91a173948c0158bc53e8450ea4956a96224845915036ada228538a3e246"
+      },
+      {
+        "path": "src/core/account-runtime.cjs",
+        "sha256": "6ce0498b4516fcc2feadf416b26cb8511756a2aafa15acbd1f0a99282b88911f"
+      },
+      {
+        "path": "src/core/csv.cjs",
+        "sha256": "3e09868381cc68172597a8473d7580335e51c2bdf07e722980dc16edabc7267c"
+      },
+      {
+        "path": "src/core/receipts.cjs",
+        "sha256": "1048de6040c9f0d0f5e196ffcd237db34296e93517a2bb4722fb00daacf6c731"
+      },
+      {
+        "path": "src/core/service.cjs",
+        "sha256": "97de17c874b0dd07a856cd9be14e93062fbdc32d58062f1997ce7cadf5002ae7"
+      },
+      {
+        "path": "src/core/store.cjs",
+        "sha256": "8603013041ece2848c7c9f78357f9b021d342bd65814b4a3fac4853ac24b69ed"
+      },
+      {
+        "path": "src/licensing/client.cjs",
+        "sha256": "fbbfbd0c88b5396144e5f618cfa4e9c8b9413f9673249b48736611108e7824ab"
+      },
+      {
+        "path": "src/licensing/config.json",
+        "sha256": "15107823a4c923644a32143f3cf15f447cfcf1d147ad878d299cc1aa1d139911"
+      },
+      {
+        "path": "src/licensing/device.cjs",
+        "sha256": "5fdf24553ccb69c2845d2237ab78ecad985ce59f78a2a0d9c1e601ae24fde2f5"
+      },
+      {
+        "path": "src/licensing/native-integrity.json",
+        "sha256": "3f1a548114e406894d83cf55879ed01c8610d5ead7c6d25571126d552e4c6c53"
+      },
+      {
+        "path": "src/licensing/operations.cjs",
+        "sha256": "9d7e60a1c32681f24e3d55738b8b66cbe2836d15d8906631c6c91f999846ab7a"
+      },
+      {
+        "path": "src/main.cjs",
+        "sha256": "0f0d6ed2046efcee884f6ce92b4d7be2d047689ada64377108d31dfdc170a69a"
+      },
+      {
+        "path": "src/persistent-session.cjs",
+        "sha256": "95708b9b46ccc5f80a7584dfb81c4139f5975f22949c46ea71d66725c0e902a6"
+      },
+      {
+        "path": "src/platform/normalize.cjs",
+        "sha256": "22728e92c71cc2e434da1e04c8eec77edc3e7854846b3f5526007e4cd8148c88"
+      },
+      {
+        "path": "src/platform/official-page.cjs",
+        "sha256": "f4f76018bf3d4433e40bfec8e5c7f094d0d1991aad66760ad59375d1fa99dee1"
+      },
+      {
+        "path": "src/platform/queue.cjs",
+        "sha256": "b7fc120a70a51e68858a89af85fb71f627febcb0099dbeb7aa37b714abc8e0ec"
+      },
+      {
+        "path": "src/platform/read-sync.cjs",
+        "sha256": "ca047ebefba3265d52b4133d03fe28bc26d035ecd34df1cbbdadaf5dfe48ff1f"
+      },
+      {
+        "path": "src/platform/session-vault.cjs",
+        "sha256": "bc14a90a149533c1e9754b1bd19a64c4de47d3f06a537d76b095228684f7dd8b"
+      },
+      {
+        "path": "src/platform/xianyu.cjs",
+        "sha256": "2b74334b09684565cea2453b4ba028b2f437ce1d49a6d803e3f827699496a5ce"
+      },
+      {
+        "path": "src/preload.cjs",
+        "sha256": "7d68f7acd9fe4407616a5a08ac7b048c2cd4d636a9d1805fbe8ebb29290fcb1c"
+      },
+      {
+        "path": "src/release-trust.json",
+        "sha256": "44ba7a4a23e1c23fecd6c13b817f0884d94c297d1a4bff981b38b315bb670567"
+      },
+      {
+        "path": "src/renderer/account-capabilities.js",
+        "sha256": "34a27ac8a1768bf27b1d12f01c2ce43e277d3dd7ad3c1b2b17d0a4294dc4195a"
+      },
+      {
+        "path": "src/renderer/accounts-controller.js",
+        "sha256": "f39499dc95a3d8b840463e05256e9cf0b4e3e9dcf7ecc4ad8bbfcf8f10be3082"
+      },
+      {
+        "path": "src/renderer/accounts-views.js",
+        "sha256": "b0d03be4695b108a8fcfb6f30acb8b55582fe1470721d868430d813b1c83a584"
+      },
+      {
+        "path": "src/renderer/app.js",
+        "sha256": "64f4b322a4c5551973623029a6f50bd4b08df30af2f063f01a3ec7a59be82577"
+      },
+      {
+        "path": "src/renderer/feedback.css",
+        "sha256": "a3b3cb4ffd247ac509549513bcb4d9b999a4cf58d3299a6c3f4d8e4d499de28c"
+      },
+      {
+        "path": "src/renderer/feedback.js",
+        "sha256": "4cf9118568b4b286786c95099ace675a10ec89e802c229b96d94e803fe0b0530"
+      },
+      {
+        "path": "src/renderer/index.html",
+        "sha256": "4b390c9a58dce7aeba933dccac5fbfbda39c5450b8bbe0152b7667425588d3d5"
+      },
+      {
+        "path": "src/renderer/licensing-controller.js",
+        "sha256": "028c511ff9de66aa645be640b7fe98d9487dbcbc2e048a129079179fecee5df9"
+      },
+      {
+        "path": "src/renderer/licensing-views.js",
+        "sha256": "13091ec5a759b1fee6769e0617d37cbf72dc4c5be9034990b681c32a7e9d736a"
+      },
+      {
+        "path": "src/renderer/licensing.css",
+        "sha256": "90c26cc815e5a6a6782c2a9d9294014cb5832724a6e76a7531c36f07c8532e38"
+      },
+      {
+        "path": "src/renderer/styles.css",
+        "sha256": "9be26ff45284beaaa2ad9dcada5f4b54a410ed295f7010f320bc6b3cd2e01ada"
+      },
+      {
+        "path": "src/renderer/ui-behaviors.js",
+        "sha256": "edeab12339511509693264604187b3851704836437ef366822a52d7b19a38783"
+      },
+      {
+        "path": "src/renderer/ui-components.js",
+        "sha256": "c2a1096bebd2efb2c31f342117f6991617939b3fcaf61d5988e992de2e0895c7"
+      },
+      {
+        "path": "src/renderer/workspace-views.js",
+        "sha256": "9b92506d2dc3e12db1a5248eb32f2348d2d9bf9c011685b09e58e5ff4082f2d5"
+      },
+      {
+        "path": "src/security/runtime-policy.cjs",
+        "sha256": "0ada8cee20009bf617ca456f27bfcb74d0c16faf77d8c1ef42623dc877a96a6f"
+      },
+      {
+        "path": "src/services/claims.cjs",
+        "sha256": "396642541215546d19517b317069d0d9981545fd27170c3f2a321073e7e841a9"
+      },
+      {
+        "path": "src/services/media.cjs",
+        "sha256": "49cffaa32272734096fc781f1c6863e273d7142f8ff727dd2a0280b4d081594b"
+      },
+      {
+        "path": "src/services/model.cjs",
+        "sha256": "409d76b4ae4cf136a17ae684976fa47449cfadf6f38250e1cc674e4e88604be6"
+      },
+      {
+        "path": "src/services/msi-inspect.cjs",
+        "sha256": "1a5f56a53c003456590ffafbb371b4badd3442f7f8c1301363026c49fd6711ee"
+      },
+      {
+        "path": "src/services/msi-inspect.ps1",
+        "sha256": "23a42c6894b8cb29c04fb74da7759f6491cc94ea598df1b3f3961eafc41b02a2"
+      },
+      {
+        "path": "src/services/notifications.cjs",
+        "sha256": "21f819df6830901e040abad3aeaf930478f4914fcf26e42dfb4493bd793a27e7"
+      },
+      {
+        "path": "src/services/report-actions.cjs",
+        "sha256": "e56031d849bfd29d918d7d9de562efacaecbfb9b21582af0ada9add8465fee51"
+      },
+      {
+        "path": "src/services/report-context.cjs",
+        "sha256": "3d5491ca02a21c4614a6d0582ef64c8a59f15dcf534568c3a7e70a31c6acf304"
+      },
+      {
+        "path": "src/services/reports.cjs",
+        "sha256": "c695729581ceda9dc303b1602d9796865e9188394cc94f5c6c7c8bdd1e056864"
+      },
+      {
+        "path": "src/services/updates.cjs",
+        "sha256": "ab4b600d6691ad7f62d8cf187c509fc5a59ba66cb91e54b9d505e62265672ef6"
+      }
+    ],
+    "externalComponents": [
+      {
+        "path": "resources/licensing/Lianpu.Device.exe",
+        "sha256": "af52b298cf356d4ce9e486c54e17891396106da9f0150e00066da82fd9c43ed1",
+        "verification": "Pinned in ASAR; device provider rechecks before invocation"
+      }
+    ],
+    "protectionProvider": {
+      "format": "lianpu-protection-provider-v1",
+      "id": "none",
+      "status": "disabled",
+      "runtime": {
+        "electron": "44.3.0",
+        "platform": "win32",
+        "arch": "x64"
+      },
+      "commercialProtectionVerified": false,
+      "integrationStage": "before ASAR; native signing and pinned digest refresh precede archive creation",
+      "requiredEvaluation": [
+        "exact Electron/Node/V8 ABI and Windows x64",
+        "vendor license and unattended CI rights",
+        "real protected core operation coverage",
+        "sandbox and security software unchanged",
+        "startup and long-running performance",
+        "offline/license-expiry/read-only/export/backup/upgrade recovery"
+      ],
+      "boundary": "This is a replaceable build seam, not installed vendor protection."
+    },
+    "signingOrder": [
+      "Review/protect application inputs and native components",
+      "Sign native components, then refresh their pinned digest",
+      "Create ASAR",
+      "Apply branding, ASAR resource and Fuses",
+      "Authenticode-sign executable",
+      "Build and Authenticode-sign installer",
+      "Hash final installer and sign update manifest"
+    ],
     "repair": "重新运行经核验的安装包修复程序文件；保留授权与业务资料。",
     "boundary": "防止受支持入口加载被改写的应用归档；不是不可破解保证。Windows 发布者签名仍未提供。"
   },
@@ -143,7 +435,7 @@
       "upstreamPath": "electron.exe",
       "distributionPath": "Lianpu.exe",
       "upstreamSha256": "e048632e03fabc96de5e10afbebc0aa31f4e1674155ea3d270597fe7523f9d80",
-      "distributionSha256": "aa0d7ba3ffd6c3ac64c9ceda443f516575f9ab7b3064c102463bc34172ec56d9",
+      "distributionSha256": "ac2328658a4c36c7974db305f723f76bfe6c8b88db56df05173c57c5a2bb5e33",
       "modified": true,
       "modification": "Win32 品牌资源、ASAR 完整性资源及 Electron 官方运行开关；详见 branding/protection 记录。",
       "licenseReviewStatus": "incomplete-exact-binary-license-mapping"

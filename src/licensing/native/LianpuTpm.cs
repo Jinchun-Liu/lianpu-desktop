@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Security.AccessControl;
 using System.Security.Cryptography;
@@ -12,7 +13,9 @@ using System.Web.Script.Serialization;
 [assembly: DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
 
 // This helper deliberately has no provider, key-name, deletion, export-private-key,
-// TPM-clear, import-key, or elevation command. Test names are compile-time only.
+// TPM-clear, import-key, or elevation command. Signing accepts only documented
+// project domains; this is not caller authentication or a rollback counter.
+// Test names are compile-time only.
 internal static class LianpuTpm
 {
     private const string Provider = "Microsoft Platform Crypto Provider";
@@ -237,7 +240,123 @@ internal static class LianpuTpm
         byte[] data = Convert.FromBase64String(encoded.Replace('-', '+').Replace('_', '/') + new string('=', (4 - encoded.Length % 4) % 4));
         if (data.Length == 0 || data.Length > MaximumChallengeBytes || Base64Url(data) != encoded)
             throw new Failure("invalid_request", "INVALID_CHALLENGE", "The challenge must use unpadded canonical base64url without whitespace.", "input", null);
+        ValidateSigningChallenge(data);
         return data;
+    }
+    private static Failure PurposeFailure()
+    { return new Failure("invalid_request", "SIGNING_PURPOSE_INVALID", "Only bounded project preparation, license proof, local state and support session inputs are supported.", "input.purpose", null); }
+    private static bool Exact(Dictionary<string, object> value, params string[] keys)
+    {
+        if (value == null || value.Count != keys.Length) return false;
+        foreach (string key in keys) if (!value.ContainsKey(key)) return false;
+        return true;
+    }
+    private static string JsonString(string value)
+    {
+        StringBuilder output = new StringBuilder("\"");
+        foreach (char character in value)
+        {
+            switch (character)
+            {
+                case '"': output.Append("\\\""); break;
+                case '\\': output.Append("\\\\"); break;
+                case '\b': output.Append("\\b"); break;
+                case '\t': output.Append("\\t"); break;
+                case '\n': output.Append("\\n"); break;
+                case '\f': output.Append("\\f"); break;
+                case '\r': output.Append("\\r"); break;
+                default: if (character < 32) output.Append("\\u" + ((int)character).ToString("x4")); else output.Append(character); break;
+            }
+        }
+        return output.Append('"').ToString();
+    }
+    private static string Canonical(object value, int depth)
+    {
+        if (depth > 20) throw PurposeFailure();
+        if (value == null) return "null";
+        if (value is string) return JsonString((string)value);
+        if (value is bool) return (bool)value ? "true" : "false";
+        if (value is int || value is long || value is decimal || value is double)
+        {
+            decimal number;
+            try { number = Convert.ToDecimal(value, CultureInfo.InvariantCulture); } catch { throw PurposeFailure(); }
+            if (number != decimal.Truncate(number) || number < -9007199254740991m || number > 9007199254740991m) throw PurposeFailure();
+            return number.ToString("0", CultureInfo.InvariantCulture);
+        }
+        object[] array = value as object[];
+        if (array != null)
+        {
+            string[] entries = new string[array.Length];
+            for (int index = 0; index < array.Length; index++) entries[index] = Canonical(array[index], depth + 1);
+            return "[" + string.Join(",", entries) + "]";
+        }
+        Dictionary<string, object> item = value as Dictionary<string, object>;
+        if (item == null) throw PurposeFailure();
+        List<string> keys = new List<string>(item.Keys); keys.Sort(StringComparer.Ordinal);
+        List<string> properties = new List<string>();
+        foreach (string key in keys) properties.Add(JsonString(key) + ":" + Canonical(item[key], depth + 1));
+        return "{" + string.Join(",", properties.ToArray()) + "}";
+    }
+    private static bool PublicKey(string value)
+    {
+        // Fixed P-256 SPKI DER framing; the OS/remote verifier validates the point.
+        if (value == null || !Regex.IsMatch(value, "\\A[A-Za-z0-9_-]{122}\\z")) return false;
+        try
+        {
+            byte[] raw = Convert.FromBase64String(value.Replace('-', '+').Replace('_', '/') + "==");
+            byte[] prefix = { 0x30, 0x59, 0x30, 0x13, 0x06, 0x07, 0x2A, 0x86, 0x48, 0xCE, 0x3D, 0x02, 0x01, 0x06, 0x08, 0x2A, 0x86, 0x48, 0xCE, 0x3D, 0x03, 0x01, 0x07, 0x03, 0x42, 0x00, 0x04 };
+            if (raw.Length != 91 || Base64Url(raw) != value) return false;
+            for (int index = 0; index < prefix.Length; index++) if (raw[index] != prefix[index]) return false;
+            return true;
+        }
+        catch (FormatException) { return false; }
+    }
+    // Pure, bounded validation: never opens CNG or touches a file. Canonical
+    // re-encoding also rejects duplicate keys, whitespace and alternate numbers.
+    internal static string ValidateSigningChallenge(byte[] data)
+    {
+        if (data == null || data.Length == 0 || data.Length > MaximumChallengeBytes) throw PurposeFailure();
+        string[] domains = { "LIANPU-LICENSING/v1/preparation\0", "LIANPU-LICENSING/v1/local-state\0", "LIANPU-LICENSING/v1/device-proof\0", "LIANPU-REPORT/v1/session\0" };
+        int purpose = -1, offset = 0;
+        for (int domain = 0; domain < domains.Length; domain++)
+        {
+            byte[] prefix = Encoding.ASCII.GetBytes(domains[domain]); bool matches = data.Length >= prefix.Length;
+            for (int index = 0; matches && index < prefix.Length; index++) if (data[index] != prefix[index]) matches = false;
+            if (matches) { purpose = domain; offset = prefix.Length; break; }
+        }
+        if (purpose < 0) throw PurposeFailure();
+        if (purpose == 0) { if (data.Length - offset != 32) throw PurposeFailure(); return "preparation"; }
+        string text; Dictionary<string, object> value;
+        try
+        {
+            text = new UTF8Encoding(false, true).GetString(data, offset, data.Length - offset);
+            value = new JavaScriptSerializer { MaxJsonLength = MaximumChallengeBytes, RecursionLimit = 20 }.DeserializeObject(text) as Dictionary<string, object>;
+        }
+        catch { throw PurposeFailure(); }
+        if (purpose == 3)
+        {
+            bool challenged = value != null && value.ContainsKey("challenge");
+            if (!(challenged ? Exact(value, "publicKey", "nonce", "challenge") : Exact(value, "publicKey", "nonce")) || !PublicKey(value["publicKey"] as string) || !(value["nonce"] is string) ||
+                !Regex.IsMatch((string)value["nonce"], "\\A[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\z")) throw PurposeFailure();
+            if (challenged && (!(value["challenge"] is string) || ((string)value["challenge"]).Length >= 4096 ||
+                !Regex.IsMatch((string)value["challenge"], "\\A[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]{43}\\z"))) throw PurposeFailure();
+            if (text != "{\"publicKey\":" + JsonString((string)value["publicKey"]) + ",\"nonce\":" + JsonString((string)value["nonce"]) +
+                (challenged ? ",\"challenge\":" + JsonString((string)value["challenge"]) : "") + "}") throw PurposeFailure();
+            return "reportSession";
+        }
+        if (value == null || text != Canonical(value, 0)) throw PurposeFailure();
+        if (purpose == 1)
+        {
+            if (!Exact(value, "v", "license", "pending", "clock") || !object.Equals(value["v"], 1)) throw PurposeFailure();
+            return "state";
+        }
+        if (!Exact(value, "keyId", "payload", "signature") || !(value["keyId"] is string) || !Regex.IsMatch((string)value["keyId"], "\\A[A-Za-z0-9_-]{1,64}\\z") ||
+            !(value["signature"] is string) || !Regex.IsMatch((string)value["signature"], "\\A[A-Za-z0-9_-]{86}\\z")) throw PurposeFailure();
+        Dictionary<string, object> payload = value["payload"] as Dictionary<string, object>;
+        if (!Exact(payload, "v", "type", "mode", "requestId", "deviceId", "devicePublicKeySpki", "codeHash", "plan", "issuedAt", "expiresAt", "nonce") ||
+            !object.Equals(payload["v"], 1) || !object.Equals(payload["type"], "ticket") ||
+            (!object.Equals(payload["mode"], "activate") && !object.Equals(payload["mode"], "recover")) || !PublicKey(payload["devicePublicKeySpki"] as string)) throw PurposeFailure();
+        return "ticket";
     }
     private static string Base64Url(byte[] value) { return Convert.ToBase64String(value).TrimEnd('=').Replace('+', '-').Replace('/', '_'); }
     private static bool HasReparsePoint(string path)

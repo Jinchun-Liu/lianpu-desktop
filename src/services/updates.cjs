@@ -27,6 +27,23 @@ function verifyManifest(envelope,{keys,currentVersion,now=Date.now(),arch='x64',
   return {manifest:JSON.parse(JSON.stringify(m)),key:{id:trusted.id,label:trusted.label||trusted.id,fingerprint:digest(publicKey.export({format:'der',type:'spki'})),channel:trusted.channel},windowsPublisherVerified:false};
 }
 function readEnvelope(bytes){if(!Buffer.isBuffer(bytes))bytes=Buffer.from(bytes);if(bytes.length>MAX_MANIFEST)fail('UPDATE_SIZE','更新清单过大。');try{return JSON.parse(bytes.toString('utf8').replace(/^\uFEFF/,''));}catch{fail('UPDATE_FORMAT','更新清单不是有效 JSON。');}}
+// Validate and read one opened file. This bounds allocation and rejects links/devices;
+// it is not a Windows installer custody lock or protection against a local administrator.
+function readBoundedFile(file,{maxBytes,expectedSize}={}){
+  let descriptor;
+  try{
+    const before=fs.lstatSync(file);if(!before.isFile()||before.isSymbolicLink())fail('UPDATE_FILE_TYPE','更新文件必须是普通文件，请重新选择完整安装包。');
+    descriptor=fs.openSync(file,fs.constants.O_RDONLY|(fs.constants.O_NOFOLLOW||0));
+    const stat=fs.fstatSync(descriptor);
+    if(!stat.isFile()||stat.size>maxBytes)fail('UPDATE_SIZE','更新文件超过允许大小。');
+    if(expectedSize!==undefined&&stat.size!==expectedSize)fail('UPDATE_HASH','安装包大小与签名清单不一致。');
+    const bytes=Buffer.alloc(stat.size);let offset=0;
+    while(offset<bytes.length){const count=fs.readSync(descriptor,bytes,offset,bytes.length-offset,offset);if(!count)fail('UPDATE_FILE_CHANGED','读取时更新文件已改变，请重新准备。');offset+=count;}
+    const after=fs.fstatSync(descriptor);if(after.size!==stat.size||after.mtimeMs!==stat.mtimeMs)fail('UPDATE_FILE_CHANGED','读取时更新文件已改变，请重新准备。');
+    return bytes;
+  }catch(error){if(error instanceof UpdateError)throw error;fail('UPDATE_FILE_READ','无法读取完整更新文件，请重新准备；现有资料会保留。');}
+  finally{if(descriptor!==undefined)fs.closeSync(descriptor);}
+}
 function fetchBytes(value,{maxBytes,timeout=20000,onProgress,signal}={}){
   const url=address(value);
   return new Promise((resolve,reject)=>{
@@ -58,18 +75,25 @@ class UpdateManager{
     try{const bytes=await this.fetcher(url,{...options,signal:controller.signal,onProgress:()=>current()});current();return bytes;}
     finally{this.requests.delete(controller);}
   }
-  reconcile(actor){this.owner(actor);for(const record of this.getStore().list('_updateHistory'))if(record.status==='launch_requested'&&compare(this.currentVersion,record.version)>=0)this.getStore().put('_updateHistory',{...record,status:'version_observed',observedVersion:this.currentVersion,observedAt:new Date(this.clock()).toISOString(),reason:'已重开目标或更高版本；这不是 Windows 安装器回执。'});}
-  _preview(envelope,actor,{localDirectory}={}){this.owner(actor);const checked=verifyManifest(envelope,{keys:this.keys,currentVersion:this.currentVersion,now:this.clock()});const id=randomUUID();this.previews.set(id,{...checked,envelope,actorId:actor.id,localDirectory,createdAt:this.clock()});return this.describe(id);}
+  reconcile(actor){this.owner(actor);let floor;try{floor=this._rollbackFloor();}catch(error){if(error.code==='UPDATE_STATE')return {code:error.code,reason:error.message,requiresRepair:true};throw error;}if(!floor||compare(this.currentVersion,floor.version)>0)this.getStore().put('_updates',{id:'observed-floor',format:'lianpu-update-floor-v1',version:this.currentVersion,observedAt:new Date(this.clock()).toISOString(),boundary:'Actual running version observed locally; old backups and administrator patches can roll back this record.'});for(const record of this.getStore().list('_updateHistory'))if(record.status==='launch_requested'&&compare(this.currentVersion,record.version)>=0)this.getStore().put('_updateHistory',{...record,status:'version_observed',observedVersion:this.currentVersion,observedAt:new Date(this.clock()).toISOString(),reason:'已重开目标或更高版本；这不是 Windows 安装器回执。'});}
+  _rollbackFloor(manifest){
+    let floor;try{floor=this.getStore().get('_updates','observed-floor');}catch{fail('UPDATE_STATE','本地更新记录不能通过验证，请保留资料并使用经核验的安装包修复。');}
+    if(!floor)return;
+    if(floor.format!=='lianpu-update-floor-v1'||typeof floor.version!=='string'||!/^\d{1,3}\.\d{1,3}\.\d{1,5}$/.test(floor.version))fail('UPDATE_STATE','本地更新记录无效，请保留资料并使用经核验的安装包修复。');
+    if(manifest&&compare(manifest.version,floor.version)<0)fail('UPDATE_ROLLBACK','此更新低于本机已实际运行的版本，请使用同版本或更高版本的经核验安装包。');
+    return floor;
+  }
+  _preview(envelope,actor,{localDirectory}={}){this.owner(actor);const checked=verifyManifest(envelope,{keys:this.keys,currentVersion:this.currentVersion,now:this.clock()});this._rollbackFloor(checked.manifest);const id=randomUUID();this.previews.set(id,{...checked,envelope:JSON.parse(JSON.stringify(envelope)),actorId:actor.id,localDirectory,createdAt:this.clock()});return this.describe(id);}
   describe(id){const p=this.previews.get(id);return {id,currentVersion:this.currentVersion,...p.manifest,key:p.key,artifact:{...p.manifest.artifact},signatureVerified:true,windowsPublisherVerified:false,local:!!p.localDirectory,ready:!!p.preparedPath,reason:p.manifest.channel==='development'?'已验证本项目开发密钥签名；不是正式 Windows 发行签名。':'已验证内置发布密钥签名；Windows 发布者签名需要另外核对。'};}
-  _get(id,actor){this.owner(actor);const p=this.previews.get(id);if(!p||p.actorId!==actor.id||this.clock()-p.createdAt>30*60000)fail('UPDATE_PREVIEW','更新预览已失效，请重新检查。');verifyManifest(p.envelope,{keys:this.keys,currentVersion:this.currentVersion,now:this.clock()});return p;}
-  importManifest(file,actor){this.owner(actor);if(fs.statSync(file).size>MAX_MANIFEST)fail('UPDATE_SIZE','更新清单过大。');return this._preview(readEnvelope(fs.readFileSync(file)),actor,{localDirectory:path.dirname(path.resolve(file))});}
+  _get(id,actor){this.owner(actor);const p=this.previews.get(id);if(!p||p.actorId!==actor.id||this.clock()-p.createdAt>30*60000||this.clock()<p.createdAt-300000)fail('UPDATE_PREVIEW','更新预览已失效，请重新检查。');verifyManifest(p.envelope,{keys:this.keys,currentVersion:this.currentVersion,now:this.clock()});this._rollbackFloor(p.manifest);return p;}
+  importManifest(file,actor){this.owner(actor);return this._preview(readEnvelope(readBoundedFile(file,{maxBytes:MAX_MANIFEST})),actor,{localDirectory:path.dirname(path.resolve(file))});}
   async check(actor){this.owner(actor);const feed=this.getStore().get('_updates','settings')?.feedUrl;if(!feed)fail('UPDATE_SOURCE_REQUIRED','尚未设置更新来源；也可以选择发行方提供的签名清单文件。');const bytes=await this._fetch(feed,{maxBytes:MAX_MANIFEST},actor);return this._preview(readEnvelope(bytes),actor);}
   _checkBytes(bytes,artifact){if(bytes.length!==artifact.size||digest(bytes)!==artifact.sha256)fail('UPDATE_HASH','安装包大小或摘要与签名清单不一致，不能执行安装。');if(!bytes.subarray(0,8).equals(Buffer.from('d0cf11e0a1b11ae1','hex')))fail('UPDATE_FORMAT','文件不是有效的 MSI 容器。');}
   async prepare({id},actor){const p=this._get(id,actor),artifact=p.manifest.artifact;let bytes;
-    if(p.localDirectory){const source=path.join(p.localDirectory,artifact.filename);if(!fs.existsSync(source))fail('UPDATE_FILE_REQUIRED','请将签名清单与对应 MSI 安装包放在同一文件夹。');if(fs.statSync(source).size!==artifact.size)fail('UPDATE_HASH','安装包大小与清单不一致。');bytes=fs.readFileSync(source);}
+    if(p.localDirectory){const source=path.join(p.localDirectory,artifact.filename);if(!fs.existsSync(source))fail('UPDATE_FILE_REQUIRED','请将签名清单与对应 MSI 安装包放在同一文件夹。');bytes=readBoundedFile(source,{maxBytes:MAX_ARTIFACT,expectedSize:artifact.size});}
     else {if(!artifact.url)fail('UPDATE_FILE_REQUIRED','此清单未提供下载地址，请选择本地签名清单与安装包。');bytes=await this._fetch(artifact.url,{maxBytes:artifact.size,timeout:120000},actor,()=>this._get(id,actor));}
     this._get(id,actor);this._checkBytes(bytes,artifact);fs.mkdirSync(this.downloadRoot,{recursive:true});const directory=path.join(this.downloadRoot,randomUUID());fs.mkdirSync(directory);const output=path.join(directory,artifact.filename);fs.writeFileSync(output,bytes,{mode:0o600,flag:'wx'});p.preparedPath=output;return this.describe(id);
   }
-  takeForInstallation({id},actor){const p=this._get(id,actor);if(!p.preparedPath)fail('UPDATE_NOT_PREPARED','请先下载或检查安装包。');const bytes=fs.readFileSync(p.preparedPath);this._checkBytes(bytes,p.manifest.artifact);const record={id:randomUUID(),version:p.manifest.version,sha256:p.manifest.artifact.sha256,status:'launch_requested',keyId:p.key.id,channel:p.manifest.channel,createdAt:new Date(this.clock()).toISOString()};this.getStore().put('_updateHistory',record);this.previews.delete(id);return {path:p.preparedPath,version:p.manifest.version,sha256:p.manifest.artifact.sha256,size:p.manifest.artifact.size,historyId:record.id};}
+  takeForInstallation({id},actor){const p=this._get(id,actor);if(!p.preparedPath)fail('UPDATE_NOT_PREPARED','请先下载或检查安装包。');const bytes=readBoundedFile(p.preparedPath,{maxBytes:MAX_ARTIFACT,expectedSize:p.manifest.artifact.size});this._checkBytes(bytes,p.manifest.artifact);const record={id:randomUUID(),version:p.manifest.version,sha256:p.manifest.artifact.sha256,status:'launch_requested',keyId:p.key.id,channel:p.manifest.channel,createdAt:new Date(this.clock()).toISOString()};this.getStore().put('_updateHistory',record);this.previews.delete(id);return {path:p.preparedPath,version:p.manifest.version,sha256:p.manifest.artifact.sha256,size:p.manifest.artifact.size,historyId:record.id};}
 }
-module.exports={UpdateManager,UpdateError,canonical,compare,address,verifyManifest,readEnvelope,fetchBytes,MAX_MANIFEST,MAX_ARTIFACT};
+module.exports={UpdateManager,UpdateError,canonical,compare,address,verifyManifest,readEnvelope,readBoundedFile,fetchBytes,MAX_MANIFEST,MAX_ARTIFACT};

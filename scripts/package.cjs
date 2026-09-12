@@ -170,7 +170,7 @@ async function packageApp({ format = 'msi', signUpdate = false } = {}) {
   const extraFiles = ['README.md', 'LICENSE'].map(name => path.join(ROOT,name)).filter(file => fs.existsSync(file));
   const uiReuseRoot = path.join(ROOT,'compliance','ui-reuse');
   const uiReuseInputs = fs.existsSync(uiReuseRoot) ? [path.join(uiReuseRoot,'origin.json'),path.join(uiReuseRoot,'manifest.json'),...walk(path.join(uiReuseRoot,'licenses'))] : [];
-  const buildInputs = [...appFiles,...sharedFiles,nativeHelper,...docsFiles,...extraFiles,...uiReuseInputs,path.join(ROOT, 'package.json'), path.join(ROOT, 'package-lock.json'), __filename, path.join(__dirname, 'licenses.cjs'), path.join(__dirname,'release-msi.cjs'), path.join(__dirname,'release-signing.cjs'), path.join(__dirname,'branding.cjs'),path.join(__dirname,'package-security.cjs')].sort();
+  const buildInputs = [...appFiles,...sharedFiles,nativeHelper,...docsFiles,...extraFiles,...uiReuseInputs,path.join(ROOT, 'package.json'), path.join(ROOT, 'package-lock.json'), __filename, path.join(__dirname, 'licenses.cjs'), path.join(__dirname,'release-msi.cjs'), path.join(__dirname,'release-signing.cjs'), path.join(__dirname,'branding.cjs'),path.join(__dirname,'package-security.cjs'),path.join(__dirname,'protection-provider.cjs')].sort();
   const sourceSha = sha(Buffer.concat(buildInputs.map(file => Buffer.concat([Buffer.from(relativeSource(file) + '\0'), fs.readFileSync(file)]))));
   const build = `${manifest.version}-${sourceSha.slice(0, 12)}`;
   const stage = inside(WORK, path.join(WORK, 'package', 'windows-x64', `${build}-${Date.now()}`));

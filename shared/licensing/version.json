@@ -1,5 +1,7 @@
 {
   "version": 1,
-  "sha256": "17b04332b82467396d6a96b59f1b127847c9e7604a24773a49692efbea364f97",
+  "sha256": "ca8adab1ba27722fcb4ef5c7907bf38719a44dad460b711b6f9e7fd19a9b513c",
+  "canonicalizationRevision": 2,
+  "wireCompatibility": "Existing v1 JSON payloads and signature bytes are unchanged; reject non-JSON in-process values. v2 is specification-only and is not accepted.",
   "policy": "Vendored identical protocol in customer and private issuer repositories; synchronize both before changing the digest."
 }

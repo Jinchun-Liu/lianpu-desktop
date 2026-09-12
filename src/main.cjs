@@ -13,6 +13,8 @@ const { PersistentLocalSession } = require('./persistent-session.cjs');
 const { createLicenseClient, cloudPost } = require('./licensing/client.cjs');
 const { TpmDevice } = require('./licensing/device.cjs');
 const { needsLicense } = require('./licensing/operations.cjs');
+const { RuntimePolicy, isTrustedSender } = require('./security/runtime-policy.cjs');
+const runtimePolicy = new RuntimePolicy({packaged:app.isPackaged,hasSwitch:name=>app.commandLine.hasSwitch(name)});
 const { createXianyuConnector } = require('./platform/xianyu.cjs');
 const { ModelGateway } = require('./services/model.cjs');
 const { MediaLibrary } = require('./services/media.cjs');
@@ -49,8 +51,8 @@ const dataRoot = app.getPath('userData');
 let preferences = { closeBehavior: 'tray', startAtLogin: false, notifications: true };
 function safeCode(value) { return typeof value === 'string' && /^[A-Z0-9_]{1,60}$/.test(value) ? value : 'STARTUP_ERROR'; }
 function emit(type, fields = {}) { if (uiLocked && !['access-revoked','workspace-closed','suspended','resumed','member-changed','license-changed'].includes(type)) return; if (win && !win.isDestroyed()) win.webContents.send('desk:event', { type, ...fields }); }
-function publicLicense(status=licenseClient.status()){return {...status,accessMode:status.active?'full':identity?.meta?'readonly':'activation_required'};}
-function requireLicense(){return licenseClient.assertAllowed();}
+function publicLicense(status=licenseClient.status()){const security=runtimePolicy.status(),active=status.active&&security.allowed;return {...status,active,...(!security.allowed?{state:'security_repair_required',reason:security.reason}:{}),security,accessMode:active?'full':identity?.meta?'readonly':'activation_required'};}
+function requireLicense(){runtimePolicy.assertAllowed();return licenseClient.assertAllowed();}
 function revokeUiAccess() {
   if(uiLocked)return;uiLocked=true;uiGeneration++;service?.invalidate();rememberedSession?.forget('revoked','此成员已停用，请选择其他有效成员登录。');
   restoreCache=null;updater?.clear();cancelClaimDownloads();for(const preview of claimWindows)if(!preview.isDestroyed())preview.destroy();claimWindows.clear();
@@ -87,7 +89,7 @@ function activateStore(user, first = false) {
     accountRuntime = new AccountRuntime({ store, service, connector, assertUi: actor => { const current=getActor(); if(actor.id!==current.id)throw new AccessError('LOCKED','本机成员已切换，此请求已取消。'); }, emit });
     claims = new ClaimsEngine(store);
     notificationCenter = new NotificationCenter(store);
-    accountRuntime.accepting=licenseClient.status().active;
+    accountRuntime.accepting=publicLicense().active;
   }
   if (getActor().role === 'owner') updater.reconcile(getActor());
   preferences = { ...preferences, ...(store.get('_desktop', 'preferences')?.value || {}) };
@@ -109,7 +111,7 @@ async function stopAllHosting(reason = '已停止全部账号托管') {
   const stopped=activeRuntime.beginStop(reason);
   const claimsStopped=claims?.stop();cancelClaimDownloads();for(const preview of claimWindows)if(!preview.isDestroyed())preview.destroy();claimWindows.clear();
   const operations=[...pending].filter(operation=>/^(account\.|platform\.|delivery\.|message\.|batch\.|plan\.|service\.|order\.|automation\.|interaction\.|afterSales\.|logistics\.|supplier\.)/.test(pendingActions.get(operation)||''));
-  stopTask=(async()=>{await Promise.allSettled([...operations,stopped,claimsStopped]);await activeRuntime.drain();if(accountRuntime===activeRuntime&&!quitting&&!updatePending)activeRuntime.accepting=licenseClient.status().active;emit('hosting-stopped',{reason,background:publicBackground()});rebuildTray();return {status:'stopped',background:publicBackground()};})();
+  stopTask=(async()=>{await Promise.allSettled([...operations,stopped,claimsStopped]);await activeRuntime.drain();if(accountRuntime===activeRuntime&&!quitting&&!updatePending)activeRuntime.accepting=publicLicense().active;emit('hosting-stopped',{reason,background:publicBackground()});rebuildTray();return {status:'stopped',background:publicBackground()};})();
   try{return await stopTask;}finally{stopTask=null;}
 }
 async function closeWorkspace(reason = '工作区正在关闭') {
@@ -192,7 +194,7 @@ function createWindow() {
   win.loadURL('lianpu://app/index.html');
 }
 function validSender(event) {
-  return win && !win.isDestroyed() && event.sender === win.webContents && event.senderFrame === win.webContents.mainFrame && event.senderFrame.url === 'lianpu://app/index.html';
+  return isTrustedSender(event,win,'lianpu://app/index.html');
 }
 async function openClaimWindow(url, grantId) {
   const permitted = new URL(url);
@@ -434,7 +436,7 @@ async function dispatch(action, p) {
   }
   if (action === 'platform.status') {
     const account=service._record('accounts',p.accountId,actor,'read');
-    if(account.space!=='live'||account.archived||!licenseClient.status().active)return connector.status(account);
+    if(account.space!=='live'||account.archived||!publicLicense().active)return connector.status(account);
     return connector.inspect(account,{authorize:()=>{requireLicense();const current=service._record('accounts',account.id,getActor(),'read');return !current.archived&&current.sessionVersion===account.sessionVersion;}});
   }
   if (action === 'app.preferences.get') return { ...preferences, version: app.getVersion(), platform: process.platform, arch: process.arch, packaged: app.isPackaged, signed: false };
@@ -543,7 +545,7 @@ async function boot() {
   let licenseWasActive=false;
   licenseClient=await createLicenseClient({transport:(endpoint,route,body)=>cloudPost(endpoint,route,body,(url,options)=>net.fetch(url,options)),device:new TpmDevice({helper:app.isPackaged?path.join(process.resourcesPath,'licensing','Lianpu.Device.exe'):path.join(__dirname,'licensing','native','bin','Lianpu.Device.exe')}),onChange:status=>{
     const expired=licenseWasActive&&!status.active;licenseWasActive=status.active;
-    if(accountRuntime&&!stopTask)accountRuntime.accepting=status.active;
+    if(accountRuntime&&!stopTask)accountRuntime.accepting=publicLicense(status).active;
     emit('license-changed',{license:publicLicense(status)});
     if(expired&&accountRuntime)void stopAllHosting(status.reason).catch(()=>{});
   }});
@@ -616,7 +618,7 @@ async function boot() {
   powerMonitor.on('resume', () => { licenseClient.checkpoint();emit('resumed', { reason: '电脑已唤醒，可直接查看工作区。需要继续托管时请明确开启账号。' }); });
   setInterval(()=>licenseClient.checkpoint(),1000).unref();
   setInterval(async () => {
-    if (!identity.key || lockTask || stopTask || updatePending || !service || !accountRuntime || !licenseClient.status().active) return;
+    if (!identity.key || lockTask || stopTask || updatePending || !service || !accountRuntime || !publicLicense().active) return;
     let operation;
     try {
       operation = accountRuntime.tick(); pending.add(operation);pendingActions.set(operation,'automation.tick');

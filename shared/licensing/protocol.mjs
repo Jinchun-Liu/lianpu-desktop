@@ -20,6 +20,18 @@ function ensure(value, code = 'INVALID_FORMAT') { if (!value) throw new Protocol
 function object(value) {
   ensure(value && typeof value === 'object' && !Array.isArray(value));
   ensure(Object.getPrototypeOf(value) === Object.prototype || Object.getPrototypeOf(value) === null);
+  dataKeys(value);
+}
+// Only JSON data participates in signatures. Do not invoke accessors or silently
+// ignore symbols/non-enumerable members supplied by an in-process caller.
+function dataKeys(value, array = false) {
+  const keys = Reflect.ownKeys(value);
+  for (const key of keys) {
+    if (array && key === 'length') continue;
+    const descriptor = Object.getOwnPropertyDescriptor(value, key);
+    ensure(typeof key === 'string' && descriptor.enumerable && Object.hasOwn(descriptor, 'value'), 'INVALID_CANONICAL_JSON');
+  }
+  return Object.keys(value);
 }
 export function exactKeys(value, keys) {
   object(value);
@@ -36,7 +48,8 @@ export function canonicalJson(value) {
     seen.add(item);
     let text;
     if (Array.isArray(item)) {
-      ensure(Object.keys(item).length === item.length, 'INVALID_CANONICAL_JSON');
+      const keys = dataKeys(item, true);
+      ensure(keys.length === item.length && keys.every((key, index) => key === String(index)), 'INVALID_CANONICAL_JSON');
       text = '[' + item.map(entry => visit(entry, depth + 1)).join(',') + ']';
     } else {
       object(item);

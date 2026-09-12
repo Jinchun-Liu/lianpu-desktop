@@ -55,7 +55,7 @@ try {
       assert.equal(prepared.key.exportable, false);
       assert.equal(prepared.key.provider, 'Microsoft Platform Crypto Provider');
       assert.equal(prepared.storage.prepared, true);
-      const challenge = Buffer.from(JSON.stringify({ purpose: 'lianpu-isolated-device-proof-test', nonce: crypto.randomBytes(32).toString('base64url') }));
+      const challenge = Buffer.concat([Buffer.from('LIANPU-LICENSING/v1/preparation\0'), crypto.randomBytes(32)]);
       const signed = call(isolated, 'sign', challenge.toString('base64url'));
       assert.equal(signed.ok, true);
       assert.equal(signed.deviceId, prepared.deviceId);
