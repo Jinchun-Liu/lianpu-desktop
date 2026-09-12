@@ -175,7 +175,7 @@ async function packageApp({ format = 'msi', signUpdate = false } = {}) {
   const build = `${manifest.version}-${sourceSha.slice(0, 12)}`;
   const stage = inside(WORK, path.join(WORK, 'package', 'windows-x64', `${build}-${Date.now()}`));
   fs.mkdirSync(stage, { recursive: true }); fs.mkdirSync(RELEASE, { recursive: true });
-  fs.cpSync(runtime, stage, { recursive: true, filter: p => !p.endsWith('default_app.asar') });
+  fs.cpSync(runtime, stage, { recursive: true, filter: p => !p.endsWith('default_app.asar') && !/\.log$/i.test(p) });
   fs.renameSync(path.join(stage, 'electron.exe'), path.join(stage, 'Lianpu.exe'));
   const branding = require('./branding.cjs').applyBranding(path.join(stage,'Lianpu.exe'),{version:manifest.version,workDir:path.join(WORK,'package',`branding-${build}-${Date.now()}`)});
   fs.mkdirSync(path.join(ROOT,'evidence'),{recursive:true});

@@ -91,3 +91,10 @@ test('v1.4 登录过期撤销单账号授权，排队动作取消且其他账号
  gate.resolve();await assert.rejects(pending,{code:'BACKGROUND_REVOKED'});assert.equal(h.store.list('deliveries').at(-1).status,'rejected');assert.equal(submitted,0);
  h.runtime.observeStatus({accountId:a.id,sessionVersion:a.sessionVersion,loginStatus:'connected',connectionStatus:'connected'});await h.runtime.tick();assert.deepEqual([...new Set(h.connector.calls.map(c=>c.accountId))],[b.id]);assert.equal(h.store.get('accounts',a.id).paused,true);
 });
+test('restart marks a saved identity unchecked and read-only connection never grants hosting',async t=>{
+ decision(t,'重启不能把未核验会话误标为失效，检查连接不能开启托管','决定实号只读检查可以安全单独使用','一次重建及一个受信只读状态事件');
+ const h=harness(t),a=await h.bind();const runtime=new AccountRuntime({store:h.store,service:h.service,connector:h.connector});
+ const before=h.store.get('accounts',a.id);assert.equal(before.loginStatus,'unverified');assert.equal(before.sessionVersion,a.sessionVersion);assert.equal(before.paused,true);
+ runtime.observeStatus({accountId:a.id,sessionVersion:a.sessionVersion,loginStatus:'authenticated',connectionStatus:'connected',readOnlyCheck:true});
+ const after=h.store.get('accounts',a.id);assert.equal(after.loginStatus,'authenticated');assert.equal(after.connectionStatus,'connected');assert.equal(after.paused,true);assert.equal(after.hosting.enabled,false);assert.equal(runtime.status().activeAccounts,0);
+});

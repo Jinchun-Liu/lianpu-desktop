@@ -1,6 +1,7 @@
 'use strict';
 const n=require('./normalize.cjs');const {randomUUID}=require('node:crypto');
 const stop=()=>({status:'blocked',reason:'账号状态已改变，游标没有前进'});
+function hasNext(value){if(value===true||value==='true')return true;if(value===false||value==='false'||value==null)return false;throw new Error('平台分页结束标记格式变化，未推进游标');}
 function cursor(data,previous){if(!data?.hasMore)return null;const next=data.nextCursor;if(!['string','number'].includes(typeof next)||String(next)===String(previous)||String(next).trim()==='')throw new Error('平台分页游标未提供或没有前进');return next;}
 class ReadCursorSync {
  constructor(){this.progress=new Map();}
@@ -15,8 +16,8 @@ class ReadCursorSync {
   try{
    if(kind==='products'){
     const first=await adapter.request('products',{userId:identity,pageNumber:1,pageSize:20,needGroupInfo:true});if(first.status!=='ok')return first;ingestProducts(first);if(!valid())return stop();
-    if(p.products){const current=p.products;const next=await adapter.request('products',{userId:identity,pageSize:20,needGroupInfo:false,...current});if(next.status!=='ok')return next;ingestProducts(next);if(next.data.nextPage){if(next.data.nextPageModel==null&&next.data.nextPageNum==null)return {status:'unavailable',reason:'商品分页缺少官网返回的续页信息，未推进游标'};p.products={pageNumber:(current.pageNumber||1)+1,nextPageModel:next.data.nextPageModel,nextPageNum:next.data.nextPageNum};}else p.products=null;
-    }else if(first.data.nextPage){if(first.data.nextPageModel==null&&first.data.nextPageNum==null)return {status:'unavailable',reason:'商品分页缺少官网返回的续页信息，未推进游标'};p.products={pageNumber:2,nextPageModel:first.data.nextPageModel,nextPageNum:first.data.nextPageNum};}
+    if(p.products){const current=p.products;const next=await adapter.request('products',{userId:identity,pageSize:20,needGroupInfo:false,...current});if(next.status!=='ok')return next;ingestProducts(next);if(hasNext(next.data.nextPage)){if(next.data.nextPageModel==null&&next.data.nextPageNum==null)return {status:'unavailable',reason:'商品分页缺少官网返回的续页信息，未推进游标'};p.products={pageNumber:(current.pageNumber||1)+1,nextPageModel:next.data.nextPageModel,nextPageNum:next.data.nextPageNum};}else p.products=null;
+    }else if(hasNext(first.data.nextPage)){if(first.data.nextPageModel==null&&first.data.nextPageNum==null)return {status:'unavailable',reason:'商品分页缺少官网返回的续页信息，未推进游标'};p.products={pageNumber:2,nextPageModel:first.data.nextPageModel,nextPageNum:first.data.nextPageNum};}
    }else{
     const latest=await adapter.sessions(identity);if(latest.status!=='ok')return latest;ingestSessions(latest);if(!valid())return stop();
     if(p.sessions){const next=await adapter.sessions(identity,p.sessions);if(next.status!=='ok')return next;ingestSessions(next);p.sessions=cursor(next.data,p.sessions);}else p.sessions=cursor(latest.data);

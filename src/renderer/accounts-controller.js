@@ -14,7 +14,7 @@
     identity_mismatch:'扫码账号与目标账号不一致', bound:'本次身份已绑定'
   };
   const TERMINAL = new Set(['expired','cancelled','canceled','closed','failed','error','blocked','identity_mismatch','bound']);
-  const ACTIONS = new Set(['account-add','account-login','account-login-retry','account-login-check','account-login-cancel','account-detail','account-status','account-hosting','account-pause','account-sync-one','account-bulk-sync','account-bulk-pause','account-bulk-resume','account-note','account-revoke','account-clear-confirm','account-archive','account-archive-confirm','account-related']);
+  const ACTIONS = new Set(['account-add','account-login','account-login-retry','account-login-check','account-login-cancel','account-detail','account-status','account-hosting','account-pause','account-sync-one','account-read-one','account-bulk-sync','account-bulk-pause','account-bulk-resume','account-note','account-revoke','account-clear-confirm','account-archive','account-archive-confirm','account-related']);
   window.createLianpuAccounts = c => {
     const {state,e,btn,notice,field,check,openDialog,call,rawCall,reload,toast}=c;
     const $ = s => document.querySelector(s);
@@ -101,8 +101,9 @@
         try {
           if(operation==='sync') {
             const details=[];
-            for(const kind of ['products','orders','messages']) {
+            for(const kind of options.kinds||['products','messages','orders']) {
               if(!active())break;
+              item.status=`正在检查${{products:'商品',messages:'消息',orders:'订单'}[kind]}`;item.reason=details.join('；');paint();
               try {const result=await call('account.sync',{id:item.id,kind});details.push(syncSummary(result,kind));}
               catch(error){if(error.code==='UI_STALE')throw error;details.push(`${{products:'商品',orders:'订单',messages:'消息'}[kind]}：未完成，${error.message}`);}
             }
@@ -113,8 +114,9 @@
         paint();if(active())$('#account-batch-progress').textContent=`已检查 ${i+1} / ${items.length} 个账号，请逐项核对结果。`;
       }
       if(epoch===c.epoch()&&!state.auth?.locked){selected.clear();await reload();}
+      if(active()&&accounts.length===1)$('#account-batch-progress').insertAdjacentHTML('afterend',`<div class="form-end">${btn('查看账号检查结果','account-detail',`data-id="${e(accounts[0].id)}"`,'primary')}</div>`);
     }
-    function detail(id,observation) {const a=c.get('accounts',id);if(!a)throw new Error('账号已不在当前范围，请刷新列表。');const checked=observation?`<section class="form-section"><h3>本次连接检查</h3>${notice(e(observation.reason||'连接器已返回当前检查结果。'))}<p>登录：${e(window.LianpuAccountViews.status(observation).login)} · 消息：${e(window.LianpuAccountViews.status(observation).connection)}</p>${c.views().renderCapabilities({capabilities:observation.capabilities})}</section>`:'';openDialog(a.name||'账号详情',checked+window.LianpuAccountViews.details(context(),a),{sheet:true});}
+    function detail(id,observation) {const a=c.get('accounts',id);if(!a)throw new Error('账号已不在当前范围，请刷新列表。');const checked=observation?notice(e(observation.reason||'已取得本次登录检查结果，请查看下方状态。')):'';openDialog(a.name||'账号详情',checked+window.LianpuAccountViews.details(context(),a),{sheet:true});}
     async function action(name,element) {
       const id=element?.dataset.id;
       if(['account-note','account-archive','account-archive-confirm'].includes(name)&&state.auth?.user?.role!=='owner')throw new Error('编辑账号档案或移除账号需要本机管理员权限。');
@@ -123,10 +125,11 @@
         case 'account-login-check':return attempt&&poll({...attempt});
         case 'account-login-cancel':if(await window.LianpuUX.requestClose($('#dialog')))invalidateAttempt();return;
         case 'account-detail':return detail(id);
-        case 'account-status':{const token=generation,observation=await dialogRequest('platform.status',{accountId:id},token);await reload();if(token===generation)return detail(id,observation);return;}
+        case 'account-status':{const token=generation,label=element.textContent;element.disabled=true;element.textContent='正在检查登录…';try{const observation=await dialogRequest('platform.status',{accountId:id},token);await reload();if(token===generation)return detail(id,observation);return;}finally{if(element.isConnected){element.disabled=false;element.textContent=label;}}}
         case 'account-hosting':return showHosting(records([id]));
         case 'account-pause':{const a=c.get('accounts',id);if(a?.space==='test')return runBatch(records([id]),a.paused?'resume':'pause');return a?.paused||!a?.hosting?.enabled?showHosting(records([id])):runBatch(records([id]),'pause');}
         case 'account-sync-one':return runBatch(records([id]),'sync');
+        case 'account-read-one':if(!['products','messages','orders'].includes(element.dataset.kind))throw new Error('请选择有效的检查项目。');return runBatch(records([id]),'sync',{kinds:[element.dataset.kind]});
         case 'account-bulk-sync':return runBatch(selectedAccounts(),'sync');
         case 'account-bulk-pause':return runBatch(selectedAccounts(),'pause');
         case 'account-bulk-resume':return state.space==='test'?runBatch(selectedAccounts(),'resume'):showHosting(selectedAccounts());
@@ -151,7 +154,7 @@
         const accountId=result.accountId||result.account?.id;
         if(accountId)await c.changeScope('live',accountId);else await reload();
         toast(result.duplicate?'已更新原账号会话，历史保留。请重新核对并开启托管。':'账号身份已绑定，尚未开启自动托管。');
-        if(accountId)detail(accountId);return;
+        if(accountId)await runBatch(records([accountId]),'sync');return;
       }
       if(form.id==='account-hosting-form') {if(fd.get('consent')!=='on')throw new Error('请先确认本次持续托管授权。');return runBatch(records(formAccounts),'resume',{sync:fd.get('sync')==='on',replies:fd.get('replies')==='on',paidDelivery:fd.get('paidDelivery')==='on',services:fd.get('services')==='on',plans:fd.get('plans')==='on'});}
       if(form.id==='account-note-form') {const token=generation;await dialogRequest('entity.save',{kind:'accounts',record:{id:form.dataset.id,name:String(fd.get('name')||''),note:String(fd.get('note')||'')}},token);await reload();if(token===generation)return detail(form.dataset.id);return;}

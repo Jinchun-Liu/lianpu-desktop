@@ -208,9 +208,7 @@
   }
   function renderAccounts() { return accountUI.page(); }
   function renderCapabilities(account) {
-    const caps=account.capabilities||{};const names={readProducts:'读取商品',readOrders:'读取订单',readMessages:'读取买家消息',sendMessage:'发送消息',mutateProduct:'发布与修改商品',markShipped:'平台标记发货',refund:'退款',logistics:'实物物流',publishProducts:'发布商品',updateProducts:'维护商品',refunds:'执行退款',promotions:'运营任务',interactions:'买家互动',readReceiptEvents:'读取可信收货事件',sendPostReceiptService:'收货后资料服务',sendThankYou:'收货后致谢',sendReceiptReminder:'收货提醒',sendReviewRequest:'中性评价邀请',sendMessages:'发送会话消息'};
-    const entries=Array.isArray(caps)?caps.map(v=>[v.key||v.name,v]):Object.entries(caps);const combined=Object.keys(names).map(key=>[key,entries.find(([k])=>k===key)?.[1]]);for(const [key,value]of entries)if(!names[key])combined.push([key,value]);
-    return table(['能力','实际状态','依据或下一步'],combined.map(([key,value])=>{const capable=value===true||value?.available===true||value?.enabled===true||value?.supported===true;return `<tr><td>${e(names[key]||value?.label||'其他连接能力')}</td><td>${badge(capable?'可用':value?.status||'待验证')}</td><td>${e(value?.reason||value?.evidence||(capable?'以连接器当前返回能力为准':'尚未获得已验证权限；完成本人登录后检查连接能力。'))}</td></tr>`;}).join(''));
+    return window.LianpuAccountCapabilities.render({e,btn,badge,table,when,canSync:['owner','operator'].includes(state.auth?.user?.role)},account);
   }
   function renderTeam() {
     return heading('成员与权限','本机成员与闲鱼账号分开管理。每次操作由主进程校验权限与账号范围。',btn('新增成员','member-add','','primary'))+notice('管理员可管理所有本机资料；经营人员限授权账号；客服处理会话与订单摘要；只读成员不能执行经营动作。')+(rows('members').length?table(['成员','角色','允许账号','状态','操作'],rows('members').map(m=>`<tr><td>${e(m.name)}</td><td>${e(t(m.role))}</td><td>${m.role==='owner'?'全部账号':e((m.accountIds||[]).map(accountName).join('、')||'尚未授权')}</td><td>${badge(m.enabled===false?'disabled':'active')}</td><td>${btn('修改权限','edit',`data-kind="members" data-id="${e(m.id)}"`,'small')}</td></tr>`).join('')):empty('本机成员权限','首位管理员已在创建工作区时设置。可添加需要分工的成员，并限制他们能处理的账号。',btn('新增成员','member-add')));

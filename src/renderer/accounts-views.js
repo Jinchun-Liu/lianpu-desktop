@@ -8,10 +8,11 @@
     awaiting_scan: '等待本人扫码', needs_login: '需要重新登录', checking: '正在核验登录',
     waiting: '等待本人扫码', scanned: '已观察到扫码，等待本人确认',
     scanned_pending_confirmation: '已观察到扫码，等待本人确认', success: '扫码结果已返回，待绑定核验',
-    authenticated: '登录已核验', cleared: '本机登录已清除',
+    authenticated: '登录已核验', connected: '登录已核验', cleared: '本机登录已清除',
     login_required: '需要重新登录', verification_required: '需要本人验证',
     expired: '登录已过期', cancelled: '登录已取消', failed: '登录未完成',
     unverified: '登录状态待核验', identity_mismatch: '扫码身份不匹配',
+    unavailable: '暂时无法核验', timeout: '登录检查超时', rate_limited: '平台要求稍后重试',
     revoked: '本机登录已清除', revocation_failed: '本机登录未完整清除',
   });
   const connectionLabels = Object.freeze({
@@ -96,16 +97,16 @@
     if (!account) return ctx.empty('账号不可用', '此账号可能已移除，或当前成员不再具有查看权限。请返回账号列表重新核对。');
     const e = ctx.e, attrs = `data-id="${e(account.id)}"`, readonly = archived(account), test = isTest(account);
     const testActions = test ? (ctx.canAdd ? ctx.btn('编辑隔离测试账号', 'edit', `${attrs} data-kind="accounts"`) : '') + (ctx.canManage ? ctx.btn(account.paused ? '恢复隔离处理' : '暂停隔离处理', 'account-pause', attrs) : '') : '';
-    const actions = readonly ? '' : `<div class="actions account-detail-actions">${!test && ctx.canManage ? ctx.btn(account.loginStatus === 'authenticated' ? '重新扫码登录' : '本人扫码登录', 'account-login', attrs) : ''}${ctx.btn('检查登录与连接', 'account-status', attrs)}${ctx.canManage ? ctx.btn('同步此账号', 'account-sync-one', attrs) : ''}${ctx.canAdd ? ctx.btn('编辑本机备注', 'account-note', attrs) : ''}${testActions}</div>`;
+    const actions = readonly ? '' : `<div class="actions account-detail-actions">${!test && ctx.canManage ? ctx.btn(account.loginStatus === 'authenticated' ? '重新扫码登录' : '本人扫码登录', 'account-login', attrs) : ''}${ctx.btn('检查登录', 'account-status', attrs)}${ctx.canManage ? ctx.btn('检查并同步（不会发送）', 'account-sync-one', attrs, 'primary') : ''}${ctx.canAdd ? ctx.btn('编辑本机备注', 'account-note', attrs) : ''}${testActions}</div>`;
     const states = `<dl class="account-status-grid"><div><dt>登录状态</dt><dd>${stateTag(ctx, account, 'login')}</dd></div><div><dt>消息连接</dt><dd>${stateTag(ctx, account, 'connection')}</dd></div><div><dt>自动托管</dt><dd>${stateTag(ctx, account, 'hosting')}</dd></div></dl>`;
     const facts = `<dl class="detail-grid account-detail-facts"><dt>本机账号编号</dt><dd class="number">${e(account.id)}</dd><dt>空间</dt><dd>${test ? '隔离测试' : '真实经营'}</dd><dt>身份核验时间</dt><dd>${hasIdentity(account) ? e(ctx.when(account.identityVerifiedAt)) : '尚无完整身份核验依据'}</dd><dt>最近同步</dt><dd>${account.lastSyncedAt ? e(ctx.when(account.lastSyncedAt)) : '尚无同步记录'}</dd><dt>本机备注</dt><dd class="account-detail-note">${e(account.note || '尚无备注')}</dd></dl>`;
     const selectedFeatures = Object.entries(featureLabels).filter(([key]) => account.hosting?.[key] === true).map(([, label]) => label);
     const hostingActions = !readonly && ctx.canManage && !test ? `<div class="actions">${ctx.btn(account.hosting?.enabled === true ? '调整托管范围' : '设置并开启托管', 'account-hosting', attrs, 'primary')}${ctx.btn(account.paused ? '恢复此账号托管' : '暂停此账号托管', 'account-pause', attrs)}</div>` : '';
     const hosting = `<section class="form-section account-hosting-section"><h3>托管范围</h3><p>${selectedFeatures.length ? e(selectedFeatures.join('；')) : '尚未记录明确的托管功能选择。'}</p><p class="help">${account.hosting?.enabled === true ? '以上是已选择的授权范围，不表示每项连接已经验证或任务正在执行。暂停、身份失效、权限或规则变化会阻止相应动作。' : '新绑定或重新登录后需要明确开启。默认建议同步、规则客服和已付款资料交付；保存配置不等于开始运行。'}</p>${test ? '<p class="help">隔离测试账号不参与真实闲鱼持续托管。</p>' : ''}${hostingActions}</section>`;
     const related = `<section class="form-section"><h3>${readonly ? '保留的关联历史' : '此账号的经营资料'}</h3><div class="account-related-links">${[['products', '商品'], ['orders', '订单与交付'], ['messages', '消息与客服'], ['inventory', '唯一库存'], ['rules', '自动处理规则'], ['assets', '资料库']].map(([route, label]) => ctx.btn(label, 'account-related', `${attrs} data-route="${route}"`)).join('')}</div><p class="help">打开后按此账号筛选，继续保留商品、订单、资料和交付记录的关联。</p></section>`;
-    const capabilities = typeof ctx.renderCapabilities === 'function' ? `<section class="form-section"><h3>逐项能力与依据</h3>${ctx.renderCapabilities(account)}</section>` : '';
+    const capabilities = typeof ctx.renderCapabilities === 'function' ? `<section class="form-section"><h3>账号可用功能与下一步</h3>${ctx.renderCapabilities(account)}</section>` : '';
     const remove = !readonly && ((!test && ctx.canManage) || ctx.canAdd) ? `<section class="form-section account-remove-section"><h3>停止使用此账号</h3><p class="help">清除本机登录会停止此账号的托管并使旧会话失效。移除时如有关联业务，将归档账号并保留历史；不删除平台账号。</p><div class="actions">${!test && ctx.canManage ? ctx.btn('清除本机登录', 'account-revoke', attrs) : ''}${ctx.canAdd ? ctx.btn('移除或归档账号', 'account-archive', attrs, 'danger') : ''}</div></section>` : '';
-    return `<div class="account-details" data-account-id="${e(account.id)}">${identity(ctx, account, true)}${readonly ? ctx.notice('此账号已归档，只保留本机历史与关联资料。不会重新登录、同步或执行托管。') : permissionNotice(ctx)}${test ? ctx.notice('隔离测试账号，以下身份与连接不代表真实闲鱼登录。', 'warn') : ''}${states}${account.connectionReason ? ctx.notice(e(account.connectionReason), 'warn') : ''}${actions}${facts}${hosting}${related}${capabilities}${remove}${backgroundGuide()}</div>`;
+    return `<div class="account-details" data-account-id="${e(account.id)}">${identity(ctx, account, true)}${readonly ? ctx.notice('此账号已归档，只保留本机历史与关联资料。不会重新登录、同步或执行托管。') : permissionNotice(ctx)}${test ? ctx.notice('隔离测试账号，以下身份与连接不代表真实闲鱼登录。', 'warn') : ''}${states}${account.connectionReason ? ctx.notice(e(account.connectionReason), 'warn') : ''}${actions}${capabilities}${hosting}${related}<details class="form-section"><summary>账号记录与备注</summary>${facts}</details>${remove}${backgroundGuide()}</div>`;
   }
   window.LianpuAccountViews = Object.freeze({ page, details, status });
 })();

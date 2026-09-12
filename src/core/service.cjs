@@ -469,7 +469,7 @@ class Service {
     const account=this._record('accounts',accountId,actor,'operate');if(!['orders','products','messages'].includes(kind))fail('VALIDATION','同步类型无效。');
     if(account.space==='test')return {status:'test_only',synced:0,reason:'试运行使用本机隔离数据，没有平台同步。'};
     if(!this.connector?.sync)return {status:'blocked',synced:0,reason:'此普通账号尚无可用的正式同步能力，登录成功不代表取得接口权限。'};
-    this._fresh(actor,generation);this._background(actor,'sync');let response;try{response=await this.connector.sync(account,kind,{authorize:()=>{this._fresh(actor,generation);this._background(actor,'sync');return true;}});}catch{return {status:'failed',synced:0,reason:'平台同步失败，已保留上次数据。'};}
+    this._fresh(actor,generation);this._background(actor,'sync');let response;try{response=await this.connector.sync(account,kind,{authorize:()=>{this._fresh(actor,generation);this._background(actor,'sync');const current=this._record('accounts',account.id,actor,'operate');return !current.archived&&current.sessionVersion===account.sessionVersion;}});}catch{return {status:'failed',synced:0,reason:'平台同步失败，已保留上次数据。'};}
     this._fresh(actor,generation);const currentAccount=this._record('accounts',accountId,actor,'operate');if(currentAccount.sessionVersion!==account.sessionVersion||currentAccount.archived||this.backgroundContexts.has(actor)&&currentAccount.paused)fail('STALE_SESSION','同步期间账号或会话已变化，旧结果已丢弃。');
     if(response?.status!=='ok'||!Array.isArray(response.records))return {status:response?.status||'blocked',synced:0,reason:sanitizeText(response?.reason||'平台没有返回可验证数据。')};
     const errors=[];const recordIds=[];let synced=0;
@@ -485,7 +485,7 @@ class Service {
         this.store.put(kind,r);recordIds.push(r.id);synced++;
       });
     }catch(error){errors.push({externalId:typeof incoming.externalId==='string'?incoming.externalId:undefined,message:sanitizeText(error.message)});}}
-    this.store.put('accounts',{...currentAccount,lastSyncedAt:now(),updatedAt:now()});this._audit(actor,'account.sync',account,errors.length?'partial':'ok');return {status:errors.length?'partial':'ok',synced,recordIds,errors,lastSyncedAt:now()};
+    this.store.put('accounts',{...currentAccount,lastSyncedAt:now(),updatedAt:now()});this._audit(actor,'account.sync',account,errors.length?'partial':'ok');return {status:errors.length?'partial':'ok',synced,recordIds,errors,lastSyncedAt:now(),hasMore:response.hasMore===true,omitted:response.omitted||0,reason:response.reason||'',scope:response.scope};
   }
   async refreshOrders({ids},actor,generation) {
     if(!Array.isArray(ids)||ids.length>500)fail('VALIDATION','每次最多刷新 500 笔订单。');const orders=ids.map(orderId=>this._record('orders',orderId,actor,'operate'));const results=[];

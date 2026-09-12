@@ -93,7 +93,7 @@ function generate({ installerFormat = 'msi' } = {}) {
       reviewNote: '精确版本与许可原文已采集不等于人工审查通过。' });
   }
   const runtime = path.join(ROOT, 'node_modules', 'electron', 'dist');
-  const runtimeFiles = fs.existsSync(runtime) ? walk(runtime).map(file => {
+  const runtimeFiles = fs.existsSync(runtime) ? walk(runtime).filter(file => !/\.log$/i.test(file)).map(file => {
     const bytes = fs.readFileSync(file); let architecture = null;
     if (bytes.length > 64 && bytes.readUInt16LE(0) === 0x5a4d) {
       const pe = bytes.readUInt32LE(60);

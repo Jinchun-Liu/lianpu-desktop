@@ -1,7 +1,7 @@
 {
   "name": "lianpu-desktop",
   "productName": "联铺",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "private": true,
   "description": "联铺 Windows 经营管理客户软件；源码可见，经营使用须授权",
   "main": "src/main.cjs",

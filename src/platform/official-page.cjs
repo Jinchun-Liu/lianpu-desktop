@@ -40,7 +40,7 @@ async function officialPageOperation(input){
 class OfficialPageAdapter {
  constructor(window){this.window=window;}
  async run(operation,args={}){const web=this.window?.webContents;if(!web?.executeJavaScript||this.window.isDestroyed())return {status:'unavailable',reason:'官方页面连接已关闭'};try{return await web.executeJavaScript('('+officialPageOperation.toString()+')('+JSON.stringify({version:VERSION,operation,...args})+')',false);}catch{return {status:operation==='send'?'unknown':'unavailable',reason:'官方页面连接中断'};}}
- async request(kind,data={},v){const response=await this.run('request',{api:APIS[kind],data,v});if(Array.isArray(response?.ret)&&response.ret.some(s=>String(s).startsWith('SUCCESS::')))return {status:'ok',data:response.data};return response?.status==='timeout'?{status:'timeout',reason:'官方页面请求超时'}:cleanFailure(response?.ret);}
+ async request(kind,data={},v){const response=await this.run('request',{api:APIS[kind],data,v});if(Array.isArray(response?.ret)&&response.ret.some(s=>String(s).startsWith('SUCCESS::')))return {status:'ok',data:response.data};if(response?.status==='unavailable'){const reasons={official_page_version_changed:'闲鱼网页已更新，当前联铺版本暂不兼容，请检查软件更新；重复扫码无法解决。',official_runtime_missing:'闲鱼页面仍在准备，稍后点击检查重试。',official_origin_required:'请在闲鱼官方窗口完成本人登录后重试。'};return {status:'unavailable',reason:reasons[response.reason]||'闲鱼页面连接暂不可用，请检查网络后重试。'};}return response?.status==='timeout'?{status:'timeout',reason:'官方页面请求超时，请稍后重试。'}:cleanFailure(response?.ret);}
  connection(identity){return this.run('connection',{identity});}
  sessions(identity,cursor){return this.run('sessions',{identity,cursor});}
  messages(identity,sessionId,cursor){return this.run('messages',{identity,sessionId,cursor});}

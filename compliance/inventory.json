@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-09-12T03:36:13.867Z",
-  "packageLockSha256": "221224e59b576550603004ddaa45037c4d4308bf7e9d4b3b5067f2831d2b6b7c",
+  "generatedAt": "2026-09-12T07:54:28.171Z",
+  "packageLockSha256": "84074a289e49a75f01e3fd78422ff668ecad60327c871ea352e6ff64738b73a3",
   "components": [
     {
       "name": "@electron-internal/extract-zip",
@@ -2612,7 +2612,7 @@
     },
     {
       "name": "项目自绘图形与图标",
-      "version": "0.5.2",
+      "version": "0.5.3",
       "bundled": true,
       "source": "本项目绘制的图形独立登记；UI 模板参考/适配的第三方归属另见 uiReuse，不将模板组件宣称为原创",
       "license": "proprietary-undetermined-by-owner",
@@ -2790,8 +2790,8 @@
           {
             "path": "src/renderer/app.js",
             "exists": true,
-            "sha256": "5e3a4eeb2b1261d47fe87654f65dcb1f5372778e1a4067b4f00ae050e06cde3d",
-            "bytes": 158464
+            "sha256": "9a9de472811ffe43dbf262941fded659b1f8f79607969f259e0181c827f9e138",
+            "bytes": 157193
           }
         ],
         "localSections": [
@@ -2838,8 +2838,8 @@
           {
             "path": "src/renderer/app.js",
             "exists": true,
-            "sha256": "5e3a4eeb2b1261d47fe87654f65dcb1f5372778e1a4067b4f00ae050e06cde3d",
-            "bytes": 158464
+            "sha256": "9a9de472811ffe43dbf262941fded659b1f8f79607969f259e0181c827f9e138",
+            "bytes": 157193
           }
         ],
         "localSections": [
@@ -3158,14 +3158,14 @@
           {
             "path": "src/renderer/accounts-controller.js",
             "exists": true,
-            "sha256": "b0dc585a07e14f3b5667394ae99b4bde1e71b4f1713604326289ff7e2b3c13f8",
-            "bytes": 23152
+            "sha256": "f39499dc95a3d8b840463e05256e9cf0b4e3e9dcf7ecc4ad8bbfcf8f10be3082",
+            "bytes": 23719
           },
           {
             "path": "src/renderer/accounts-views.js",
             "exists": true,
-            "sha256": "7bc153b3ae941528803a1a745b60901b9c43cdd0df5d87b126ddd0adf2798875",
-            "bytes": 17513
+            "sha256": "b0d03be4695b108a8fcfb6f30acb8b55582fe1470721d868430d813b1c83a584",
+            "bytes": 17764
           }
         ],
         "localSections": [

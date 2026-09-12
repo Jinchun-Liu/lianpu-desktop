@@ -16,7 +16,8 @@ class AccountRuntime {
       for(const account of store.list('accounts').filter(a=>a.space==='live')) {
         const grant=store.get('_hosting',account.id);
         if(grant?.enabled)store.put('_hosting',{...grant,enabled:false,version:grant.version+1,reason:'启动后需明确开启账号托管。',updatedAt:now()});
-        store.put('accounts',{...account,platformUserId:account.platformUserId||account.externalId,loginStatus:account.platformUserId||account.externalId?'needs_login':'awaiting_scan',connectionStatus:'disconnected',capabilities:{},paused:true,hosting:{...DEFAULTS,...account.hosting,enabled:false},authorizationVersion:(account.authorizationVersion||0)+1,updatedAt:now()});
+        const loginStatus=['cleared','revoked','cleanup_failed','revocation_failed'].includes(account.loginStatus)?account.loginStatus:account.platformUserId||account.externalId?'unverified':'awaiting_scan';
+        store.put('accounts',{...account,platformUserId:account.platformUserId||account.externalId,loginStatus,connectionStatus:'disconnected',connectionReason:loginStatus==='unverified'?'已保留本机会话，可检查登录或直接同步；托管保持暂停。':'',capabilities:{},paused:true,hosting:{...DEFAULTS,...account.hosting,enabled:false},authorizationVersion:(account.authorizationVersion||0)+1,updatedAt:now()});
       }
     });
   }
@@ -93,14 +94,14 @@ class AccountRuntime {
     attempt.finished=true;this.emit('changed');return {account:this.service._public('accounts',result,actor),accountId:result.id,status:'bound',duplicate:!!duplicate};
   }
   capabilities(input,sessionVersion) {
-    const result={};for(const key of CAPABILITIES){const fact=input?.[key];if(!fact)continue;const stamp=Date.parse(fact.verifiedAt),verified=typeof fact==='object'&&typeof fact.evidenceId==='string'&&!!fact.evidenceId&&Number.isFinite(stamp)&&stamp<=Date.now()+30000&&Date.now()-stamp<=300000&&(fact.sessionVersion===undefined||fact.sessionVersion===sessionVersion)&&(fact.sessionGeneration===undefined||fact.sessionGeneration===sessionVersion);result[key]={available:verified&&fact.available===true,status:verified&&fact.available===true?'available':fact.status==='blocked'?'blocked':'unverified',reason:String(fact.reason||'尚未完成此会话的真实能力验证。').slice(0,400),...(verified?{evidenceId:fact.evidenceId,verifiedAt:fact.verifiedAt}:{}),sessionVersion};}return result;
+    const result={};for(const key of CAPABILITIES){const fact=input?.[key];if(!fact)continue;const stamp=Date.parse(fact.verifiedAt),verified=typeof fact==='object'&&typeof fact.evidenceId==='string'&&!!fact.evidenceId&&Number.isFinite(stamp)&&stamp<=Date.now()+30000&&Date.now()-stamp<=300000&&(fact.sessionVersion===undefined||fact.sessionVersion===sessionVersion)&&(fact.sessionGeneration===undefined||fact.sessionGeneration===sessionVersion);result[key]={available:verified&&fact.available===true,status:verified&&fact.available===true?'available':['blocked','unavailable','unsupported'].includes(fact.status)?fact.status:'unverified',reason:String(fact.reason||(verified&&fact.available===true?'当前会话已通过此项检查。':'尚未检查此项，请点击检查。')).slice(0,400),...(verified?{evidenceId:fact.evidenceId,verifiedAt:fact.verifiedAt}:{}),...(Number.isFinite(Date.parse(fact.checkedAt))?{checkedAt:fact.checkedAt}:{}),sessionVersion};}return result;
   }
   observeStatus(status) {
     if(!this.accepting||!status||typeof status.accountId!=='string')return false;
     const account=this.store.get('accounts',status.accountId),version=status.sessionVersion??status.sessionGeneration;
     if(!account||account.archived||version!==account.sessionVersion)return false;
     // Paused/revoked accounts cannot be re-enabled by a delayed connector notification.
-    let connectionStatus=account.paused?'disconnected':status.connectionStatus||status.connection?.status||status.status||account.connectionStatus;
+    let connectionStatus=account.paused&&status.readOnlyCheck!==true?'disconnected':status.connectionStatus||status.connection?.status||status.status||account.connectionStatus;
     const loginStatus=status.loginStatus||status.login?.status||account.loginStatus;
     const halt=['login_required','verification_required','expired','identity_mismatch','failed','revoked','revocation_failed'].includes(loginStatus)||['login_required','verification_required','expired','identity_mismatch'].includes(connectionStatus),grant=this.store.get('_hosting',account.id),mustPause=halt&&grant?.enabled;
     if(halt)connectionStatus='disconnected';

@@ -422,7 +422,11 @@ async function dispatch(action, p) {
     if (!account || account.space !== 'live') throw new AccessError('ACCOUNT_INVALID', '请选择真实经营空间中的本人账号。');
     return action === 'platform.openLogin' ? accountRuntime.startLogin({accountId:account.id},actor) : accountRuntime.clearLogin({accountId:account.id},actor);
   }
-  if (action === 'platform.status') { const account = store.get('accounts', p.accountId); if (!account || (actor.role !== 'owner' && !actor.accountIds.includes(account.id))) throw new AccessError('FORBIDDEN', '无权查看此账号。'); return connector.status(account); }
+  if (action === 'platform.status') {
+    const account=service._record('accounts',p.accountId,actor,'read');
+    if(account.space!=='live'||account.archived||!licenseClient.status().active)return connector.status(account);
+    return connector.inspect(account,{authorize:()=>{requireLicense();const current=service._record('accounts',account.id,getActor(),'read');return !current.archived&&current.sessionVersion===account.sessionVersion;}});
+  }
   if (action === 'app.preferences.get') return { ...preferences, version: app.getVersion(), platform: process.platform, arch: process.arch, packaged: app.isPackaged, signed: false };
   if (action === 'app.preferences.save') {
     requireOwner();
@@ -539,6 +543,9 @@ async function boot() {
   });
   if(restoredUser)try{activateStore(restoredUser);}catch{rememberedSession.forget('invalid','保存的登录无法恢复当前资料库，请正常登录一次。');}
   const rendererRoot = path.join(__dirname, 'renderer');
+  // Only clear the UI session's HTTP/code cache, never cookies or storage.
+  // Otherwise a newer installed application can reuse old custom-scheme JS.
+  await session.defaultSession.clearCache();
   protocol.handle('lianpu', request => {
     const url = new URL(request.url);
     if (url.host !== 'app' || request.method !== 'GET') return new Response('Forbidden', { status: 403 });
@@ -551,7 +558,10 @@ async function boot() {
     let target;
     try { target = path.resolve(rendererRoot, `.${decodeURIComponent(url.pathname)}`); } catch { return new Response('Bad request', { status: 400 }); }
     if (!target.startsWith(rendererRoot + path.sep)) return new Response('Forbidden', { status: 403 });
-    return net.fetch(pathToFileURL(target).href);
+    return net.fetch(pathToFileURL(target).href).then(response=>{
+      const headers=new Headers(response.headers);headers.set('Cache-Control','no-store');
+      return new Response(response.body,{status:response.status,statusText:response.statusText,headers});
+    });
   });
   session.defaultSession.setPermissionRequestHandler((_wc, _permission, cb) => cb(false));
   session.defaultSession.setPermissionCheckHandler(() => false);

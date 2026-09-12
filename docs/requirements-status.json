@@ -1,6 +1,6 @@
 {
   "requirementVersion": "1.1 + v1.2/v1.3 UI + v1.4 accounts + v1.5 persistent local login + v1.6 device licensing",
-  "updatedAt": "2026-09-11T13:17:35.444Z",
+  "updatedAt": "2026-09-12T07:40:59.5188991Z",
   "platform": "Windows x64 first",
   "overall": "未完成正式验收，不是完整商业发行版",
   "statusMeaning": "本地验证通过只指已列本地证据；待平台、环境、发行、外部条件、后续阶段或开发中均未完成。",
@@ -38,15 +38,17 @@
     {
       "id": "F03",
       "title": "接入自己的闲鱼账号",
-      "status": "待真实平台验证",
-      "implemented": "官方闲鱼 APP 扫码窗口、逐次状态、可信身份绑定与错账号保护；已观察真实二维码",
+      "status": "真实单账号只读验证通过",
+      "implemented": "本人扫码绑定后，已保存会话的身份恢复及消息连接通过；重启保持未托管，检查可恢复会话",
       "blockers": [
-        "尚无人扫码；身份核验和会话恢复未验证"
+        "扫码失效、手机验证及多账号真实覆盖仍不完整"
       ],
       "code": [
         "src/platform/xianyu.cjs"
       ],
-      "evidence": [],
+      "evidence": [
+        "docs/validation-0.5.3.md"
+      ],
       "accepted": false
     },
     {
@@ -97,30 +99,34 @@
     {
       "id": "F07",
       "title": "找到要经营的商品",
-      "status": "待真实平台验证",
-      "implemented": "本地商品搜索列表详情和本人官网商品读取适配",
+      "status": "真实单账号部分验证通过",
+      "implemented": "本地商品搜索列表详情；本人账号 13 件商品真实读取通过",
       "blockers": [
-        "真实本人商品结构和范围未验证"
+        "更大商品范围、分页及规格仍待真实验证"
       ],
       "code": [
         "src/renderer/app.js",
         "src/core/service.cjs"
       ],
-      "evidence": [],
+      "evidence": [
+        "docs/validation-0.5.3.md"
+      ],
       "accepted": false
     },
     {
       "id": "F08",
       "title": "同步商品资料",
-      "status": "待真实平台验证",
-      "implemented": "官网商品读取、分页游标与逐项失败处理；缺失数量不造零",
+      "status": "真实单账号部分验证通过",
+      "implemented": "本人官网 13 件商品读取通过；修复字符串 false 末页标记，逐项失败不覆盖旧数据",
       "blockers": [
-        "本人扫码后的商品字段、分页和规格仍需联调"
+        "较大分页、规格及平台版本变化仍需联调"
       ],
       "code": [
         "src/core/service.cjs"
       ],
-      "evidence": [],
+      "evidence": [
+        "docs/validation-0.5.3.md"
+      ],
       "accepted": false
     },
     {
@@ -307,13 +313,15 @@
       "status": "开发中",
       "implemented": "订单目录、明确来源、会话交易关联及逐笔官网详情请求",
       "blockers": [
-        "官网组件详情的付款/退款/双方身份转换尚未完成；不能更新旧订单核验时间"
+        "本次只读检查未取得可逐笔核验订单，官网入口要求在 App 查看；订单事实转换仍未完成，不能更新旧核验时间"
       ],
       "code": [
         "src/core/service.cjs",
         "src/renderer/app.js"
       ],
-      "evidence": [],
+      "evidence": [
+        "docs/validation-0.5.3.md"
+      ],
       "accepted": false
     },
     {
@@ -498,16 +506,18 @@
     {
       "id": "F34",
       "title": "集中处理买家消息",
-      "status": "待真实平台验证",
-      "implemented": "会话消息分页与去重、本人网页 IM 适配、会话范围核对及人工接管",
+      "status": "真实单账号部分验证通过",
+      "implemented": "本人消息连接已验证；真实会话历史读取、去重通过，非文本或不可验证记录明确跳过",
       "blockers": [
-        "双账号 IM、真实消息结构和接收回查未验证"
+        "两个本人账号同时在线、非文本解析及真实发送回执未验证"
       ],
       "code": [
         "src/core/service.cjs",
         "src/renderer/app.js"
       ],
-      "evidence": [],
+      "evidence": [
+        "docs/validation-0.5.3.md"
+      ],
       "accepted": false
     },
     {
