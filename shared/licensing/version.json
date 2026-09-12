@@ -1,0 +1,5 @@
+{
+  "version": 1,
+  "sha256": "17b04332b82467396d6a96b59f1b127847c9e7604a24773a49692efbea364f97",
+  "policy": "Vendored identical protocol in customer and private issuer repositories; synchronize both before changing the digest."
+}

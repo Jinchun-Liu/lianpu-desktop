@@ -1,0 +1,314 @@
+{
+  "capturedAt": "2026-09-11T02:51:36.754Z",
+  "repository": "https://github.com/satnaing/shadcn-admin",
+  "fetchUrl": "https://github.com/satnaing/shadcn-admin.git",
+  "commit": "e16c87f213a5ba5e45964e9b67c792105ec74d26",
+  "tree": "35ae1233fc1231724604c5012fb62f5302702706",
+  "packageVersion": "2.2.1",
+  "localReference": "work/shadcn-admin-reference",
+  "referenceBundled": false,
+  "templateExecuted": false,
+  "templateDependenciesInstalled": false,
+  "gitObjectIntegrityVerified": true,
+  "workingTreeClean": true,
+  "commitSignatureVerified": false,
+  "signatureNote": "Local git verify-commit could not verify without the signing public key; no key was imported and no signer-authenticity claim is made.",
+  "licenseEvidence": [
+    {
+      "name": "Shadcn Admin",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2024 Sat Naing",
+      "source": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/LICENSE",
+      "path": "compliance/ui-reuse/licenses/LICENSE-shadcn-admin.txt",
+      "sha256": "d28c723c33a18dfed6af67b1a0ac368724f79bcb80750d3e080dbcf8dedb9e4b",
+      "bytes": 1066,
+      "commit": "e16c87f213a5ba5e45964e9b67c792105ec74d26",
+      "modified": false
+    },
+    {
+      "name": "shadcn/ui upstream license notice",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2023 shadcn",
+      "source": "https://raw.githubusercontent.com/shadcn-ui/ui/6ea6856f5a1082d4d9c231559b6bc3ee73827493/LICENSE.md",
+      "path": "compliance/ui-reuse/licenses/LICENSE-shadcn-ui.txt",
+      "sha256": "1564074e13439397221ffd522e2e504d56561994a23d371aa5e3ad43e4f5423f",
+      "bytes": 1063,
+      "commit": "6ea6856f5a1082d4d9c231559b6bc3ee73827493",
+      "modified": false,
+      "scope": "License-only upstream notice retained because Shadcn Admin documents adaptations from shadcn/ui. This is the license-file revision, not the unrecorded original component-code revision."
+    }
+  ],
+  "selectedCandidateFiles": [
+    {
+      "path": "src/components/layout/app-sidebar.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/layout/app-sidebar.tsx",
+      "sha256": "cd363c86fe2e6ad838c013075c51f2c5e7cb61e08082020351c48896c882bc87",
+      "bytes": 1108,
+      "gitBlob": "32d944327f8ac30c65e4e573ad9adcc7f0cd3cf5",
+      "role": "candidate-only; actual module usage recorded separately"
+    },
+    {
+      "path": "src/components/layout/nav-group.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/layout/nav-group.tsx",
+      "sha256": "dd90536e487751b28fd8c850a0728a67784d5185c589b62fca580c992b1d2ed6",
+      "bytes": 5674,
+      "gitBlob": "3a0b73c063f66b12f14abe494e464e0aec5fc69a",
+      "role": "candidate-only; actual module usage recorded separately"
+    },
+    {
+      "path": "src/components/layout/header.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/layout/header.tsx",
+      "sha256": "f19060d14bdcb6efa98f1eee05452ecdc22d39a8a358af0d6e319e7ec9563777",
+      "bytes": 1482,
+      "gitBlob": "4c07798c8bf207a79794d187294b54e9e39e18f2",
+      "role": "candidate-only; actual module usage recorded separately"
+    },
+    {
+      "path": "src/components/layout/main.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/layout/main.tsx",
+      "sha256": "e200dbc0e1b8cf383fdf6b7f7588ac1c9419de65f2658692e7941324bd09c572",
+      "bytes": 671,
+      "gitBlob": "b3d6d0a597ed9e0d5effbce9776442433fc85f45",
+      "role": "candidate-only; actual module usage recorded separately"
+    },
+    {
+      "path": "src/components/layout/top-nav.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/layout/top-nav.tsx",
+      "sha256": "9064632a68016ead787798e90eb7fc4b3cd2fc32274e22df943f92b55c722065",
+      "bytes": 1949,
+      "gitBlob": "9059fecf380961737fb364f60cc67fe1680ae204",
+      "role": "candidate-only; actual module usage recorded separately"
+    },
+    {
+      "path": "src/components/layout/app-title.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/layout/app-title.tsx",
+      "sha256": "2f9518b35693d0c3597b1f8b01528f5cf08d8cd69e369672feb204f75198aa45",
+      "bytes": 1624,
+      "gitBlob": "112e4634ecd1b219a772207e1047d6c428c30e23",
+      "role": "candidate-only; actual module usage recorded separately"
+    },
+    {
+      "path": "src/components/ui/button.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/ui/button.tsx",
+      "sha256": "97ed8ef5651a6e264ded042b024b5be39673ba2ff222017fbcf845cf3ed37226",
+      "bytes": 2122,
+      "gitBlob": "27b86edc44d838f0b73b20264b90d2c12200f0c9",
+      "role": "candidate-only; actual module usage recorded separately"
+    },
+    {
+      "path": "src/components/ui/input.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/ui/input.tsx",
+      "sha256": "4f7d443722b4aeacb1179b863b98f773f7950514ceb1d897b66c967521f08072",
+      "bytes": 966,
+      "gitBlob": "9b4ca0eb2238c567992e3ac9aad9e850fc4a6e2a",
+      "role": "candidate-only; actual module usage recorded separately"
+    },
+    {
+      "path": "src/components/ui/badge.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/ui/badge.tsx",
+      "sha256": "a642d7a932b91ec610f09078452d34c379900845066955311506b6d503ea11e6",
+      "bytes": 1630,
+      "gitBlob": "26769c3a9dfd2119985819b61d53bee4820039dd",
+      "role": "candidate-only; actual module usage recorded separately"
+    },
+    {
+      "path": "src/components/ui/dialog.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/ui/dialog.tsx",
+      "sha256": "4fd152bd6a27516a017d77570e76c5c312ca561ee4a52b3edb37ec076401c02c",
+      "bytes": 3984,
+      "gitBlob": "1a55bcaae05ebeddf16bf78449e0517d223fb08a",
+      "role": "candidate-only; actual module usage recorded separately"
+    },
+    {
+      "path": "src/components/ui/sheet.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/ui/sheet.tsx",
+      "sha256": "2423f0e67f594198df542acabd32547896925e35786c6bb085f8a4eeed4273c4",
+      "bytes": 4080,
+      "gitBlob": "63cd6324485faf2ca99a5b83e9d5c972670a60f8",
+      "role": "candidate-only; actual module usage recorded separately"
+    },
+    {
+      "path": "src/components/ui/table.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/ui/table.tsx",
+      "sha256": "8ebadfa3965fc72792d160579ff6beb0b80d9dd0d3acd56db7a34168e956b531",
+      "bytes": 2370,
+      "gitBlob": "70e5d189f6094da9b4f3ba911fd3f5f6ecb789b0",
+      "role": "candidate-only; actual module usage recorded separately"
+    },
+    {
+      "path": "src/components/data-table/column-header.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/data-table/column-header.tsx",
+      "sha256": "b358ebbf433bef5e115e69d0d613b61bfa244a150d7eaf03b7ee5f7ba482aa68",
+      "bytes": 2262,
+      "gitBlob": "180037ab7fdc001c2477d304f34e47c11538124a",
+      "role": "candidate-only; actual module usage recorded separately"
+    },
+    {
+      "path": "src/components/data-table/faceted-filter.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/data-table/faceted-filter.tsx",
+      "sha256": "58c5c3141dc87c7d7145c10e4cd6ddb3073d641aa4683f326e2053fcfd20d790",
+      "bytes": 4956,
+      "gitBlob": "6923a1145f21e5a67bf74d6fc34685cf72fa0804",
+      "role": "candidate-only; actual module usage recorded separately"
+    },
+    {
+      "path": "src/components/data-table/pagination.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/data-table/pagination.tsx",
+      "sha256": "8af50acc0018f2a972581064efeb891636e180ecb268da10519965c75c04e5b0",
+      "bytes": 4522,
+      "gitBlob": "5e5991be86f0850c5d7fbae31646bcc18583cd35",
+      "role": "candidate-only; actual module usage recorded separately"
+    },
+    {
+      "path": "src/components/data-table/toolbar.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/data-table/toolbar.tsx",
+      "sha256": "06a59a2818b6874458c9b5207171ff4acf079f25d767f39c6e700bd15631cd52",
+      "bytes": 2551,
+      "gitBlob": "047ad32b5f4b7934566df5ad5e2020a90232ef1f",
+      "role": "candidate-only; actual module usage recorded separately"
+    },
+    {
+      "path": "src/components/data-table/view-options.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/data-table/view-options.tsx",
+      "sha256": "caadb99cff8e515bca8b6cbe76f5ccb8c2154b3c1b4d67be57dd17d3a8d5b476",
+      "bytes": 1654,
+      "gitBlob": "269f11ef04f41fb758cf5b1b250aaf3b0f278d20",
+      "role": "candidate-only; actual module usage recorded separately"
+    },
+    {
+      "path": "src/components/data-table/bulk-actions.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/data-table/bulk-actions.tsx",
+      "sha256": "c3f87dd16c813edcad5f78a879a8cfdcb1982be272988be70453c3caf357490a",
+      "bytes": 6830,
+      "gitBlob": "ebdeb05b8cdcc117ea59334cc3f3dd018903168d",
+      "role": "candidate-only; actual module usage recorded separately"
+    },
+    {
+      "path": "src/components/command-menu.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/command-menu.tsx",
+      "sha256": "e70c148fb73f4546f1970419b32debd4a355894bae8050b831efe37d7c9161e9",
+      "bytes": 3264,
+      "gitBlob": "223b04de01e0b7f0d83250703f1c07d75f7cda03",
+      "role": "candidate-only; actual module usage recorded separately"
+    },
+    {
+      "path": "src/features/chats/index.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/features/chats/index.tsx",
+      "sha256": "1045073ba1feffa6c5b672652cceef792fc1d4c0c25cfa4c6f52ec6203a004f5",
+      "bytes": 14491,
+      "gitBlob": "e9584a4348453d070e51f3959f90f6e10e13ab78",
+      "role": "candidate-only; actual module usage recorded separately"
+    },
+    {
+      "path": "src/features/settings/index.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/features/settings/index.tsx",
+      "sha256": "1581d66c136bc598320f6f9b43602583d2d72014c7e7156c2938bf8b4defd70f",
+      "bytes": 2050,
+      "gitBlob": "a1f4937999f09a103fd7c2b6a922f0279065ca65",
+      "role": "candidate-only; actual module usage recorded separately"
+    },
+    {
+      "path": "src/features/settings/components/sidebar-nav.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/features/settings/components/sidebar-nav.tsx",
+      "sha256": "207c2fa366d8f23948ae2568a395229a1a56bcbd13283e1dd62e4e01a17c1943",
+      "bytes": 2375,
+      "gitBlob": "114bc2417a937ddc26d70cf8f2957f0783210727",
+      "role": "candidate-only; actual module usage recorded separately"
+    },
+    {
+      "path": "src/features/settings/components/content-section.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/features/settings/components/content-section.tsx",
+      "sha256": "d488397a30032789eef063046ddb086dacf1fdfb44bcb7b122ed76cba217a169",
+      "bytes": 687,
+      "gitBlob": "0f669e1c203e728b958ce6862f9516880682fd9f",
+      "role": "candidate-only; actual module usage recorded separately"
+    },
+    {
+      "path": "src/components/layout/authenticated-layout.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/layout/authenticated-layout.tsx",
+      "sha256": "e3ab0837b3bd3e39153aad8b7b3c07c8fe6768f23bb0dc362ab4a41a5ee6e1ff",
+      "bytes": 1516,
+      "gitBlob": "003e6e28dddcdc87b8484c247caae9c98c0b3a87",
+      "role": "Actual author-selected generic UI source; no template data or authentication implementation reused."
+    },
+    {
+      "path": "src/components/layout/nav-user.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/layout/nav-user.tsx",
+      "sha256": "739f42c8f0b2afde6a0f202f751399dea4b0a72c36113488bffb707f09207b34",
+      "bytes": 4194,
+      "gitBlob": "daa75da3815b2065e5e4f977204e49b16426c3ac",
+      "role": "Actual author-selected generic UI source; no template data or authentication implementation reused."
+    },
+    {
+      "path": "src/components/search.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/search.tsx",
+      "sha256": "1e033ec1d193a777cb66715d52b48e04050d57181a75f09bc0a132e60ae50c8b",
+      "bytes": 1238,
+      "gitBlob": "a152edbcaabb8a3ac425be07bb97d6f73a93dee3",
+      "role": "Actual author-selected generic UI source; no template data or authentication implementation reused."
+    },
+    {
+      "path": "src/styles/theme.css",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/styles/theme.css",
+      "sha256": "faee559c9a21b2084bf7bae193e70f0ab18b18a393a06fec1408669652c266a1",
+      "bytes": 3921,
+      "gitBlob": "2832133d7dd6654ba31c9ce39185f040bff54efb",
+      "role": "Actual author-selected generic UI source; no template data or authentication implementation reused."
+    },
+    {
+      "path": "src/components/ui/textarea.tsx",
+      "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/ui/textarea.tsx",
+      "sha256": "a2de9cec0ada9e39076f88c092cfc851f5159f39c0478c9c6c2aa2fe15ec672b",
+      "bytes": 758,
+      "gitBlob": "00e05213b0610d75ede73c938f69346ee8b2fb26",
+      "role": "Actual author-selected generic UI source; no template data or authentication implementation reused."
+    }
+  ],
+  "excluded": [
+    "mock datasets and demo business data",
+    "Clerk and template authentication",
+    "Faker or template mock tokens",
+    "template scripts/build execution",
+    "node_modules and template dependency import",
+    "template stock imagery and third-party icon files"
+  ],
+  "commands": [
+    {
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "exitCode": 0,
+      "stdout": "e16c87f213a5ba5e45964e9b67c792105ec74d26\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "status",
+        "--porcelain"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "fsck",
+        "--full"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "verify-commit",
+        "e16c87f213a5ba5e45964e9b67c792105ec74d26"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "gpg: Signature made Thu Jun 11 18:08:35 2026    \ngpg:                using RSA key B5690EEEBB952194\ngpg: Can't check signature: No public key\n"
+    }
+  ],
+  "candidateListUpdatedAt": "2026-09-11T03:03:53.783Z"
+}

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>联铺 · 数字资料经营</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./licensing.css">
+</head>
+<body>
+  <a class="skip-link" href="#main" data-action="skip-main">跳到工作区</a>
+  <div id="app"><main id="main" class="boot" aria-busy="true"><span class="brand-symbol" aria-hidden="true">联</span><h1>联铺</h1><p>正在检查本机工作资料…</p></main></div>
+  <dialog id="dialog" aria-labelledby="dialog-title"></dialog>
+  <dialog id="media-dialog" aria-labelledby="media-title"></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="./ui-components.js" defer></script>
+  <script src="./ui-behaviors.js" defer></script>
+  <script src="./workspace-views.js" defer></script>
+  <script src="./accounts-views.js" defer></script>
+  <script src="./accounts-controller.js" defer></script>
+  <script src="./licensing-views.js" defer></script>
+  <script src="./licensing-controller.js" defer></script>
+  <script src="./app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "format": "lianpu-release-trust-v1",
+  "keys": [
+    {
+      "id": "dev-c3949c84371446cd85359bcf",
+      "publicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEATbVL7RGs/1nj6piohTPgsX1HBC5pWoV2jsiMNc1fdSk=\n-----END PUBLIC KEY-----\n",
+      "label": "本项目本机开发发布密钥",
+      "channel": "development",
+      "fingerprint": "c3949c84371446cd85359bcf75e27ba9db187177bc91300c819340884d5baaa0",
+      "createdAt": "2026-09-10T17:12:39.944Z",
+      "commercialPublisherVerified": false
+    }
+  ]
+}

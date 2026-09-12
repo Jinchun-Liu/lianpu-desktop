@@ -1,0 +1,10 @@
+'use strict';
+const {spawnSync}=require('node:child_process'),fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const root=path.resolve(__dirname,'..');
+if(process.platform!=='win32'||process.arch!=='x64')throw new Error('需要 Windows x64 构建环境');
+const result=spawnSync('powershell.exe',['-NoProfile','-File',path.join(root,'src/licensing/native/build.ps1')],{encoding:'utf8',windowsHide:true});
+if(result.status!==0)throw new Error('TPM 组件构建失败：'+result.stderr);
+const output=JSON.parse(result.stdout.trim());
+const sha256=crypto.createHash('sha256').update(fs.readFileSync(output.path)).digest('hex');
+const file=path.join(root,'src/licensing/native-integrity.json');const original=JSON.parse(fs.readFileSync(file,'utf8'));
+fs.writeFileSync(file,JSON.stringify({...original,sha256},null,2)+'\n');console.log('TPM 组件已构建并更新校验摘要。');

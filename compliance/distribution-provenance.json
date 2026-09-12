@@ -1,0 +1,743 @@
+{
+  "build": "0.5.2-1b1dbdeca541",
+  "branding": {
+    "originalSha256": "e048632e03fabc96de5e10afbebc0aa31f4e1674155ea3d270597fe7523f9d80",
+    "brandedSha256": "16289892cf88a0bcaabf53252b0913e30e84ab4f80920a7139c043cb9073794b",
+    "iconSha256": "ff69f3e94ad8a8f47f0eb51d022112bc71afdd4e43c6a29818363ade65d7fa29",
+    "modifications": "Only Win32 icon and product version resources; runtime code unchanged",
+    "status": "resource metadata verified",
+    "at": "2026-09-12T03:36:15.357Z"
+  },
+  "protection": {
+    "asarSha256": "d4dfa1e7891e73338f08b325c14a4d922470af84f6946d755b5783af1b3b0dfb",
+    "headerSha256": "c3f39b74a8913ccee0eb1297fd018c875b9b264d9cbebe7f2b7b18b0dca9be28",
+    "executableSha256": "edc5ee482da26d2f32029c6bac4581b4ac048c1aa918d9844d7c6d53e3f8be28",
+    "resourceReadbackVerified": true,
+    "fuses": {
+      "0": 48,
+      "1": 48,
+      "2": 48,
+      "3": 48,
+      "4": 49,
+      "5": 49,
+      "6": 48,
+      "7": 49,
+      "8": 49,
+      "version": "1"
+    },
+    "archiveFiles": [
+      "\\LICENSE",
+      "\\README.md",
+      "\\docs",
+      "\\docs\\changes.md",
+      "\\docs\\provenance.md",
+      "\\docs\\requirements-status.json",
+      "\\docs\\upgrade-retention.md",
+      "\\package.json",
+      "\\shared",
+      "\\shared\\licensing",
+      "\\shared\\licensing\\protocol.mjs",
+      "\\src",
+      "\\src\\auth.cjs",
+      "\\src\\core",
+      "\\src\\core\\account-runtime.cjs",
+      "\\src\\core\\csv.cjs",
+      "\\src\\core\\receipts.cjs",
+      "\\src\\core\\service.cjs",
+      "\\src\\core\\store.cjs",
+      "\\src\\licensing",
+      "\\src\\licensing\\client.cjs",
+      "\\src\\licensing\\config.json",
+      "\\src\\licensing\\device.cjs",
+      "\\src\\licensing\\native-integrity.json",
+      "\\src\\licensing\\operations.cjs",
+      "\\src\\main.cjs",
+      "\\src\\persistent-session.cjs",
+      "\\src\\platform",
+      "\\src\\platform\\normalize.cjs",
+      "\\src\\platform\\official-page.cjs",
+      "\\src\\platform\\queue.cjs",
+      "\\src\\platform\\read-sync.cjs",
+      "\\src\\platform\\session-vault.cjs",
+      "\\src\\platform\\xianyu.cjs",
+      "\\src\\preload.cjs",
+      "\\src\\release-trust.json",
+      "\\src\\renderer",
+      "\\src\\renderer\\accounts-controller.js",
+      "\\src\\renderer\\accounts-views.js",
+      "\\src\\renderer\\app.js",
+      "\\src\\renderer\\index.html",
+      "\\src\\renderer\\licensing-controller.js",
+      "\\src\\renderer\\licensing-views.js",
+      "\\src\\renderer\\licensing.css",
+      "\\src\\renderer\\styles.css",
+      "\\src\\renderer\\ui-behaviors.js",
+      "\\src\\renderer\\ui-components.js",
+      "\\src\\renderer\\workspace-views.js",
+      "\\src\\services",
+      "\\src\\services\\claims.cjs",
+      "\\src\\services\\media.cjs",
+      "\\src\\services\\model.cjs",
+      "\\src\\services\\msi-inspect.cjs",
+      "\\src\\services\\msi-inspect.ps1",
+      "\\src\\services\\notifications.cjs",
+      "\\src\\services\\updates.cjs"
+    ],
+    "libraries": {
+      "asar": "4.3.0",
+      "fuses": "2.1.3"
+    },
+    "repair": "重新运行经核验的安装包修复程序文件；保留授权与业务资料。",
+    "boundary": "防止受支持入口加载被改写的应用归档；不是不可破解保证。Windows 发布者签名仍未提供。"
+  },
+  "runtimeFiles": [
+    {
+      "upstreamPath": "chrome_100_percent.pak",
+      "distributionPath": "chrome_100_percent.pak",
+      "upstreamSha256": "ab7c4b7b6cb8832a31d44b95ec50ce52294f49422a3bdde4e21968eca2930cbe",
+      "distributionSha256": "ab7c4b7b6cb8832a31d44b95ec50ce52294f49422a3bdde4e21968eca2930cbe",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "chrome_200_percent.pak",
+      "distributionPath": "chrome_200_percent.pak",
+      "upstreamSha256": "30fa4a6e27c9ff2fb0f939f01158477e621a67d86e9ecb84cf11b3947db8eb9d",
+      "distributionSha256": "30fa4a6e27c9ff2fb0f939f01158477e621a67d86e9ecb84cf11b3947db8eb9d",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "d3dcompiler_47.dll",
+      "distributionPath": "d3dcompiler_47.dll",
+      "upstreamSha256": "a05f99734f7c4822fefc12b367af21fd0976ed6608752fb1e1e80b6ece7ecbbb",
+      "distributionSha256": "a05f99734f7c4822fefc12b367af21fd0976ed6608752fb1e1e80b6ece7ecbbb",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "incomplete-exact-binary-license-mapping"
+    },
+    {
+      "upstreamPath": "dxcompiler.dll",
+      "distributionPath": "dxcompiler.dll",
+      "upstreamSha256": "b2b5c67bc4a9c92a0ea87000415e7970488d1ca25767518d4cc27b88f18fb6ac",
+      "distributionSha256": "b2b5c67bc4a9c92a0ea87000415e7970488d1ca25767518d4cc27b88f18fb6ac",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "incomplete-exact-binary-license-mapping"
+    },
+    {
+      "upstreamPath": "dxil.dll",
+      "distributionPath": "dxil.dll",
+      "upstreamSha256": "77e039c905030a641e53658a008b74e90635a5ea9b6b79eabd0f2003bdfca59a",
+      "distributionSha256": "77e039c905030a641e53658a008b74e90635a5ea9b6b79eabd0f2003bdfca59a",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "incomplete-exact-binary-license-mapping"
+    },
+    {
+      "upstreamPath": "electron.exe",
+      "distributionPath": "Lianpu.exe",
+      "upstreamSha256": "e048632e03fabc96de5e10afbebc0aa31f4e1674155ea3d270597fe7523f9d80",
+      "distributionSha256": "edc5ee482da26d2f32029c6bac4581b4ac048c1aa918d9844d7c6d53e3f8be28",
+      "modified": true,
+      "modification": "Win32 品牌资源、ASAR 完整性资源及 Electron 官方运行开关；详见 branding/protection 记录。",
+      "licenseReviewStatus": "incomplete-exact-binary-license-mapping"
+    },
+    {
+      "upstreamPath": "ffmpeg.dll",
+      "distributionPath": "ffmpeg.dll",
+      "upstreamSha256": "336587847c4ed3ef1a195d1aaea3d3951c9749a035ffa7951df4c0e02971e4e0",
+      "distributionSha256": "336587847c4ed3ef1a195d1aaea3d3951c9749a035ffa7951df4c0e02971e4e0",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "incomplete-exact-binary-license-mapping"
+    },
+    {
+      "upstreamPath": "icudtl.dat",
+      "distributionPath": "icudtl.dat",
+      "upstreamSha256": "9f48c7f9c7c94d516a14870707e910ab94d75ae640ff6842c4af53276cd26ebe",
+      "distributionSha256": "9f48c7f9c7c94d516a14870707e910ab94d75ae640ff6842c4af53276cd26ebe",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "LICENSE",
+      "distributionPath": "LICENSE",
+      "upstreamSha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+      "distributionSha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "LICENSES.chromium.html",
+      "distributionPath": "LICENSES.chromium.html",
+      "upstreamSha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+      "distributionSha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/af.pak",
+      "distributionPath": "locales/af.pak",
+      "upstreamSha256": "3017b141bd16e24190d810f0748612f0fd4352ca8553002b9a63a7f77f7154f8",
+      "distributionSha256": "3017b141bd16e24190d810f0748612f0fd4352ca8553002b9a63a7f77f7154f8",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/am.pak",
+      "distributionPath": "locales/am.pak",
+      "upstreamSha256": "67b938d162bc75db067120bb8366b5bafd9a75fa99a0ca9ad4f46b47d1d37634",
+      "distributionSha256": "67b938d162bc75db067120bb8366b5bafd9a75fa99a0ca9ad4f46b47d1d37634",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/ar.pak",
+      "distributionPath": "locales/ar.pak",
+      "upstreamSha256": "a6eb037da4ac7930a8661c8bf602deee090fc4409bf4db24db8aab65c89b1d06",
+      "distributionSha256": "a6eb037da4ac7930a8661c8bf602deee090fc4409bf4db24db8aab65c89b1d06",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/bg.pak",
+      "distributionPath": "locales/bg.pak",
+      "upstreamSha256": "2eb9c74c67e4b13b45a73061fa978738e335bc245da71bab0ea9b205fe91074e",
+      "distributionSha256": "2eb9c74c67e4b13b45a73061fa978738e335bc245da71bab0ea9b205fe91074e",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/bn.pak",
+      "distributionPath": "locales/bn.pak",
+      "upstreamSha256": "415621a5c0b1546e6e447d43b76414425a8703cc7681d637ec1f283ad0c787e7",
+      "distributionSha256": "415621a5c0b1546e6e447d43b76414425a8703cc7681d637ec1f283ad0c787e7",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/ca.pak",
+      "distributionPath": "locales/ca.pak",
+      "upstreamSha256": "6f28297c1ccb628f534d65dade167ae559f83eace359acf47e48ff890b9409d5",
+      "distributionSha256": "6f28297c1ccb628f534d65dade167ae559f83eace359acf47e48ff890b9409d5",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/cs.pak",
+      "distributionPath": "locales/cs.pak",
+      "upstreamSha256": "799a789ce531991cb975425730db310f9a8fe74091eee568f3e65fcc7ef0cd57",
+      "distributionSha256": "799a789ce531991cb975425730db310f9a8fe74091eee568f3e65fcc7ef0cd57",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/da.pak",
+      "distributionPath": "locales/da.pak",
+      "upstreamSha256": "9a2cd25537a4818897481ba944981e8aee3d89c7ad37588d02f1deebff3f62d0",
+      "distributionSha256": "9a2cd25537a4818897481ba944981e8aee3d89c7ad37588d02f1deebff3f62d0",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/de.pak",
+      "distributionPath": "locales/de.pak",
+      "upstreamSha256": "fcf63fd89e613a7ef69f16054b97b3493948e5c665aad180a91d3635256fb7d7",
+      "distributionSha256": "fcf63fd89e613a7ef69f16054b97b3493948e5c665aad180a91d3635256fb7d7",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/el.pak",
+      "distributionPath": "locales/el.pak",
+      "upstreamSha256": "37d2e1ef69fea9bdb1e0902cbc61a458baa9009fc3761029bd1c1882a7a0c9b2",
+      "distributionSha256": "37d2e1ef69fea9bdb1e0902cbc61a458baa9009fc3761029bd1c1882a7a0c9b2",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/en-GB.pak",
+      "distributionPath": "locales/en-GB.pak",
+      "upstreamSha256": "01d9200a5daee1770f7147b166d25baa6a8dd72c138c3c526421e656dec789f5",
+      "distributionSha256": "01d9200a5daee1770f7147b166d25baa6a8dd72c138c3c526421e656dec789f5",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/en-US.pak",
+      "distributionPath": "locales/en-US.pak",
+      "upstreamSha256": "23b271e8009bfa14783700cd0712b4ecaa5b8f2ea28a4d81ae1d7e05bc0c96b1",
+      "distributionSha256": "23b271e8009bfa14783700cd0712b4ecaa5b8f2ea28a4d81ae1d7e05bc0c96b1",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/es-419.pak",
+      "distributionPath": "locales/es-419.pak",
+      "upstreamSha256": "6ff6ea0a14da50cacc4b72ab8c8c7b49c8423abb64f6a3a7f1643d8c3c74e6e9",
+      "distributionSha256": "6ff6ea0a14da50cacc4b72ab8c8c7b49c8423abb64f6a3a7f1643d8c3c74e6e9",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/es.pak",
+      "distributionPath": "locales/es.pak",
+      "upstreamSha256": "4578e08033967a5062bfd3b1937e711df84571d444e4940b8ffe5366bce4e778",
+      "distributionSha256": "4578e08033967a5062bfd3b1937e711df84571d444e4940b8ffe5366bce4e778",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/et.pak",
+      "distributionPath": "locales/et.pak",
+      "upstreamSha256": "dd1205eae606f12510e24ce39f301439c98b3293d766ca5839dc292a14d7973c",
+      "distributionSha256": "dd1205eae606f12510e24ce39f301439c98b3293d766ca5839dc292a14d7973c",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/fa.pak",
+      "distributionPath": "locales/fa.pak",
+      "upstreamSha256": "f3675255feb8b054717be9e92e93289262f35e82f25f2f8de0d3ebf3865715af",
+      "distributionSha256": "f3675255feb8b054717be9e92e93289262f35e82f25f2f8de0d3ebf3865715af",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/fi.pak",
+      "distributionPath": "locales/fi.pak",
+      "upstreamSha256": "1f3123d7fb5c22a95b5250ea17450b665c3c6cd6a6dfd28bbdde15e1bf684a0e",
+      "distributionSha256": "1f3123d7fb5c22a95b5250ea17450b665c3c6cd6a6dfd28bbdde15e1bf684a0e",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/fil.pak",
+      "distributionPath": "locales/fil.pak",
+      "upstreamSha256": "02e2c70d3d85b0deb677a9ae576ae3cf89e80774532cb3315c14f1e8ce64b310",
+      "distributionSha256": "02e2c70d3d85b0deb677a9ae576ae3cf89e80774532cb3315c14f1e8ce64b310",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/fr.pak",
+      "distributionPath": "locales/fr.pak",
+      "upstreamSha256": "4db43f1cfba1ed1d7dd347d58fbab0b8d6d89dd008a3b9d2436d8744e3363453",
+      "distributionSha256": "4db43f1cfba1ed1d7dd347d58fbab0b8d6d89dd008a3b9d2436d8744e3363453",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/gu.pak",
+      "distributionPath": "locales/gu.pak",
+      "upstreamSha256": "e86e8c240d4b6283abb03c49df9e8899607ef9def6d4933c7a541d63b5835271",
+      "distributionSha256": "e86e8c240d4b6283abb03c49df9e8899607ef9def6d4933c7a541d63b5835271",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/he.pak",
+      "distributionPath": "locales/he.pak",
+      "upstreamSha256": "ddc1f304ab1f4489d19ae2b31e7f8e3ffb47dae439520159e8975422c65e4115",
+      "distributionSha256": "ddc1f304ab1f4489d19ae2b31e7f8e3ffb47dae439520159e8975422c65e4115",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/hi.pak",
+      "distributionPath": "locales/hi.pak",
+      "upstreamSha256": "10a6f19c1982590e33476427dee8d4293b0707e25dc536d6394b5782ecc3b642",
+      "distributionSha256": "10a6f19c1982590e33476427dee8d4293b0707e25dc536d6394b5782ecc3b642",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/hr.pak",
+      "distributionPath": "locales/hr.pak",
+      "upstreamSha256": "d46c64ae8af3562e37eb80438aa2bee228fafda251d58ba4d0991291f1c72aab",
+      "distributionSha256": "d46c64ae8af3562e37eb80438aa2bee228fafda251d58ba4d0991291f1c72aab",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/hu.pak",
+      "distributionPath": "locales/hu.pak",
+      "upstreamSha256": "0a46fc8d50f74effd1cfe1979e677df3de6fc47e6b551267303d93d57bd83f50",
+      "distributionSha256": "0a46fc8d50f74effd1cfe1979e677df3de6fc47e6b551267303d93d57bd83f50",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/id.pak",
+      "distributionPath": "locales/id.pak",
+      "upstreamSha256": "f567569c42a25bb2dfc5c33e13aac558c0e2a1d5d4b969592bbd0841b36438db",
+      "distributionSha256": "f567569c42a25bb2dfc5c33e13aac558c0e2a1d5d4b969592bbd0841b36438db",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/it.pak",
+      "distributionPath": "locales/it.pak",
+      "upstreamSha256": "899be10e8f46f53d9bbe7cab827fc17b7c2bd7184e31791688016e2ca4df6622",
+      "distributionSha256": "899be10e8f46f53d9bbe7cab827fc17b7c2bd7184e31791688016e2ca4df6622",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/ja.pak",
+      "distributionPath": "locales/ja.pak",
+      "upstreamSha256": "9370c20a0612f5874dff2b015f31482e167eccf1b3c1d1a2efc1c2e38cefa88e",
+      "distributionSha256": "9370c20a0612f5874dff2b015f31482e167eccf1b3c1d1a2efc1c2e38cefa88e",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/kn.pak",
+      "distributionPath": "locales/kn.pak",
+      "upstreamSha256": "af5fed2130102ecc0c878059c88faed9d6db2e8b147fb5ae9e15e3fe69706c8a",
+      "distributionSha256": "af5fed2130102ecc0c878059c88faed9d6db2e8b147fb5ae9e15e3fe69706c8a",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/ko.pak",
+      "distributionPath": "locales/ko.pak",
+      "upstreamSha256": "0f5bc49c4d35bfea1563db6eb77a074c65b39b49a916cb35a022ef96340338f2",
+      "distributionSha256": "0f5bc49c4d35bfea1563db6eb77a074c65b39b49a916cb35a022ef96340338f2",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/lt.pak",
+      "distributionPath": "locales/lt.pak",
+      "upstreamSha256": "af969f4407c190dd01a426fa1244cb1ec7cdf2909d1c3ba5b87ff662ba567303",
+      "distributionSha256": "af969f4407c190dd01a426fa1244cb1ec7cdf2909d1c3ba5b87ff662ba567303",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/lv.pak",
+      "distributionPath": "locales/lv.pak",
+      "upstreamSha256": "27e20dfa5585161ef8b641f628aefe6c88d9f9590ffedb647e0c9da1cacf219d",
+      "distributionSha256": "27e20dfa5585161ef8b641f628aefe6c88d9f9590ffedb647e0c9da1cacf219d",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/ml.pak",
+      "distributionPath": "locales/ml.pak",
+      "upstreamSha256": "b5606265910e45098a88e989202a550531f6d00333c6b112ed4c5cbc07b2ff6a",
+      "distributionSha256": "b5606265910e45098a88e989202a550531f6d00333c6b112ed4c5cbc07b2ff6a",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/mr.pak",
+      "distributionPath": "locales/mr.pak",
+      "upstreamSha256": "8465d4077ed5414cbcb7d9bdb00d85e515a1a069703cdc1d4d67c9d6e5623fb0",
+      "distributionSha256": "8465d4077ed5414cbcb7d9bdb00d85e515a1a069703cdc1d4d67c9d6e5623fb0",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/ms.pak",
+      "distributionPath": "locales/ms.pak",
+      "upstreamSha256": "af7021a00befa586aa067ae3ccb339079e6f13ee0cab1621836f6abb608b6f2a",
+      "distributionSha256": "af7021a00befa586aa067ae3ccb339079e6f13ee0cab1621836f6abb608b6f2a",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/nb.pak",
+      "distributionPath": "locales/nb.pak",
+      "upstreamSha256": "d97a2b0cbe6adc99add2ed3ce0d15d0bb124b778086c466c126634d60ea72608",
+      "distributionSha256": "d97a2b0cbe6adc99add2ed3ce0d15d0bb124b778086c466c126634d60ea72608",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/nl.pak",
+      "distributionPath": "locales/nl.pak",
+      "upstreamSha256": "9d82c384fbb6480c7a6e721c6bcd1f2cd19665d848b056b5a2911504308ba037",
+      "distributionSha256": "9d82c384fbb6480c7a6e721c6bcd1f2cd19665d848b056b5a2911504308ba037",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/pl.pak",
+      "distributionPath": "locales/pl.pak",
+      "upstreamSha256": "8a0969fc743d3e2f5111387d53c0d79e8c1d9f68256ad6553b87fca2bcaa7e6e",
+      "distributionSha256": "8a0969fc743d3e2f5111387d53c0d79e8c1d9f68256ad6553b87fca2bcaa7e6e",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/pt-BR.pak",
+      "distributionPath": "locales/pt-BR.pak",
+      "upstreamSha256": "8272a84e2e6658dc4da17c6bd21995011fbaa6c328efafd24c4ebd4fe2e64916",
+      "distributionSha256": "8272a84e2e6658dc4da17c6bd21995011fbaa6c328efafd24c4ebd4fe2e64916",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/pt-PT.pak",
+      "distributionPath": "locales/pt-PT.pak",
+      "upstreamSha256": "bdfa7264dddf70f936f1785737969559a577b51d1952c820a468c611d18b17ca",
+      "distributionSha256": "bdfa7264dddf70f936f1785737969559a577b51d1952c820a468c611d18b17ca",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/ro.pak",
+      "distributionPath": "locales/ro.pak",
+      "upstreamSha256": "1e6b5b0dac63a9e951daf523de310f6bd9e5c53e281f37706d41bd35d2a08bb5",
+      "distributionSha256": "1e6b5b0dac63a9e951daf523de310f6bd9e5c53e281f37706d41bd35d2a08bb5",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/ru.pak",
+      "distributionPath": "locales/ru.pak",
+      "upstreamSha256": "52a31a7ca057b8c76208620932120927a089502ddfb66c30de4324959f9e0075",
+      "distributionSha256": "52a31a7ca057b8c76208620932120927a089502ddfb66c30de4324959f9e0075",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/sk.pak",
+      "distributionPath": "locales/sk.pak",
+      "upstreamSha256": "a53551e8d251fa01305afe1d0d187144c56bfdffd5d1aa9f96a9350b96c0a252",
+      "distributionSha256": "a53551e8d251fa01305afe1d0d187144c56bfdffd5d1aa9f96a9350b96c0a252",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/sl.pak",
+      "distributionPath": "locales/sl.pak",
+      "upstreamSha256": "e1371c8df577b979e3a515af34b0aaa3d07153c7a5c55d39a9b49a7ffe62d3d2",
+      "distributionSha256": "e1371c8df577b979e3a515af34b0aaa3d07153c7a5c55d39a9b49a7ffe62d3d2",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/sr.pak",
+      "distributionPath": "locales/sr.pak",
+      "upstreamSha256": "be4ce17afac24dffc1eb36609cb51e766e77097d6656b1008a2a825e59609cc1",
+      "distributionSha256": "be4ce17afac24dffc1eb36609cb51e766e77097d6656b1008a2a825e59609cc1",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/sv.pak",
+      "distributionPath": "locales/sv.pak",
+      "upstreamSha256": "8bdff8855d23c739ece357f653c0a17bb36fe97577a5761912080d057ed341a5",
+      "distributionSha256": "8bdff8855d23c739ece357f653c0a17bb36fe97577a5761912080d057ed341a5",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/sw.pak",
+      "distributionPath": "locales/sw.pak",
+      "upstreamSha256": "312b225a81cc3cc15f13f80c45dd0e0bb3655d31873d2956861207e70c33c1dc",
+      "distributionSha256": "312b225a81cc3cc15f13f80c45dd0e0bb3655d31873d2956861207e70c33c1dc",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/ta.pak",
+      "distributionPath": "locales/ta.pak",
+      "upstreamSha256": "91fb1460711df108d8d435a378c8be1d1e80b0886c0158d8c6ae92f35812681b",
+      "distributionSha256": "91fb1460711df108d8d435a378c8be1d1e80b0886c0158d8c6ae92f35812681b",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/te.pak",
+      "distributionPath": "locales/te.pak",
+      "upstreamSha256": "fc8c2706c5dfd36e7af8e380a240e0f697cc5fe969b512092a2185896512c4af",
+      "distributionSha256": "fc8c2706c5dfd36e7af8e380a240e0f697cc5fe969b512092a2185896512c4af",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/th.pak",
+      "distributionPath": "locales/th.pak",
+      "upstreamSha256": "c1f4235c31bc05153230b0e55b7aabc9020d7460d5b0a025c386885e1e4bda3c",
+      "distributionSha256": "c1f4235c31bc05153230b0e55b7aabc9020d7460d5b0a025c386885e1e4bda3c",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/tr.pak",
+      "distributionPath": "locales/tr.pak",
+      "upstreamSha256": "ae87bbd88ce0adfc2dc3c460736a7d0513472af62fc856caccc638dedfec9b4a",
+      "distributionSha256": "ae87bbd88ce0adfc2dc3c460736a7d0513472af62fc856caccc638dedfec9b4a",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/uk.pak",
+      "distributionPath": "locales/uk.pak",
+      "upstreamSha256": "a6230520dac708a6235588f5d9e894fcc9b1391e18a70e3220e06ddf80f76688",
+      "distributionSha256": "a6230520dac708a6235588f5d9e894fcc9b1391e18a70e3220e06ddf80f76688",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/ur.pak",
+      "distributionPath": "locales/ur.pak",
+      "upstreamSha256": "c218e21744df2ff0669a87d497d65d76333073577360d4c662c592de146bf82a",
+      "distributionSha256": "c218e21744df2ff0669a87d497d65d76333073577360d4c662c592de146bf82a",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/vi.pak",
+      "distributionPath": "locales/vi.pak",
+      "upstreamSha256": "42f3f0c4f645aedc66c12c74aee7256336a929798d736c56853daec91d44511a",
+      "distributionSha256": "42f3f0c4f645aedc66c12c74aee7256336a929798d736c56853daec91d44511a",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/zh-CN.pak",
+      "distributionPath": "locales/zh-CN.pak",
+      "upstreamSha256": "ba8ac4bf82b50728d907215d1993948457835bf2942a4d7266a3f8af5f51de15",
+      "distributionSha256": "ba8ac4bf82b50728d907215d1993948457835bf2942a4d7266a3f8af5f51de15",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "locales/zh-TW.pak",
+      "distributionPath": "locales/zh-TW.pak",
+      "upstreamSha256": "82739378d17ea73e57c8efae31994e0c8818ab2d0d12cb1f6b20d2f340b3229d",
+      "distributionSha256": "82739378d17ea73e57c8efae31994e0c8818ab2d0d12cb1f6b20d2f340b3229d",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "resources.pak",
+      "distributionPath": "resources.pak",
+      "upstreamSha256": "3d8c36b2ec7099a27fe00763e5af28319643ba65c1b48b85eb6a7caaae034ba6",
+      "distributionSha256": "3d8c36b2ec7099a27fe00763e5af28319643ba65c1b48b85eb6a7caaae034ba6",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "snapshot_blob.bin",
+      "distributionPath": "snapshot_blob.bin",
+      "upstreamSha256": "1176cfa83f9ef458e7ed5b5b255c9289691dbef3ff1e4a073a5c90f9a16e8458",
+      "distributionSha256": "1176cfa83f9ef458e7ed5b5b255c9289691dbef3ff1e4a073a5c90f9a16e8458",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "v8_context_snapshot.bin",
+      "distributionPath": "v8_context_snapshot.bin",
+      "upstreamSha256": "d9d3ec18e937ed2fddd02d92e4f0726919769e16f2ea17f962d23e40d5962b7b",
+      "distributionSha256": "d9d3ec18e937ed2fddd02d92e4f0726919769e16f2ea17f962d23e40d5962b7b",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "version",
+      "distributionPath": "version",
+      "upstreamSha256": "a1d640d380c386200a420b590105d25da627723ee42ee1061108f3acde9f25fd",
+      "distributionSha256": "a1d640d380c386200a420b590105d25da627723ee42ee1061108f3acde9f25fd",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "vk_swiftshader.dll",
+      "distributionPath": "vk_swiftshader.dll",
+      "upstreamSha256": "cfb8a533c5da1ade3fd4e66ebd0acf7186bd17fb3cc09d48809a7909c4aaf0f8",
+      "distributionSha256": "cfb8a533c5da1ade3fd4e66ebd0acf7186bd17fb3cc09d48809a7909c4aaf0f8",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "incomplete-exact-binary-license-mapping"
+    },
+    {
+      "upstreamPath": "vk_swiftshader_icd.json",
+      "distributionPath": "vk_swiftshader_icd.json",
+      "upstreamSha256": "32d83ff113fef532a9f97e0d2831f8656628ab1c99e9060f0332b1532839afd9",
+      "distributionSha256": "32d83ff113fef532a9f97e0d2831f8656628ab1c99e9060f0332b1532839afd9",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "aggregate-and-individual-notice-review-incomplete"
+    },
+    {
+      "upstreamPath": "vulkan-1.dll",
+      "distributionPath": "vulkan-1.dll",
+      "upstreamSha256": "c1b383f18c0949f233e949ae197c2ad4c416abe7790894d7e395d73116403b4f",
+      "distributionSha256": "c1b383f18c0949f233e949ae197c2ad4c416abe7790894d7e395d73116403b4f",
+      "modified": false,
+      "modification": "未修改",
+      "licenseReviewStatus": "incomplete-exact-binary-license-mapping"
+    }
+  ]
+}

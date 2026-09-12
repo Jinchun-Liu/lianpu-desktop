@@ -1,0 +1,3218 @@
+{
+  "generatedAt": "2026-09-12T03:36:13.867Z",
+  "packageLockSha256": "221224e59b576550603004ddaa45037c4d4308bf7e9d4b3b5067f2831d2b6b7c",
+  "components": [
+    {
+      "name": "@electron-internal/extract-zip",
+      "version": "1.0.5",
+      "installPath": "node_modules/@electron-internal/extract-zip",
+      "direct": false,
+      "source": "https://registry.npmjs.org/@electron-internal/extract-zip/-/extract-zip-1.0.5.tgz",
+      "integrity": "sha512-+bqFCP98pLI0Tt0XQo1TmlXtwjWchISndDOxCkEcIuUgXWpBnLyRI+2DU+mesvnMMX6L1XDqYNA0lXNDHd/yiA==",
+      "repository": {
+        "url": "https://github.com/electron/extract-zip"
+      },
+      "license": "BSD-2-Clause",
+      "modified": false,
+      "bundled": false,
+      "distribution": "仅开发或测试；不复制 node_modules 到产品",
+      "evidence": [],
+      "obligations": "保留版权、许可条件及免责声明；有署名/非背书条件时一并保留。",
+      "versionMatchesLock": true,
+      "reviewStatus": "incomplete",
+      "reviewNote": "精确版本与许可原文已采集不等于人工审查通过。"
+    },
+    {
+      "name": "@electron/asar",
+      "version": "4.3.0",
+      "installPath": "node_modules/@electron/asar",
+      "direct": true,
+      "source": "https://registry.npmjs.org/@electron/asar/-/asar-4.3.0.tgz",
+      "integrity": "sha512-k/FFC/NQoTykGBi/Ga4L4KorsAKDdkK0LfNVG90eUG6vPVpJaL3iR9V1ZLbzBAF3QpojK5DcaGOdQOheKZv4JQ==",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/electron/asar.git"
+      },
+      "license": "MIT",
+      "modified": false,
+      "bundled": false,
+      "distribution": "仅开发或测试；不复制 node_modules 到产品",
+      "evidence": [
+        {
+          "path": "compliance/license-evidence/_electron_asar-4.3.0-d5af8fc171f6-LICENSE.md",
+          "originalPath": "node_modules/@electron/asar/LICENSE.md",
+          "sha256": "d5af8fc171f6f600c0ab4e7597dca398dda80dbe6821ce01cef78e859e7a00f8",
+          "bytes": 1055
+        }
+      ],
+      "obligations": "保留版权、许可条件及免责声明；有署名/非背书条件时一并保留。",
+      "versionMatchesLock": true,
+      "reviewStatus": "evidence-collected-review-required",
+      "reviewNote": "精确版本与许可原文已采集不等于人工审查通过。"
+    },
+    {
+      "name": "@electron/fuses",
+      "version": "2.1.3",
+      "installPath": "node_modules/@electron/fuses",
+      "direct": true,
+      "source": "https://registry.npmjs.org/@electron/fuses/-/fuses-2.1.3.tgz",
+      "integrity": "sha512-LoKJUXNiJ4JM8IIrUltSHI+8pkogaGj5wmJx81jE/Wk3g2w1/kfMbTEKNoY5kitGE8hiC12h32R/1SlywFtxXg==",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/electron/fuses.git"
+      },
+      "license": "MIT",
+      "modified": false,
+      "bundled": false,
+      "distribution": "仅开发或测试；不复制 node_modules 到产品",
+      "evidence": [
+        {
+          "path": "compliance/license-evidence/_electron_fuses-2.1.3-24e49a190cf9-LICENSE",
+          "originalPath": "node_modules/@electron/fuses/LICENSE",
+          "sha256": "24e49a190cf97a2127e0588981e82ff6e4357632278c9ab510f328a2689eca53",
+          "bytes": 1065
+        }
+      ],
+      "obligations": "保留版权、许可条件及免责声明；有署名/非背书条件时一并保留。",
+      "versionMatchesLock": true,
+      "reviewStatus": "evidence-collected-review-required",
+      "reviewNote": "精确版本与许可原文已采集不等于人工审查通过。"
+    },
+    {
+      "name": "@electron/get",
+      "version": "5.1.0",
+      "installPath": "node_modules/@electron/get",
+      "direct": false,
+      "source": "https://registry.npmjs.org/@electron/get/-/get-5.1.0.tgz",
+      "integrity": "sha512-3kSBtG8ObcTVfXanm5vVJ6UnBLEVmVsRk1M+vGqCuMBV+XLCbJYuWQful+yIy0GQDsSlK0kHEriEHn7SPk4EnA==",
+      "repository": "https://github.com/electron/get",
+      "license": "MIT",
+      "modified": false,
+      "bundled": false,
+      "distribution": "仅开发或测试；不复制 node_modules 到产品",
+      "evidence": [
+        {
+          "path": "compliance/license-evidence/_electron_get-5.1.0-edab8abb78d9-LICENSE",
+          "originalPath": "node_modules/@electron/get/LICENSE",
+          "sha256": "edab8abb78d9c5b36944c3e00aebf6a90eb32378993f49ac8a3904007029c629",
+          "bytes": 1088
+        }
+      ],
+      "obligations": "保留版权、许可条件及免责声明；有署名/非背书条件时一并保留。",
+      "versionMatchesLock": true,
+      "reviewStatus": "evidence-collected-review-required",
+      "reviewNote": "精确版本与许可原文已采集不等于人工审查通过。"
+    },
+    {
+      "name": "@types/node",
+      "version": "24.13.4",
+      "installPath": "node_modules/@types/node",
+      "direct": false,
+      "source": "https://registry.npmjs.org/@types/node/-/node-24.13.4.tgz",
+      "integrity": "sha512-YJ7EqCstVTzIr0fMr7qul/977en+pQHrfmuKIo6Zr9i75Be21dr3MovcfvGtyvi2HAUrRerWps5sMO9I7WaxDw==",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "directory": "types/node"
+      },
+      "license": "MIT",
+      "modified": false,
+      "bundled": false,
+      "distribution": "仅开发或测试；不复制 node_modules 到产品",
+      "evidence": [
+        {
+          "path": "compliance/license-evidence/_types_node-24.13.4-c2cfccb812fe-LICENSE",
+          "originalPath": "node_modules/@types/node/LICENSE",
+          "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+          "bytes": 1141
+        }
+      ],
+      "obligations": "保留版权、许可条件及免责声明；有署名/非背书条件时一并保留。",
+      "versionMatchesLock": true,
+      "reviewStatus": "evidence-collected-review-required",
+      "reviewNote": "精确版本与许可原文已采集不等于人工审查通过。"
+    },
+    {
+      "name": "balanced-match",
+      "version": "4.0.4",
+      "installPath": "node_modules/balanced-match",
+      "direct": false,
+      "source": "https://registry.npmjs.org/balanced-match/-/balanced-match-4.0.4.tgz",
+      "integrity": "sha512-BLrgEcRTwX2o6gGxGOCNyMvGSp35YofuYzw9h1IMTRmKqttAZZVU67bdb9Pr2vUHA8+j3i2tJfjO6C6+4myGTA==",
+      "repository": {
+        "type": "git",
+        "url": "git://github.com/juliangruber/balanced-match.git"
+      },
+      "license": "MIT",
+      "modified": false,
+      "bundled": false,
+      "distribution": "仅开发或测试；不复制 node_modules 到产品",
+      "evidence": [
+        {
+          "path": "compliance/license-evidence/balanced-match-4.0.4-d408f38ffa33-LICENSE.md",
+          "originalPath": "node_modules/balanced-match/LICENSE.md",
+          "sha256": "d408f38ffa3355c5faec517153295338892eb0f1ea43f57874bb23c6075979b5",
+          "bytes": 1155
+        }
+      ],
+      "obligations": "保留版权、许可条件及免责声明；有署名/非背书条件时一并保留。",
+      "versionMatchesLock": true,
+      "reviewStatus": "evidence-collected-review-required",
+      "reviewNote": "精确版本与许可原文已采集不等于人工审查通过。"
+    },
+    {
+      "name": "brace-expansion",
+      "version": "5.0.9",
+      "installPath": "node_modules/brace-expansion",
+      "direct": false,
+      "source": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-5.0.9.tgz",
+      "integrity": "sha512-ScQ4IuvIEF1TMlP7Zt+vjJ//9zlPb2SDcxWxM3bk8s6t6GGdJ7KO1dCcTidOPJKePW30LE/2cT7wCyPho9/Wxg==",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/juliangruber/brace-expansion.git"
+      },
+      "license": "MIT",
+      "modified": false,
+      "bundled": false,
+      "distribution": "仅开发或测试；不复制 node_modules 到产品",
+      "evidence": [
+        {
+          "path": "compliance/license-evidence/brace-expansion-5.0.9-9c63a23124d6-LICENSE",
+          "originalPath": "node_modules/brace-expansion/LICENSE",
+          "sha256": "9c63a23124d68cd30cd316a94a1a0bca34f032786df6df69fc4b5f136bac8d2e",
+          "bytes": 1144
+        }
+      ],
+      "obligations": "保留版权、许可条件及免责声明；有署名/非背书条件时一并保留。",
+      "versionMatchesLock": true,
+      "reviewStatus": "evidence-collected-review-required",
+      "reviewNote": "精确版本与许可原文已采集不等于人工审查通过。"
+    },
+    {
+      "name": "debug",
+      "version": "4.4.3",
+      "installPath": "node_modules/debug",
+      "direct": false,
+      "source": "https://registry.npmjs.org/debug/-/debug-4.4.3.tgz",
+      "integrity": "sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==",
+      "repository": {
+        "type": "git",
+        "url": "git://github.com/debug-js/debug.git"
+      },
+      "license": "MIT",
+      "modified": false,
+      "bundled": false,
+      "distribution": "仅开发或测试；不复制 node_modules 到产品",
+      "evidence": [
+        {
+          "path": "compliance/license-evidence/debug-4.4.3-3a61c6c96caf-LICENSE",
+          "originalPath": "node_modules/debug/LICENSE",
+          "sha256": "3a61c6c96caf5c1d9b623fb9b04c822b783dfcb78aa7e49c76a3f643e6ed7f95",
+          "bytes": 1139
+        }
+      ],
+      "obligations": "保留版权、许可条件及免责声明；有署名/非背书条件时一并保留。",
+      "versionMatchesLock": true,
+      "reviewStatus": "evidence-collected-review-required",
+      "reviewNote": "精确版本与许可原文已采集不等于人工审查通过。"
+    },
+    {
+      "name": "electron",
+      "version": "44.3.0",
+      "installPath": "node_modules/electron",
+      "direct": true,
+      "source": "https://registry.npmjs.org/electron/-/electron-44.3.0.tgz",
+      "integrity": "sha512-St9EV7F2VtYaYWD2qaAjBwUgKxx39eJOUsUJ5+/1113sqbVfNqv4Dbm/W1rN7qmYSPa+mWwR6yr+b7MfgjgVfQ==",
+      "repository": "https://github.com/electron/electron",
+      "license": "MIT",
+      "modified": false,
+      "bundled": false,
+      "distribution": "npm 安装器不随包；其下载的 Electron 运行时单列",
+      "evidence": [
+        {
+          "path": "compliance/license-evidence/electron-44.3.0-5154e165bd6c-LICENSE",
+          "originalPath": "node_modules/electron/LICENSE",
+          "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+          "bytes": 1096
+        }
+      ],
+      "obligations": "保留版权、许可条件及免责声明；有署名/非背书条件时一并保留。",
+      "versionMatchesLock": true,
+      "reviewStatus": "evidence-collected-review-required",
+      "reviewNote": "精确版本与许可原文已采集不等于人工审查通过。"
+    },
+    {
+      "name": "env-paths",
+      "version": "3.0.0",
+      "installPath": "node_modules/env-paths",
+      "direct": false,
+      "source": "https://registry.npmjs.org/env-paths/-/env-paths-3.0.0.tgz",
+      "integrity": "sha512-dtJUTepzMW3Lm/NPxRf3wP4642UWhjL2sQxc+ym2YMj1m/H2zDNQOlezafzkHwn6sMstjHTwG6iQQsctDW/b1A==",
+      "repository": "sindresorhus/env-paths",
+      "license": "MIT",
+      "modified": false,
+      "bundled": false,
+      "distribution": "仅开发或测试；不复制 node_modules 到产品",
+      "evidence": [
+        {
+          "path": "compliance/license-evidence/env-paths-3.0.0-5c932d88256b-license",
+          "originalPath": "node_modules/env-paths/license",
+          "sha256": "5c932d88256b4ab958f64a856fa48e8bd1f55bc1d96b8149c65689e0c61789d3",
+          "bytes": 1117
+        }
+      ],
+      "obligations": "保留版权、许可条件及免责声明；有署名/非背书条件时一并保留。",
+      "versionMatchesLock": true,
+      "reviewStatus": "evidence-collected-review-required",
+      "reviewNote": "精确版本与许可原文已采集不等于人工审查通过。"
+    },
+    {
+      "name": "glob",
+      "version": "13.0.6",
+      "installPath": "node_modules/glob",
+      "direct": false,
+      "source": "https://registry.npmjs.org/glob/-/glob-13.0.6.tgz",
+      "integrity": "sha512-Wjlyrolmm8uDpm/ogGyXZXb1Z+Ca2B8NbJwqBVg0axK9GbBeoS7yGV6vjXnYdGm6X53iehEuxxbyiKp8QmN4Vw==",
+      "repository": {
+        "type": "git",
+        "url": "git@github.com:isaacs/node-glob.git"
+      },
+      "license": "BlueOak-1.0.0",
+      "modified": false,
+      "bundled": false,
+      "distribution": "仅开发或测试；不复制 node_modules 到产品",
+      "evidence": [
+        {
+          "path": "compliance/license-evidence/glob-13.0.6-a49c9ba46479-LICENSE.md",
+          "originalPath": "node_modules/glob/LICENSE.md",
+          "sha256": "a49c9ba464796f65b59fca3f1e6ca40912df1e859f575383223f7ec6c5baae09",
+          "bytes": 1764
+        }
+      ],
+      "obligations": "需依据证据原文逐项审查；不能仅凭标签确认分发义务。",
+      "versionMatchesLock": true,
+      "reviewStatus": "evidence-collected-review-required",
+      "reviewNote": "精确版本与许可原文已采集不等于人工审查通过。"
+    },
+    {
+      "name": "graceful-fs",
+      "version": "4.2.11",
+      "installPath": "node_modules/graceful-fs",
+      "direct": false,
+      "source": "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.11.tgz",
+      "integrity": "sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/isaacs/node-graceful-fs"
+      },
+      "license": "ISC",
+      "modified": false,
+      "bundled": false,
+      "distribution": "仅开发或测试；不复制 node_modules 到产品",
+      "evidence": [
+        {
+          "path": "compliance/license-evidence/graceful-fs-4.2.11-f65c5d9f22a3-LICENSE",
+          "originalPath": "node_modules/graceful-fs/LICENSE",
+          "sha256": "f65c5d9f22a317b2a10803bd1868461ce6499c2ed7217bc80c0cc772a748789c",
+          "bytes": 791
+        }
+      ],
+      "obligations": "保留版权、许可条件及免责声明；有署名/非背书条件时一并保留。",
+      "versionMatchesLock": true,
+      "reviewStatus": "evidence-collected-review-required",
+      "reviewNote": "精确版本与许可原文已采集不等于人工审查通过。"
+    },
+    {
+      "name": "lru-cache",
+      "version": "11.5.2",
+      "installPath": "node_modules/lru-cache",
+      "direct": false,
+      "source": "https://registry.npmjs.org/lru-cache/-/lru-cache-11.5.2.tgz",
+      "integrity": "sha512-4pfM1Ff0x50o0tQwb5ucw/RzNyD0/YJME6IVcStalZuMWxdt3sR3huStTtxz4PUmvZfRguvDejasvQ2kifR11g==",
+      "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/isaacs/node-lru-cache.git"
+      },
+      "license": "BlueOak-1.0.0",
+      "modified": false,
+      "bundled": false,
+      "distribution": "仅开发或测试；不复制 node_modules 到产品",
+      "evidence": [
+        {
+          "path": "compliance/license-evidence/lru-cache-11.5.2-8a1af140fdfb-LICENSE.md",
+          "originalPath": "node_modules/lru-cache/LICENSE.md",
+          "sha256": "8a1af140fdfbf5afd3df27f7e662f989c5b963a300020dfafce42033cae9e004",
+          "bytes": 1552
+        }
+      ],
+      "obligations": "需依据证据原文逐项审查；不能仅凭标签确认分发义务。",
+      "versionMatchesLock": true,
+      "reviewStatus": "evidence-collected-review-required",
+      "reviewNote": "精确版本与许可原文已采集不等于人工审查通过。"
+    },
+    {
+      "name": "minimatch",
+      "version": "10.2.6",
+      "installPath": "node_modules/minimatch",
+      "direct": false,
+      "source": "https://registry.npmjs.org/minimatch/-/minimatch-10.2.6.tgz",
+      "integrity": "sha512-vpLQEs+VLCr1nU0BXS07maYoFwlDAH0gngQuuttxIwutDFEMHq2blX+8vpgxDdK3J1PwjCJiep77OitTZ4Ll1A==",
+      "repository": {
+        "type": "git",
+        "url": "git@github.com:isaacs/minimatch"
+      },
+      "license": "BlueOak-1.0.0",
+      "modified": false,
+      "bundled": false,
+      "distribution": "仅开发或测试；不复制 node_modules 到产品",
+      "evidence": [
+        {
+          "path": "compliance/license-evidence/minimatch-10.2.6-2c7c5d22ed5a-LICENSE.md",
+          "originalPath": "node_modules/minimatch/LICENSE.md",
+          "sha256": "2c7c5d22ed5a8ee968c64757710979afcd77438c48b4a265b94e615babd8a901",
+          "bytes": 1550
+        }
+      ],
+      "obligations": "需依据证据原文逐项审查；不能仅凭标签确认分发义务。",
+      "versionMatchesLock": true,
+      "reviewStatus": "evidence-collected-review-required",
+      "reviewNote": "精确版本与许可原文已采集不等于人工审查通过。"
+    },
+    {
+      "name": "minipass",
+      "version": "7.1.3",
+      "installPath": "node_modules/minipass",
+      "direct": false,
+      "source": "https://registry.npmjs.org/minipass/-/minipass-7.1.3.tgz",
+      "integrity": "sha512-tEBHqDnIoM/1rXME1zgka9g6Q2lcoCkxHLuc7ODJ5BxbP5d4c2Z5cGgtXAku59200Cx7diuHTOYfSBD8n6mm8A==",
+      "repository": "https://github.com/isaacs/minipass",
+      "license": "BlueOak-1.0.0",
+      "modified": false,
+      "bundled": false,
+      "distribution": "仅开发或测试；不复制 node_modules 到产品",
+      "evidence": [
+        {
+          "path": "compliance/license-evidence/minipass-7.1.3-8a1af140fdfb-LICENSE.md",
+          "originalPath": "node_modules/minipass/LICENSE.md",
+          "sha256": "8a1af140fdfbf5afd3df27f7e662f989c5b963a300020dfafce42033cae9e004",
+          "bytes": 1552
+        }
+      ],
+      "obligations": "需依据证据原文逐项审查；不能仅凭标签确认分发义务。",
+      "versionMatchesLock": true,
+      "reviewStatus": "evidence-collected-review-required",
+      "reviewNote": "精确版本与许可原文已采集不等于人工审查通过。"
+    },
+    {
+      "name": "ms",
+      "version": "2.1.3",
+      "installPath": "node_modules/ms",
+      "direct": false,
+      "source": "https://registry.npmjs.org/ms/-/ms-2.1.3.tgz",
+      "integrity": "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==",
+      "repository": "vercel/ms",
+      "license": "MIT",
+      "modified": false,
+      "bundled": false,
+      "distribution": "仅开发或测试；不复制 node_modules 到产品",
+      "evidence": [
+        {
+          "path": "compliance/license-evidence/ms-2.1.3-1662fae9b531-license.md",
+          "originalPath": "node_modules/ms/license.md",
+          "sha256": "1662fae9b5314d11cf51284e2dcd1f006a354f7343f08712a730fcff9a359801",
+          "bytes": 1079
+        }
+      ],
+      "obligations": "保留版权、许可条件及免责声明；有署名/非背书条件时一并保留。",
+      "versionMatchesLock": true,
+      "reviewStatus": "evidence-collected-review-required",
+      "reviewNote": "精确版本与许可原文已采集不等于人工审查通过。"
+    },
+    {
+      "name": "path-scurry",
+      "version": "2.0.2",
+      "installPath": "node_modules/path-scurry",
+      "direct": false,
+      "source": "https://registry.npmjs.org/path-scurry/-/path-scurry-2.0.2.tgz",
+      "integrity": "sha512-3O/iVVsJAPsOnpwWIeD+d6z/7PmqApyQePUtCndjatj/9I5LylHvt5qluFaBT3I5h3r1ejfR056c+FCv+NnNXg==",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/isaacs/path-scurry"
+      },
+      "license": "BlueOak-1.0.0",
+      "modified": false,
+      "bundled": false,
+      "distribution": "仅开发或测试；不复制 node_modules 到产品",
+      "evidence": [
+        {
+          "path": "compliance/license-evidence/path-scurry-2.0.2-8a1af140fdfb-LICENSE.md",
+          "originalPath": "node_modules/path-scurry/LICENSE.md",
+          "sha256": "8a1af140fdfbf5afd3df27f7e662f989c5b963a300020dfafce42033cae9e004",
+          "bytes": 1552
+        }
+      ],
+      "obligations": "需依据证据原文逐项审查；不能仅凭标签确认分发义务。",
+      "versionMatchesLock": true,
+      "reviewStatus": "evidence-collected-review-required",
+      "reviewNote": "精确版本与许可原文已采集不等于人工审查通过。"
+    },
+    {
+      "name": "playwright-core",
+      "version": "1.63.0",
+      "installPath": "node_modules/playwright-core",
+      "direct": true,
+      "source": "https://registry.npmjs.org/playwright-core/-/playwright-core-1.63.0.tgz",
+      "integrity": "sha512-rYCsBF/M5HjUch52bbtVONEFjv6Xu8sm8h72dNlR5bzIE1fvC/bxgspzkjSfU+MweEMmPM8KJebG6nnyxo5mCg==",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/microsoft/playwright.git"
+      },
+      "license": "Apache-2.0",
+      "modified": false,
+      "bundled": false,
+      "distribution": "仅开发或测试；不复制 node_modules 到产品",
+      "evidence": [
+        {
+          "path": "compliance/license-evidence/playwright-core-1.63.0-45873d00a0dd-LICENSE",
+          "originalPath": "node_modules/playwright-core/LICENSE",
+          "sha256": "45873d00a0dd243596deb4aa23b2493b3d1f0671921bf2538ea431d7380220eb",
+          "bytes": 11601
+        },
+        {
+          "path": "compliance/license-evidence/playwright-core-1.63.0-6d602191187b-NOTICE",
+          "originalPath": "node_modules/playwright-core/NOTICE",
+          "sha256": "6d602191187b35b9b01d2cffa01c8469c2c8d9de8a96f1bf868e0f264f51c81d",
+          "bytes": 254
+        }
+      ],
+      "obligations": "保留许可证、版权和适用 NOTICE；标记修改；遵守专利及商标限制。",
+      "versionMatchesLock": true,
+      "reviewStatus": "evidence-collected-review-required",
+      "reviewNote": "精确版本与许可原文已采集不等于人工审查通过。"
+    },
+    {
+      "name": "progress",
+      "version": "2.0.3",
+      "installPath": "node_modules/progress",
+      "direct": false,
+      "source": "https://registry.npmjs.org/progress/-/progress-2.0.3.tgz",
+      "integrity": "sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==",
+      "repository": {
+        "type": "git",
+        "url": "git://github.com/visionmedia/node-progress"
+      },
+      "license": "MIT",
+      "modified": false,
+      "bundled": false,
+      "distribution": "仅开发或测试；不复制 node_modules 到产品",
+      "evidence": [
+        {
+          "path": "compliance/license-evidence/progress-2.0.3-d7d2a7786de7-LICENSE",
+          "originalPath": "node_modules/progress/LICENSE",
+          "sha256": "d7d2a7786de7c7cfd96f920c6f12927d74e1d2a861ca4498bf465c3bc3f4c21c",
+          "bytes": 1098
+        }
+      ],
+      "obligations": "保留版权、许可条件及免责声明；有署名/非背书条件时一并保留。",
+      "versionMatchesLock": true,
+      "reviewStatus": "evidence-collected-review-required",
+      "reviewNote": "精确版本与许可原文已采集不等于人工审查通过。"
+    },
+    {
+      "name": "semver",
+      "version": "7.8.5",
+      "installPath": "node_modules/semver",
+      "direct": false,
+      "source": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+      "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/npm/node-semver.git"
+      },
+      "license": "ISC",
+      "modified": false,
+      "bundled": false,
+      "distribution": "仅开发或测试；不复制 node_modules 到产品",
+      "evidence": [
+        {
+          "path": "compliance/license-evidence/semver-7.8.5-4ec3d4c66cd8-LICENSE",
+          "originalPath": "node_modules/semver/LICENSE",
+          "sha256": "4ec3d4c66cd87f5c8d8ad911b10f99bf27cb00cdfcff82621956e379186b016b",
+          "bytes": 765
+        }
+      ],
+      "obligations": "保留版权、许可条件及免责声明；有署名/非背书条件时一并保留。",
+      "versionMatchesLock": true,
+      "reviewStatus": "evidence-collected-review-required",
+      "reviewNote": "精确版本与许可原文已采集不等于人工审查通过。"
+    },
+    {
+      "name": "sumchecker",
+      "version": "3.0.1",
+      "installPath": "node_modules/sumchecker",
+      "direct": false,
+      "source": "https://registry.npmjs.org/sumchecker/-/sumchecker-3.0.1.tgz",
+      "integrity": "sha512-MvjXzkz/BOfyVDkG0oFOtBxHX2u3gKbMHIF/dXblZsgD3BWOFLmHovIpZY7BykJdAjcqRCBi1WYBNdEC9yI7vg==",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/malept/sumchecker.git"
+      },
+      "license": "Apache-2.0",
+      "modified": false,
+      "bundled": false,
+      "distribution": "仅开发或测试；不复制 node_modules 到产品",
+      "evidence": [
+        {
+          "path": "compliance/license-evidence/sumchecker-3.0.1-cfc7749b96f6-LICENSE",
+          "originalPath": "node_modules/sumchecker/LICENSE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "bytes": 11358
+        }
+      ],
+      "obligations": "保留许可证、版权和适用 NOTICE；标记修改；遵守专利及商标限制。",
+      "versionMatchesLock": true,
+      "reviewStatus": "evidence-collected-review-required",
+      "reviewNote": "精确版本与许可原文已采集不等于人工审查通过。"
+    },
+    {
+      "name": "undici",
+      "version": "7.29.1",
+      "installPath": "node_modules/undici",
+      "direct": false,
+      "source": "https://registry.npmjs.org/undici/-/undici-7.29.1.tgz",
+      "integrity": "sha512-RYONW2MeafgYlkVOKYKkA/Ag7BmXqgIWCa8t1m0JcxrQg9pI9lEqRhAOruOBCbAohOa/gkCF+iPi9hrgvTzu6Q==",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/nodejs/undici.git"
+      },
+      "license": "MIT",
+      "modified": false,
+      "bundled": false,
+      "distribution": "仅开发或测试；不复制 node_modules 到产品",
+      "evidence": [
+        {
+          "path": "compliance/license-evidence/undici-7.29.1-a6db8096b270-LICENSE",
+          "originalPath": "node_modules/undici/LICENSE",
+          "sha256": "a6db8096b2707bc0102d256917d4d33f298ba36d8c3f25de067a2b5bb379db27",
+          "bytes": 1090
+        }
+      ],
+      "obligations": "保留版权、许可条件及免责声明；有署名/非背书条件时一并保留。",
+      "versionMatchesLock": true,
+      "reviewStatus": "evidence-collected-review-required",
+      "reviewNote": "精确版本与许可原文已采集不等于人工审查通过。"
+    },
+    {
+      "name": "undici-types",
+      "version": "7.18.2",
+      "installPath": "node_modules/undici-types",
+      "direct": false,
+      "source": "https://registry.npmjs.org/undici-types/-/undici-types-7.18.2.tgz",
+      "integrity": "sha512-AsuCzffGHJybSaRrmr5eHr81mwJU3kjw6M+uprWvCXiNeN9SOGwQ3Jn8jb8m3Z6izVgknn1R0FTCEAP2QrLY/w==",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/nodejs/undici.git"
+      },
+      "license": "MIT",
+      "modified": false,
+      "bundled": false,
+      "distribution": "仅开发或测试；不复制 node_modules 到产品",
+      "evidence": [
+        {
+          "path": "compliance/license-evidence/undici-types-7.18.2-a6db8096b270-LICENSE",
+          "originalPath": "node_modules/undici-types/LICENSE",
+          "sha256": "a6db8096b2707bc0102d256917d4d33f298ba36d8c3f25de067a2b5bb379db27",
+          "bytes": 1090
+        }
+      ],
+      "obligations": "保留版权、许可条件及免责声明；有署名/非背书条件时一并保留。",
+      "versionMatchesLock": true,
+      "reviewStatus": "evidence-collected-review-required",
+      "reviewNote": "精确版本与许可原文已采集不等于人工审查通过。"
+    }
+  ],
+  "runtime": {
+    "version": {
+      "node": "24.20.0",
+      "acorn": "8.18.0",
+      "ada": "4.0.0",
+      "amaro": "1.1.11",
+      "ares": "1.34.8",
+      "brotli": "1.2.0",
+      "cldr": "48.0",
+      "icu": "78.2",
+      "llhttp": "9.4.3",
+      "merve": "1.2.2",
+      "modules": "149",
+      "napi": "10",
+      "nbytes": "0.1.4",
+      "ncrypto": "0.0.1",
+      "nghttp2": "1.70.0",
+      "nghttp3": "",
+      "ngtcp2": "",
+      "openssl": "0.0.0",
+      "simdjson": "4.6.6",
+      "simdutf": "7.7.0",
+      "sqlite": "3.53.4",
+      "tz": "2025c",
+      "undici": "7.29.0",
+      "unicode": "17.0",
+      "uv": "1.52.1",
+      "uvwasi": "0.0.23",
+      "v8": "15.2.124.19-electron.0",
+      "zlib": "1.3.2.1-motley",
+      "zstd": "1.6.0",
+      "electron": "44.3.0",
+      "chrome": "152.0.7977.78"
+    },
+    "archive": {
+      "declaredUpstreamUrl": "https://github.com/electron/electron/releases/download/v44.3.0/electron-v44.3.0-win32-x64.zip",
+      "expectedSha256": "26bf9a617d58d81772b3d68305d59ee48272969c15083c06db634a77358a8d9d",
+      "checksumMetadata": {
+        "path": "node_modules/electron/checksums.json",
+        "sha256": "95dfa29a2c8d62873e59de4dd6fc76b2f23390ca87aeef3104a1291fce52cc89"
+      },
+      "archiveRehashedDuringThisAudit": false,
+      "note": "上游预期归档哈希来自锁定 npm 包内 checksums.json；本脚本另行校验每个解压后的实际运行文件，不把预期值冒充重新下载归档实测。"
+    },
+    "evidence": [
+      {
+        "path": "compliance/license-evidence/electron-runtime-5154e165bd6c-LICENSE",
+        "originalPath": "node_modules/electron/dist/LICENSE",
+        "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+        "bytes": 1096
+      },
+      {
+        "path": "compliance/license-evidence/electron-runtime-7b328b8c7463-LICENSES.chromium.html",
+        "originalPath": "node_modules/electron/dist/LICENSES.chromium.html",
+        "sha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+        "bytes": 20472830
+      }
+    ],
+    "files": [
+      {
+        "path": "chrome_100_percent.pak",
+        "size": 719654,
+        "sha256": "ab7c4b7b6cb8832a31d44b95ec50ce52294f49422a3bdde4e21968eca2930cbe",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "chrome_200_percent.pak",
+        "size": 1269017,
+        "sha256": "30fa4a6e27c9ff2fb0f939f01158477e621a67d86e9ecb84cf11b3947db8eb9d",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "d3dcompiler_47.dll",
+        "size": 4741488,
+        "sha256": "a05f99734f7c4822fefc12b367af21fd0976ed6608752fb1e1e80b6ece7ecbbb",
+        "architecture": "x64",
+        "bundled": true,
+        "licenseReviewStatus": "incomplete-exact-binary-license-mapping",
+        "obligations": "将此精确二进制哈希与其上游构建、版权许可、再分发范围和任何对应源码义务逐一关联。"
+      },
+      {
+        "path": "dxcompiler.dll",
+        "size": 25744896,
+        "sha256": "b2b5c67bc4a9c92a0ea87000415e7970488d1ca25767518d4cc27b88f18fb6ac",
+        "architecture": "x64",
+        "bundled": true,
+        "licenseReviewStatus": "incomplete-exact-binary-license-mapping",
+        "obligations": "将此精确二进制哈希与其上游构建、版权许可、再分发范围和任何对应源码义务逐一关联。"
+      },
+      {
+        "path": "dxil.dll",
+        "size": 1509760,
+        "sha256": "77e039c905030a641e53658a008b74e90635a5ea9b6b79eabd0f2003bdfca59a",
+        "architecture": "x64",
+        "bundled": true,
+        "licenseReviewStatus": "incomplete-exact-binary-license-mapping",
+        "obligations": "将此精确二进制哈希与其上游构建、版权许可、再分发范围和任何对应源码义务逐一关联。"
+      },
+      {
+        "path": "electron.exe",
+        "size": 246070272,
+        "sha256": "e048632e03fabc96de5e10afbebc0aa31f4e1674155ea3d270597fe7523f9d80",
+        "architecture": "x64",
+        "bundled": true,
+        "licenseReviewStatus": "incomplete-exact-binary-license-mapping",
+        "obligations": "将此精确二进制哈希与其上游构建、版权许可、再分发范围和任何对应源码义务逐一关联。"
+      },
+      {
+        "path": "ffmpeg.dll",
+        "size": 3113472,
+        "sha256": "336587847c4ed3ef1a195d1aaea3d3951c9749a035ffa7951df4c0e02971e4e0",
+        "architecture": "x64",
+        "bundled": true,
+        "licenseReviewStatus": "incomplete-exact-binary-license-mapping",
+        "obligations": "将此精确二进制哈希与其上游构建、版权许可、再分发范围和任何对应源码义务逐一关联。"
+      },
+      {
+        "path": "icudtl.dat",
+        "size": 10876560,
+        "sha256": "9f48c7f9c7c94d516a14870707e910ab94d75ae640ff6842c4af53276cd26ebe",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "LICENSE",
+        "size": 1096,
+        "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "LICENSES.chromium.html",
+        "size": 20472830,
+        "sha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/af.pak",
+        "size": 636155,
+        "sha256": "3017b141bd16e24190d810f0748612f0fd4352ca8553002b9a63a7f77f7154f8",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/am.pak",
+        "size": 1029450,
+        "sha256": "67b938d162bc75db067120bb8366b5bafd9a75fa99a0ca9ad4f46b47d1d37634",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/ar.pak",
+        "size": 1130933,
+        "sha256": "a6eb037da4ac7930a8661c8bf602deee090fc4409bf4db24db8aab65c89b1d06",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/bg.pak",
+        "size": 1178203,
+        "sha256": "2eb9c74c67e4b13b45a73061fa978738e335bc245da71bab0ea9b205fe91074e",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/bn.pak",
+        "size": 1513545,
+        "sha256": "415621a5c0b1546e6e447d43b76414425a8703cc7681d637ec1f283ad0c787e7",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/ca.pak",
+        "size": 716908,
+        "sha256": "6f28297c1ccb628f534d65dade167ae559f83eace359acf47e48ff890b9409d5",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/cs.pak",
+        "size": 743351,
+        "sha256": "799a789ce531991cb975425730db310f9a8fe74091eee568f3e65fcc7ef0cd57",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/da.pak",
+        "size": 666465,
+        "sha256": "9a2cd25537a4818897481ba944981e8aee3d89c7ad37588d02f1deebff3f62d0",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/de.pak",
+        "size": 717834,
+        "sha256": "fcf63fd89e613a7ef69f16054b97b3493948e5c665aad180a91d3635256fb7d7",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/el.pak",
+        "size": 1295538,
+        "sha256": "37d2e1ef69fea9bdb1e0902cbc61a458baa9009fc3761029bd1c1882a7a0c9b2",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/en-GB.pak",
+        "size": 580030,
+        "sha256": "01d9200a5daee1770f7147b166d25baa6a8dd72c138c3c526421e656dec789f5",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/en-US.pak",
+        "size": 586582,
+        "sha256": "23b271e8009bfa14783700cd0712b4ecaa5b8f2ea28a4d81ae1d7e05bc0c96b1",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/es-419.pak",
+        "size": 707635,
+        "sha256": "6ff6ea0a14da50cacc4b72ab8c8c7b49c8423abb64f6a3a7f1643d8c3c74e6e9",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/es.pak",
+        "size": 703926,
+        "sha256": "4578e08033967a5062bfd3b1937e711df84571d444e4940b8ffe5366bce4e778",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/et.pak",
+        "size": 642216,
+        "sha256": "dd1205eae606f12510e24ce39f301439c98b3293d766ca5839dc292a14d7973c",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/fa.pak",
+        "size": 1063054,
+        "sha256": "f3675255feb8b054717be9e92e93289262f35e82f25f2f8de0d3ebf3865715af",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/fi.pak",
+        "size": 655113,
+        "sha256": "1f3123d7fb5c22a95b5250ea17450b665c3c6cd6a6dfd28bbdde15e1bf684a0e",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/fil.pak",
+        "size": 741385,
+        "sha256": "02e2c70d3d85b0deb677a9ae576ae3cf89e80774532cb3315c14f1e8ce64b310",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/fr.pak",
+        "size": 763453,
+        "sha256": "4db43f1cfba1ed1d7dd347d58fbab0b8d6d89dd008a3b9d2436d8744e3363453",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/gu.pak",
+        "size": 1495625,
+        "sha256": "e86e8c240d4b6283abb03c49df9e8899607ef9def6d4933c7a541d63b5835271",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/he.pak",
+        "size": 928748,
+        "sha256": "ddc1f304ab1f4489d19ae2b31e7f8e3ffb47dae439520159e8975422c65e4115",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/hi.pak",
+        "size": 1586592,
+        "sha256": "10a6f19c1982590e33476427dee8d4293b0707e25dc536d6394b5782ecc3b642",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/hr.pak",
+        "size": 715279,
+        "sha256": "d46c64ae8af3562e37eb80438aa2bee228fafda251d58ba4d0991291f1c72aab",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/hu.pak",
+        "size": 765640,
+        "sha256": "0a46fc8d50f74effd1cfe1979e677df3de6fc47e6b551267303d93d57bd83f50",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/id.pak",
+        "size": 635080,
+        "sha256": "f567569c42a25bb2dfc5c33e13aac558c0e2a1d5d4b969592bbd0841b36438db",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/it.pak",
+        "size": 693990,
+        "sha256": "899be10e8f46f53d9bbe7cab827fc17b7c2bd7184e31791688016e2ca4df6622",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/ja.pak",
+        "size": 842132,
+        "sha256": "9370c20a0612f5874dff2b015f31482e167eccf1b3c1d1a2efc1c2e38cefa88e",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/kn.pak",
+        "size": 1720240,
+        "sha256": "af5fed2130102ecc0c878059c88faed9d6db2e8b147fb5ae9e15e3fe69706c8a",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/ko.pak",
+        "size": 718709,
+        "sha256": "0f5bc49c4d35bfea1563db6eb77a074c65b39b49a916cb35a022ef96340338f2",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/lt.pak",
+        "size": 777281,
+        "sha256": "af969f4407c190dd01a426fa1244cb1ec7cdf2909d1c3ba5b87ff662ba567303",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/lv.pak",
+        "size": 774751,
+        "sha256": "27e20dfa5585161ef8b641f628aefe6c88d9f9590ffedb647e0c9da1cacf219d",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/ml.pak",
+        "size": 1767850,
+        "sha256": "b5606265910e45098a88e989202a550531f6d00333c6b112ed4c5cbc07b2ff6a",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/mr.pak",
+        "size": 1467313,
+        "sha256": "8465d4077ed5414cbcb7d9bdb00d85e515a1a069703cdc1d4d67c9d6e5623fb0",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/ms.pak",
+        "size": 668356,
+        "sha256": "af7021a00befa586aa067ae3ccb339079e6f13ee0cab1621836f6abb608b6f2a",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/nb.pak",
+        "size": 638121,
+        "sha256": "d97a2b0cbe6adc99add2ed3ce0d15d0bb124b778086c466c126634d60ea72608",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/nl.pak",
+        "size": 664767,
+        "sha256": "9d82c384fbb6480c7a6e721c6bcd1f2cd19665d848b056b5a2911504308ba037",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/pl.pak",
+        "size": 742064,
+        "sha256": "8a0969fc743d3e2f5111387d53c0d79e8c1d9f68256ad6553b87fca2bcaa7e6e",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/pt-BR.pak",
+        "size": 697044,
+        "sha256": "8272a84e2e6658dc4da17c6bd21995011fbaa6c328efafd24c4ebd4fe2e64916",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/pt-PT.pak",
+        "size": 701056,
+        "sha256": "bdfa7264dddf70f936f1785737969559a577b51d1952c820a468c611d18b17ca",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/ro.pak",
+        "size": 728144,
+        "sha256": "1e6b5b0dac63a9e951daf523de310f6bd9e5c53e281f37706d41bd35d2a08bb5",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/ru.pak",
+        "size": 1200996,
+        "sha256": "52a31a7ca057b8c76208620932120927a089502ddfb66c30de4324959f9e0075",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/sk.pak",
+        "size": 755475,
+        "sha256": "a53551e8d251fa01305afe1d0d187144c56bfdffd5d1aa9f96a9350b96c0a252",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/sl.pak",
+        "size": 722720,
+        "sha256": "e1371c8df577b979e3a515af34b0aaa3d07153c7a5c55d39a9b49a7ffe62d3d2",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/sr.pak",
+        "size": 1112919,
+        "sha256": "be4ce17afac24dffc1eb36609cb51e766e77097d6656b1008a2a825e59609cc1",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/sv.pak",
+        "size": 646537,
+        "sha256": "8bdff8855d23c739ece357f653c0a17bb36fe97577a5761912080d057ed341a5",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/sw.pak",
+        "size": 685130,
+        "sha256": "312b225a81cc3cc15f13f80c45dd0e0bb3655d31873d2956861207e70c33c1dc",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/ta.pak",
+        "size": 1758067,
+        "sha256": "91fb1460711df108d8d435a378c8be1d1e80b0886c0158d8c6ae92f35812681b",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/te.pak",
+        "size": 1629379,
+        "sha256": "fc8c2706c5dfd36e7af8e380a240e0f697cc5fe969b512092a2185896512c4af",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/th.pak",
+        "size": 1368866,
+        "sha256": "c1f4235c31bc05153230b0e55b7aabc9020d7460d5b0a025c386885e1e4bda3c",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/tr.pak",
+        "size": 697368,
+        "sha256": "ae87bbd88ce0adfc2dc3c460736a7d0513472af62fc856caccc638dedfec9b4a",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/uk.pak",
+        "size": 1211565,
+        "sha256": "a6230520dac708a6235588f5d9e894fcc9b1391e18a70e3220e06ddf80f76688",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/ur.pak",
+        "size": 1047994,
+        "sha256": "c218e21744df2ff0669a87d497d65d76333073577360d4c662c592de146bf82a",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/vi.pak",
+        "size": 830059,
+        "sha256": "42f3f0c4f645aedc66c12c74aee7256336a929798d736c56853daec91d44511a",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/zh-CN.pak",
+        "size": 592116,
+        "sha256": "ba8ac4bf82b50728d907215d1993948457835bf2942a4d7266a3f8af5f51de15",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "locales/zh-TW.pak",
+        "size": 583860,
+        "sha256": "82739378d17ea73e57c8efae31994e0c8818ab2d0d12cb1f6b20d2f340b3229d",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "resources/default_app.asar",
+        "size": 111073,
+        "sha256": "06d4a28be095a80eff94dbd18edcfac5b5805e1b5538e0fb7cee7c7ae81db76a",
+        "architecture": null,
+        "bundled": false
+      },
+      {
+        "path": "resources.pak",
+        "size": 12435445,
+        "sha256": "3d8c36b2ec7099a27fe00763e5af28319643ba65c1b48b85eb6a7caaae034ba6",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "snapshot_blob.bin",
+        "size": 368776,
+        "sha256": "1176cfa83f9ef458e7ed5b5b255c9289691dbef3ff1e4a073a5c90f9a16e8458",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "v8_context_snapshot.bin",
+        "size": 742208,
+        "sha256": "d9d3ec18e937ed2fddd02d92e4f0726919769e16f2ea17f962d23e40d5962b7b",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "version",
+        "size": 6,
+        "sha256": "a1d640d380c386200a420b590105d25da627723ee42ee1061108f3acde9f25fd",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "vk_swiftshader.dll",
+        "size": 5520384,
+        "sha256": "cfb8a533c5da1ade3fd4e66ebd0acf7186bd17fb3cc09d48809a7909c4aaf0f8",
+        "architecture": "x64",
+        "bundled": true,
+        "licenseReviewStatus": "incomplete-exact-binary-license-mapping",
+        "obligations": "将此精确二进制哈希与其上游构建、版权许可、再分发范围和任何对应源码义务逐一关联。"
+      },
+      {
+        "path": "vk_swiftshader_icd.json",
+        "size": 106,
+        "sha256": "32d83ff113fef532a9f97e0d2831f8656628ab1c99e9060f0332b1532839afd9",
+        "architecture": null,
+        "bundled": true
+      },
+      {
+        "path": "vulkan-1.dll",
+        "size": 939008,
+        "sha256": "c1b383f18c0949f233e949ae197c2ad4c416abe7790894d7e395d73116403b4f",
+        "architecture": "x64",
+        "bundled": true,
+        "licenseReviewStatus": "incomplete-exact-binary-license-mapping",
+        "obligations": "将此精确二进制哈希与其上游构建、版权许可、再分发范围和任何对应源码义务逐一关联。"
+      }
+    ],
+    "components": [
+      {
+        "name": "node",
+        "version": "24.20.0",
+        "versionReliable": true,
+        "bundled": true,
+        "source": "https://github.com/electron/electron/releases/tag/v44.3.0",
+        "evidence": [
+          {
+            "path": "compliance/license-evidence/electron-runtime-5154e165bd6c-LICENSE",
+            "originalPath": "node_modules/electron/dist/LICENSE",
+            "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+            "bytes": 1096
+          },
+          {
+            "path": "compliance/license-evidence/electron-runtime-7b328b8c7463-LICENSES.chromium.html",
+            "originalPath": "node_modules/electron/dist/LICENSES.chromium.html",
+            "sha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+            "bytes": 20472830
+          }
+        ],
+        "reviewStatus": "aggregate-notice-collected-component-mapping-required"
+      },
+      {
+        "name": "acorn",
+        "version": "8.18.0",
+        "versionReliable": true,
+        "bundled": true,
+        "source": "https://github.com/electron/electron/releases/tag/v44.3.0",
+        "evidence": [
+          {
+            "path": "compliance/license-evidence/electron-runtime-5154e165bd6c-LICENSE",
+            "originalPath": "node_modules/electron/dist/LICENSE",
+            "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+            "bytes": 1096
+          },
+          {
+            "path": "compliance/license-evidence/electron-runtime-7b328b8c7463-LICENSES.chromium.html",
+            "originalPath": "node_modules/electron/dist/LICENSES.chromium.html",
+            "sha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+            "bytes": 20472830
+          }
+        ],
+        "reviewStatus": "aggregate-notice-collected-component-mapping-required"
+      },
+      {
+        "name": "ada",
+        "version": "4.0.0",
+        "versionReliable": true,
+        "bundled": true,
+        "source": "https://github.com/electron/electron/releases/tag/v44.3.0",
+        "evidence": [
+          {
+            "path": "compliance/license-evidence/electron-runtime-5154e165bd6c-LICENSE",
+            "originalPath": "node_modules/electron/dist/LICENSE",
+            "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+            "bytes": 1096
+          },
+          {
+            "path": "compliance/license-evidence/electron-runtime-7b328b8c7463-LICENSES.chromium.html",
+            "originalPath": "node_modules/electron/dist/LICENSES.chromium.html",
+            "sha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+            "bytes": 20472830
+          }
+        ],
+        "reviewStatus": "aggregate-notice-collected-component-mapping-required"
+      },
+      {
+        "name": "amaro",
+        "version": "1.1.11",
+        "versionReliable": true,
+        "bundled": true,
+        "source": "https://github.com/electron/electron/releases/tag/v44.3.0",
+        "evidence": [
+          {
+            "path": "compliance/license-evidence/electron-runtime-5154e165bd6c-LICENSE",
+            "originalPath": "node_modules/electron/dist/LICENSE",
+            "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+            "bytes": 1096
+          },
+          {
+            "path": "compliance/license-evidence/electron-runtime-7b328b8c7463-LICENSES.chromium.html",
+            "originalPath": "node_modules/electron/dist/LICENSES.chromium.html",
+            "sha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+            "bytes": 20472830
+          }
+        ],
+        "reviewStatus": "aggregate-notice-collected-component-mapping-required"
+      },
+      {
+        "name": "ares",
+        "version": "1.34.8",
+        "versionReliable": true,
+        "bundled": true,
+        "source": "https://github.com/electron/electron/releases/tag/v44.3.0",
+        "evidence": [
+          {
+            "path": "compliance/license-evidence/electron-runtime-5154e165bd6c-LICENSE",
+            "originalPath": "node_modules/electron/dist/LICENSE",
+            "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+            "bytes": 1096
+          },
+          {
+            "path": "compliance/license-evidence/electron-runtime-7b328b8c7463-LICENSES.chromium.html",
+            "originalPath": "node_modules/electron/dist/LICENSES.chromium.html",
+            "sha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+            "bytes": 20472830
+          }
+        ],
+        "reviewStatus": "aggregate-notice-collected-component-mapping-required"
+      },
+      {
+        "name": "brotli",
+        "version": "1.2.0",
+        "versionReliable": true,
+        "bundled": true,
+        "source": "https://github.com/electron/electron/releases/tag/v44.3.0",
+        "evidence": [
+          {
+            "path": "compliance/license-evidence/electron-runtime-5154e165bd6c-LICENSE",
+            "originalPath": "node_modules/electron/dist/LICENSE",
+            "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+            "bytes": 1096
+          },
+          {
+            "path": "compliance/license-evidence/electron-runtime-7b328b8c7463-LICENSES.chromium.html",
+            "originalPath": "node_modules/electron/dist/LICENSES.chromium.html",
+            "sha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+            "bytes": 20472830
+          }
+        ],
+        "reviewStatus": "aggregate-notice-collected-component-mapping-required"
+      },
+      {
+        "name": "icu",
+        "version": "78.2",
+        "versionReliable": true,
+        "bundled": true,
+        "source": "https://github.com/electron/electron/releases/tag/v44.3.0",
+        "evidence": [
+          {
+            "path": "compliance/license-evidence/electron-runtime-5154e165bd6c-LICENSE",
+            "originalPath": "node_modules/electron/dist/LICENSE",
+            "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+            "bytes": 1096
+          },
+          {
+            "path": "compliance/license-evidence/electron-runtime-7b328b8c7463-LICENSES.chromium.html",
+            "originalPath": "node_modules/electron/dist/LICENSES.chromium.html",
+            "sha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+            "bytes": 20472830
+          }
+        ],
+        "reviewStatus": "aggregate-notice-collected-component-mapping-required"
+      },
+      {
+        "name": "llhttp",
+        "version": "9.4.3",
+        "versionReliable": true,
+        "bundled": true,
+        "source": "https://github.com/electron/electron/releases/tag/v44.3.0",
+        "evidence": [
+          {
+            "path": "compliance/license-evidence/electron-runtime-5154e165bd6c-LICENSE",
+            "originalPath": "node_modules/electron/dist/LICENSE",
+            "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+            "bytes": 1096
+          },
+          {
+            "path": "compliance/license-evidence/electron-runtime-7b328b8c7463-LICENSES.chromium.html",
+            "originalPath": "node_modules/electron/dist/LICENSES.chromium.html",
+            "sha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+            "bytes": 20472830
+          }
+        ],
+        "reviewStatus": "aggregate-notice-collected-component-mapping-required"
+      },
+      {
+        "name": "merve",
+        "version": "1.2.2",
+        "versionReliable": true,
+        "bundled": true,
+        "source": "https://github.com/electron/electron/releases/tag/v44.3.0",
+        "evidence": [
+          {
+            "path": "compliance/license-evidence/electron-runtime-5154e165bd6c-LICENSE",
+            "originalPath": "node_modules/electron/dist/LICENSE",
+            "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+            "bytes": 1096
+          },
+          {
+            "path": "compliance/license-evidence/electron-runtime-7b328b8c7463-LICENSES.chromium.html",
+            "originalPath": "node_modules/electron/dist/LICENSES.chromium.html",
+            "sha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+            "bytes": 20472830
+          }
+        ],
+        "reviewStatus": "aggregate-notice-collected-component-mapping-required"
+      },
+      {
+        "name": "nbytes",
+        "version": "0.1.4",
+        "versionReliable": true,
+        "bundled": true,
+        "source": "https://github.com/electron/electron/releases/tag/v44.3.0",
+        "evidence": [
+          {
+            "path": "compliance/license-evidence/electron-runtime-5154e165bd6c-LICENSE",
+            "originalPath": "node_modules/electron/dist/LICENSE",
+            "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+            "bytes": 1096
+          },
+          {
+            "path": "compliance/license-evidence/electron-runtime-7b328b8c7463-LICENSES.chromium.html",
+            "originalPath": "node_modules/electron/dist/LICENSES.chromium.html",
+            "sha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+            "bytes": 20472830
+          }
+        ],
+        "reviewStatus": "aggregate-notice-collected-component-mapping-required"
+      },
+      {
+        "name": "ncrypto",
+        "version": "0.0.1",
+        "versionReliable": true,
+        "bundled": true,
+        "source": "https://github.com/electron/electron/releases/tag/v44.3.0",
+        "evidence": [
+          {
+            "path": "compliance/license-evidence/electron-runtime-5154e165bd6c-LICENSE",
+            "originalPath": "node_modules/electron/dist/LICENSE",
+            "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+            "bytes": 1096
+          },
+          {
+            "path": "compliance/license-evidence/electron-runtime-7b328b8c7463-LICENSES.chromium.html",
+            "originalPath": "node_modules/electron/dist/LICENSES.chromium.html",
+            "sha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+            "bytes": 20472830
+          }
+        ],
+        "reviewStatus": "aggregate-notice-collected-component-mapping-required"
+      },
+      {
+        "name": "nghttp2",
+        "version": "1.70.0",
+        "versionReliable": true,
+        "bundled": true,
+        "source": "https://github.com/electron/electron/releases/tag/v44.3.0",
+        "evidence": [
+          {
+            "path": "compliance/license-evidence/electron-runtime-5154e165bd6c-LICENSE",
+            "originalPath": "node_modules/electron/dist/LICENSE",
+            "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+            "bytes": 1096
+          },
+          {
+            "path": "compliance/license-evidence/electron-runtime-7b328b8c7463-LICENSES.chromium.html",
+            "originalPath": "node_modules/electron/dist/LICENSES.chromium.html",
+            "sha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+            "bytes": 20472830
+          }
+        ],
+        "reviewStatus": "aggregate-notice-collected-component-mapping-required"
+      },
+      {
+        "name": "openssl",
+        "version": "0.0.0",
+        "versionReliable": false,
+        "bundled": true,
+        "source": "https://github.com/electron/electron/releases/tag/v44.3.0",
+        "evidence": [
+          {
+            "path": "compliance/license-evidence/electron-runtime-5154e165bd6c-LICENSE",
+            "originalPath": "node_modules/electron/dist/LICENSE",
+            "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+            "bytes": 1096
+          },
+          {
+            "path": "compliance/license-evidence/electron-runtime-7b328b8c7463-LICENSES.chromium.html",
+            "originalPath": "node_modules/electron/dist/LICENSES.chromium.html",
+            "sha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+            "bytes": 20472830
+          }
+        ],
+        "reviewStatus": "aggregate-notice-collected-component-mapping-required"
+      },
+      {
+        "name": "simdjson",
+        "version": "4.6.6",
+        "versionReliable": true,
+        "bundled": true,
+        "source": "https://github.com/electron/electron/releases/tag/v44.3.0",
+        "evidence": [
+          {
+            "path": "compliance/license-evidence/electron-runtime-5154e165bd6c-LICENSE",
+            "originalPath": "node_modules/electron/dist/LICENSE",
+            "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+            "bytes": 1096
+          },
+          {
+            "path": "compliance/license-evidence/electron-runtime-7b328b8c7463-LICENSES.chromium.html",
+            "originalPath": "node_modules/electron/dist/LICENSES.chromium.html",
+            "sha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+            "bytes": 20472830
+          }
+        ],
+        "reviewStatus": "aggregate-notice-collected-component-mapping-required"
+      },
+      {
+        "name": "simdutf",
+        "version": "7.7.0",
+        "versionReliable": true,
+        "bundled": true,
+        "source": "https://github.com/electron/electron/releases/tag/v44.3.0",
+        "evidence": [
+          {
+            "path": "compliance/license-evidence/electron-runtime-5154e165bd6c-LICENSE",
+            "originalPath": "node_modules/electron/dist/LICENSE",
+            "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+            "bytes": 1096
+          },
+          {
+            "path": "compliance/license-evidence/electron-runtime-7b328b8c7463-LICENSES.chromium.html",
+            "originalPath": "node_modules/electron/dist/LICENSES.chromium.html",
+            "sha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+            "bytes": 20472830
+          }
+        ],
+        "reviewStatus": "aggregate-notice-collected-component-mapping-required"
+      },
+      {
+        "name": "sqlite",
+        "version": "3.53.4",
+        "versionReliable": true,
+        "bundled": true,
+        "source": "https://github.com/electron/electron/releases/tag/v44.3.0",
+        "evidence": [
+          {
+            "path": "compliance/license-evidence/electron-runtime-5154e165bd6c-LICENSE",
+            "originalPath": "node_modules/electron/dist/LICENSE",
+            "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+            "bytes": 1096
+          },
+          {
+            "path": "compliance/license-evidence/electron-runtime-7b328b8c7463-LICENSES.chromium.html",
+            "originalPath": "node_modules/electron/dist/LICENSES.chromium.html",
+            "sha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+            "bytes": 20472830
+          }
+        ],
+        "reviewStatus": "aggregate-notice-collected-component-mapping-required"
+      },
+      {
+        "name": "undici",
+        "version": "7.29.0",
+        "versionReliable": true,
+        "bundled": true,
+        "source": "https://github.com/electron/electron/releases/tag/v44.3.0",
+        "evidence": [
+          {
+            "path": "compliance/license-evidence/electron-runtime-5154e165bd6c-LICENSE",
+            "originalPath": "node_modules/electron/dist/LICENSE",
+            "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+            "bytes": 1096
+          },
+          {
+            "path": "compliance/license-evidence/electron-runtime-7b328b8c7463-LICENSES.chromium.html",
+            "originalPath": "node_modules/electron/dist/LICENSES.chromium.html",
+            "sha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+            "bytes": 20472830
+          }
+        ],
+        "reviewStatus": "aggregate-notice-collected-component-mapping-required"
+      },
+      {
+        "name": "uv",
+        "version": "1.52.1",
+        "versionReliable": true,
+        "bundled": true,
+        "source": "https://github.com/electron/electron/releases/tag/v44.3.0",
+        "evidence": [
+          {
+            "path": "compliance/license-evidence/electron-runtime-5154e165bd6c-LICENSE",
+            "originalPath": "node_modules/electron/dist/LICENSE",
+            "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+            "bytes": 1096
+          },
+          {
+            "path": "compliance/license-evidence/electron-runtime-7b328b8c7463-LICENSES.chromium.html",
+            "originalPath": "node_modules/electron/dist/LICENSES.chromium.html",
+            "sha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+            "bytes": 20472830
+          }
+        ],
+        "reviewStatus": "aggregate-notice-collected-component-mapping-required"
+      },
+      {
+        "name": "uvwasi",
+        "version": "0.0.23",
+        "versionReliable": true,
+        "bundled": true,
+        "source": "https://github.com/electron/electron/releases/tag/v44.3.0",
+        "evidence": [
+          {
+            "path": "compliance/license-evidence/electron-runtime-5154e165bd6c-LICENSE",
+            "originalPath": "node_modules/electron/dist/LICENSE",
+            "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+            "bytes": 1096
+          },
+          {
+            "path": "compliance/license-evidence/electron-runtime-7b328b8c7463-LICENSES.chromium.html",
+            "originalPath": "node_modules/electron/dist/LICENSES.chromium.html",
+            "sha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+            "bytes": 20472830
+          }
+        ],
+        "reviewStatus": "aggregate-notice-collected-component-mapping-required"
+      },
+      {
+        "name": "v8",
+        "version": "15.2.124.19-electron.0",
+        "versionReliable": true,
+        "bundled": true,
+        "source": "https://github.com/electron/electron/releases/tag/v44.3.0",
+        "evidence": [
+          {
+            "path": "compliance/license-evidence/electron-runtime-5154e165bd6c-LICENSE",
+            "originalPath": "node_modules/electron/dist/LICENSE",
+            "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+            "bytes": 1096
+          },
+          {
+            "path": "compliance/license-evidence/electron-runtime-7b328b8c7463-LICENSES.chromium.html",
+            "originalPath": "node_modules/electron/dist/LICENSES.chromium.html",
+            "sha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+            "bytes": 20472830
+          }
+        ],
+        "reviewStatus": "aggregate-notice-collected-component-mapping-required"
+      },
+      {
+        "name": "zlib",
+        "version": "1.3.2.1-motley",
+        "versionReliable": true,
+        "bundled": true,
+        "source": "https://github.com/electron/electron/releases/tag/v44.3.0",
+        "evidence": [
+          {
+            "path": "compliance/license-evidence/electron-runtime-5154e165bd6c-LICENSE",
+            "originalPath": "node_modules/electron/dist/LICENSE",
+            "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+            "bytes": 1096
+          },
+          {
+            "path": "compliance/license-evidence/electron-runtime-7b328b8c7463-LICENSES.chromium.html",
+            "originalPath": "node_modules/electron/dist/LICENSES.chromium.html",
+            "sha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+            "bytes": 20472830
+          }
+        ],
+        "reviewStatus": "aggregate-notice-collected-component-mapping-required"
+      },
+      {
+        "name": "zstd",
+        "version": "1.6.0",
+        "versionReliable": true,
+        "bundled": true,
+        "source": "https://github.com/electron/electron/releases/tag/v44.3.0",
+        "evidence": [
+          {
+            "path": "compliance/license-evidence/electron-runtime-5154e165bd6c-LICENSE",
+            "originalPath": "node_modules/electron/dist/LICENSE",
+            "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+            "bytes": 1096
+          },
+          {
+            "path": "compliance/license-evidence/electron-runtime-7b328b8c7463-LICENSES.chromium.html",
+            "originalPath": "node_modules/electron/dist/LICENSES.chromium.html",
+            "sha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+            "bytes": 20472830
+          }
+        ],
+        "reviewStatus": "aggregate-notice-collected-component-mapping-required"
+      },
+      {
+        "name": "electron",
+        "version": "44.3.0",
+        "versionReliable": true,
+        "bundled": true,
+        "source": "https://github.com/electron/electron/releases/tag/v44.3.0",
+        "evidence": [
+          {
+            "path": "compliance/license-evidence/electron-runtime-5154e165bd6c-LICENSE",
+            "originalPath": "node_modules/electron/dist/LICENSE",
+            "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+            "bytes": 1096
+          },
+          {
+            "path": "compliance/license-evidence/electron-runtime-7b328b8c7463-LICENSES.chromium.html",
+            "originalPath": "node_modules/electron/dist/LICENSES.chromium.html",
+            "sha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+            "bytes": 20472830
+          }
+        ],
+        "reviewStatus": "aggregate-notice-collected-component-mapping-required"
+      },
+      {
+        "name": "chrome",
+        "version": "152.0.7977.78",
+        "versionReliable": true,
+        "bundled": true,
+        "source": "https://github.com/electron/electron/releases/tag/v44.3.0",
+        "evidence": [
+          {
+            "path": "compliance/license-evidence/electron-runtime-5154e165bd6c-LICENSE",
+            "originalPath": "node_modules/electron/dist/LICENSE",
+            "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+            "bytes": 1096
+          },
+          {
+            "path": "compliance/license-evidence/electron-runtime-7b328b8c7463-LICENSES.chromium.html",
+            "originalPath": "node_modules/electron/dist/LICENSES.chromium.html",
+            "sha256": "7b328b8c7463ac9bfc7dc648c751533517c8441a0b5b21047d6c0b2620e60d70",
+            "bytes": 20472830
+          }
+        ],
+        "reviewStatus": "aggregate-notice-collected-component-mapping-required"
+      }
+    ],
+    "noticeHeadings": [
+      "2-dim General Purpose FFT (Fast Fourier/Cosine/Sine Transform) Package",
+      "@bufbuild/protobuf",
+      "@puppeteer/replay",
+      "Abseil",
+      "abseil",
+      "Acorn, a tiny, fast JavaScript parser written in JavaScript.",
+      "Activity",
+      "Activity Compose",
+      "Activity Kotlin Extensions",
+      "adler2",
+      "aho-corasick",
+      "Alliance for Open Media Video Codec",
+      "Almost Native Graphics Layer Engine",
+      "Android Explicit Synchronization",
+      "Android for Cars App",
+      "Android Graphics Path",
+      "Android Multi-Dex Library",
+      "Android NDK",
+      "Android Open Source Project - App Compat Library",
+      "Android SDK",
+      "Android Support CardView v7",
+      "Android Support Library Async Layout Inflater",
+      "Android Support Library core UI",
+      "Android Support Library core utils",
+      "Android Support Library Cursor Adapter",
+      "Android Support Library Interpolators",
+      "Android Support Library Local Broadcast Manager",
+      "Android Support Library v4",
+      "android_system_properties",
+      "AndroidX Test Library",
+      "androidx.core:core-pip",
+      "androidx.core:core-viewtree",
+      "androidx.credentials.registry:registry-provider",
+      "androidx.credentials.registry:registry-provider-play-services",
+      "androidx.pdf:pdf-core",
+      "androidx.pdf:pdf-document-service",
+      "androidx.pdf:pdf-ink",
+      "androidx.pdf:pdf-viewer",
+      "androidx.pdf:pdf-viewer-fragment",
+      "androidx.privacysandbox.ads:ads-adservices-java",
+      "Animal Sniffer Annotations",
+      "AnimatedVectorDrawable",
+      "Animation",
+      "Annotation",
+      "Anonymous Tokens",
+      "Anti-Grain Geometry",
+      "antlr4rust",
+      "anyhow",
+      "apiclient",
+      "AppCompat",
+      "AppCompat Resources",
+      "AppSearch",
+      "AppSearch Builtin Types",
+      "AppSearch Platform Storage",
+      "Arch-Common",
+      "Arch-Runtime",
+      "ARCore",
+      "ARCore SDK",
+      "ARCore SDK client library for Chrome",
+      "ARM_NEON_2_x86_SSE",
+      "array-init",
+      "asm",
+      "atomicfu",
+      "Auto installer for plumber-android-core",
+      "autocfg",
+      "Autofill",
+      "AutoService",
+      "AXE-CORE Accessibility Audit",
+      "base64",
+      "BeautifulSoup",
+      "better_any",
+      "Biometric",
+      "bit-set",
+      "bit-vec",
+      "bitflags",
+      "Blackmagic DeckLink SDK - Mac",
+      "blink HTMLTokenizer",
+      "BoringSSL",
+      "BoringSSL",
+      "Braille Translation Library",
+      "Brotli",
+      "Browser",
+      "bytemuck",
+      "bytemuck_derive",
+      "byteorder",
+      "byteorder-lite",
+      "bytes",
+      "C++ Big Interger Library",
+      "C++ port of zxcvbn, an advanced password strength estimation library.",
+      "cachetools",
+      "calendrical_calculations",
+      "Cardboard SDK",
+      "CastCore Publics",
+      "CF",
+      "cfg-if",
+      "Checked in build outputs generated on Windows.",
+      "Checker Qual",
+      "Checker Util",
+      "ChromeOS Components",
+      "ChromeVox",
+      "Chromium OS system API",
+      "ChromiumUpdater",
+      "chrono",
+      "CityHash",
+      "Closure Library",
+      "CodeMirror 5",
+      "CodeMirror 6",
+      "codespan-reporting",
+      "collections",
+      "Collections Kotlin Extensions",
+      "common",
+      "Compact Encoding Detection",
+      "Compact Language Detector v3",
+      "compiler-rt",
+      "Compose Animation",
+      "Compose Animation Core",
+      "Compose Foundation",
+      "Compose Geometry",
+      "Compose Google Fonts integration",
+      "Compose Graphics",
+      "Compose Layouts",
+      "Compose Material Ripple",
+      "Compose Material3 Components",
+      "Compose Material3 Ripple",
+      "Compose Navigation",
+      "Compose Runtime",
+      "Compose Runtime Annotation",
+      "Compose Runtime Retain",
+      "Compose Saveable",
+      "Compose UI",
+      "Compose UI Text",
+      "Compose Unit",
+      "Compose Util",
+      "ConstraintLayout",
+      "ConstraintLayout Core",
+      "Coordinator Layout",
+      "Core",
+      "Core Kotlin Extensions",
+      "Core ML Tools",
+      "core-common",
+      "core-foundation-sys",
+      "core_maths",
+      "coverage.py",
+      "cpu_features",
+      "cpuinfo",
+      "CrabbyAvif - Library for decoding AVIF files.",
+      "Crashpad",
+      "CRC32C",
+      "crc32fast",
+      "Credentials",
+      "Credentials Play Services Auth",
+      "CSP Evaluator Core Library, a tool that allows developers to check if a Content Security Policy (CSP) serves as mitigation against XSS attacks",
+      "Curtains",
+      "Custom View",
+      "CustomView Pooling Container",
+      "cxx",
+      "cxxbridge-flags",
+      "cxxbridge-macro",
+      "d3",
+      "Darwin",
+      "Darwin configd",
+      "DataStore",
+      "DataStore Core",
+      "DataStore Core Okio",
+      "dav1d is an AV1 decoder :)",
+      "Dawn",
+      "Dependencies sourced from the upstream `chromium` repository",
+      "derivre",
+      "Devtools-Frontend",
+      "DFA UTF-8 Decoder",
+      "diplomat",
+      "diplomat-runtime",
+      "diplomat_core",
+      "DirectX-Shader-Compiler",
+      "displaydoc",
+      "Document File",
+      "dom-distiller-js",
+      "dragonbox",
+      "Drawer Layout",
+      "DynamicAnimation",
+      "EasyList",
+      "EGL-Registry",
+      "Eigen",
+      "either",
+      "Emoji",
+      "Emoji Segmenter",
+      "emoji-metadata",
+      "Emoji2",
+      "Emoji2 Views Helper",
+      "equivalent",
+      "error-prone annotations",
+      "etc1",
+      "ExifInterface",
+      "Expat XML Parser",
+      "Experimental annotation",
+      "FarmHash",
+      "fast_float",
+      "fdeflate",
+      "feature-delivery",
+      "federated-compute",
+      "fend-core",
+      "ffmpeg",
+      "fft",
+      "Fiat-Crypto: Synthesizing Correct-by-Construction Code for Cryptographic Primitives",
+      "FideltyFX Single Pass Downsampler",
+      "FindBugs-jsr305",
+      "firebase-annotations",
+      "firebase-common",
+      "firebase-components",
+      "firebase-datatransport",
+      "firebase-encoders",
+      "firebase-encoders-json",
+      "firebase-encoders-proto",
+      "firebase-iid-interop",
+      "firebase-installations",
+      "firebase-installations-interop",
+      "firebase-measurement-connector",
+      "firebase-messaging",
+      "fixed_decimal",
+      "flac",
+      "FlatBuffers",
+      "flate2",
+      "Flot",
+      "foldhash",
+      "font-types",
+      "fontconfig",
+      "FP16",
+      "fragment",
+      "Fragment Compose",
+      "Fragment Kotlin Extensions",
+      "FreeType",
+      "FreeType",
+      "Fuchsia GN SDK",
+      "Fuse.js",
+      "Futures",
+      "Futures Kotlin Extensions",
+      "FXDiv",
+      "gemmlowp",
+      "genai-common",
+      "genai-prompt",
+      "genai-schema",
+      "General Purpose FFT (Fast Fourier/Cosine/Sine Transform) Package",
+      "getopt",
+      "getrandom",
+      "GifPlayer Animated GIF Library",
+      "glibc",
+      "Google Chrome Content Analysis Connector Agent SDK",
+      "Google Closure Library",
+      "Google Cloud Storage Client Library",
+      "Google Double Conversion",
+      "Google Input Tools",
+      "google-auth",
+      "google-glog&#x27;s symbolization library",
+      "googleapis",
+      "googleid",
+      "Granite",
+      "Graphics Core",
+      "Graphics Shapes",
+      "Graphy",
+      "Gregory Pietsch getopt",
+      "Grid Layout",
+      "grpc",
+      "gtk",
+      "Guava InternalFutureFailureAccess and InternalFutures",
+      "Guava: Google Core Libraries for Java",
+      "harfbuzz",
+      "harfrust",
+      "hashbrown",
+      "Headers for DirectX APIs.",
+      "Headers for the Windows WebAuthn API (webauthn.dll)",
+      "Headers for WindowsAppsSDK",
+      "heck",
+      "Highway: C++ library for SIMD",
+      "Highway: C++ library for SIMD",
+      "hmac-sha256",
+      "hunspell",
+      "hunspell dictionaries",
+      "hyphenation-patterns",
+      "IAccessible2 COM interfaces for accessibility",
+      "iamf_tools",
+      "iana-time-zone",
+      "icu",
+      "icu_calendar",
+      "icu_calendar_data",
+      "icu_casemap",
+      "icu_casemap_data",
+      "icu_collections",
+      "icu_decimal",
+      "icu_decimal_data",
+      "icu_experimental",
+      "icu_experimental_data",
+      "icu_list",
+      "icu_list_data",
+      "icu_locale",
+      "icu_locale_core",
+      "icu_locale_data",
+      "icu_normalizer",
+      "icu_normalizer_data",
+      "icu_pattern",
+      "icu_plurals",
+      "icu_plurals_data",
+      "icu_properties",
+      "icu_properties_data",
+      "icu_provider",
+      "idna",
+      "ijson",
+      "image",
+      "Implementation of WebDriver BiDi standard",
+      "impress",
+      "In line A-law and u-law conversion routines",
+      "incremental-font-transfer",
+      "indexmap",
+      "Ink",
+      "Ink Authoring",
+      "Ink Brush",
+      "Ink Geometry",
+      "Ink Native Loader",
+      "Ink Rendering",
+      "Ink Strokes",
+      "inspector protocol",
+      "inspector protocol",
+      "International Phone Number Library",
+      "intl-messageformat",
+      "io.grpc:grpc-api",
+      "io.grpc:grpc-stub",
+      "ipcz",
+      "ISimpleDOM COM interfaces for accessibility",
+      "itertools",
+      "itoa",
+      "ixdtf",
+      "J2ObjC Annotations",
+      "javax.inject",
+      "JNI Zero",
+      "jpeg-encoder",
+      "jpeg-js",
+      "jQuery",
+      "JSON for Modern C++",
+      "json5",
+      "jsoncpp",
+      "JSpecify annotations",
+      "JSZip",
+      "jxl",
+      "jxl_macros",
+      "jxl_simd",
+      "jxl_transforms",
+      "Khronos header files",
+      "Kotlin Android Extensions Runtime",
+      "Kotlin Standard Library",
+      "kotlinx-coroutines-android",
+      "kotlinx-coroutines-core",
+      "kotlinx-coroutines-guava",
+      "kotlinx-coroutines-play-services",
+      "kotlinx-serialization-core",
+      "kotlinx-serialization-json",
+      "lazy_static",
+      "LeakCanary - GC Utilities",
+      "LeakCanary Android",
+      "LeakCanary Android Utils",
+      "LeakCanary Core",
+      "LeakCanary for Android - Core",
+      "LeakCanary Object Watcher",
+      "LeakCanary Object Watcher for Android - Auto installing",
+      "LeakCanary Object Watcher for Android - Core",
+      "LeakCanary Object Watcher for Android extension: Android X fragments support",
+      "Leanback",
+      "Leanback Grid",
+      "Leanback Preference",
+      "legacy-javascript",
+      "Lens Protos",
+      "LevelDB: A Fast Persistent Key-Value Store",
+      "libaddressinput",
+      "libbrlapi",
+      "libc",
+      "libcxx",
+      "libcxxabi",
+      "libei",
+      "libgav1",
+      "libipp",
+      "libjingle XMPP and xmllite libraries",
+      "libjpeg-turbo",
+      "libm",
+      "libprotobuf-mutator",
+      "libsecret",
+      "libsrtp",
+      "Libtess2",
+      "LibTIFF",
+      "libunwind",
+      "libusbx",
+      "libutf",
+      "libvpx",
+      "libx11",
+      "libxcb-keysyms",
+      "libxml",
+      "libxslt",
+      "libyuv",
+      "libzip",
+      "Lifecycle Kotlin Extensions",
+      "Lifecycle LiveData",
+      "Lifecycle LiveData Core",
+      "Lifecycle Process",
+      "Lifecycle Runtime",
+      "Lifecycle Runtime Compose",
+      "Lifecycle Service",
+      "Lifecycle ViewModel",
+      "Lifecycle ViewModel Compose",
+      "Lifecycle ViewModel Kotlin Extensions",
+      "Lifecycle ViewModel with SavedState",
+      "Lifecycle-Common",
+      "Lifecycle-Common for Java 8",
+      "Lighthouse",
+      "Lighthouse i18n.js",
+      "linux-syscall-support",
+      "Lit",
+      "Lit",
+      "Lit",
+      "litemap",
+      "LiteRT",
+      "Little CMS",
+      "LiveData Core Kotlin Extensions",
+      "LiveData Kotlin Extensions",
+      "llguidance",
+      "llvm-libc",
+      "loader",
+      "lock_api",
+      "log",
+      "Lottie",
+      "Lottie Web",
+      "lottie_ios",
+      "LZMA SDK",
+      "Marked",
+      "Material color utilities",
+      "Material Components for Android",
+      "Material Web Components",
+      "Media",
+      "Media3 common module",
+      "Media3 Container module",
+      "Media3 database module",
+      "Media3 DataSource module",
+      "Media3 decoder module",
+      "Media3 ExoPlayer module",
+      "Media3 Extractor module",
+      "Media3 Session module",
+      "Media3 UI module",
+      "MediaController Android sample.",
+      "MediaPipe",
+      "Mediapipe Tasks Vision",
+      "MediaRouter",
+      "MediaStoreUtils Android sample.",
+      "memchr",
+      "memo-map",
+      "messageformat",
+      "Metrics Protos",
+      "Microsoft Authentication Library for JavaScript (MSAL.js) for Browser-Based Single-Page Applications",
+      "Microsoft Edge WebView2 SDK",
+      "minigbm",
+      "minijinja",
+      "miniz_oxide",
+      "mitt",
+      "mitt",
+      "ml_dtypes",
+      "modp base64 decoder",
+      "Motion Prediction",
+      "moxcms",
+      "Mozilla Personal Security Manager",
+      "Mozilla Windows Cert code",
+      "murmur3",
+      "Navigation Common",
+      "Navigation Event",
+      "Navigation Runtime",
+      "NavigationEvent Compose",
+      "Nearby Connections Library",
+      "Netscape Portable Runtime (NSPR)",
+      "Node.js",
+      "num-bigint",
+      "num-complex",
+      "num-derive",
+      "num-integer",
+      "num-rational",
+      "num-traits",
+      "NVidia Control X Extension Library",
+      "oak",
+      "Oboe.js",
+      "okio",
+      "Omnibox Protos",
+      "once_cell",
+      "One Euro Filter",
+      "Open Screen Protocol Library",
+      "OpenGL-Registry",
+      "OpenH264",
+      "OpenJPEG",
+      "opus",
+      "ordered-float",
+      "OTS (OpenType Sanitizer)",
+      "Paging-Common",
+      "Paging-Common Kotlin Extensions",
+      "Paging-Compose",
+      "Paging-Runtime",
+      "pako",
+      "pako - zlib port to javascript, very fast!",
+      "Palette",
+      "Parcelize Runtime",
+      "parking_lot",
+      "parking_lot_core",
+      "parsel",
+      "Paul Hsieh&#x27;s SuperFastHash",
+      "PDFium",
+      "Perfetto",
+      "PFFFT: a pretty fast FFT.",
+      "plasma-wayland-protocols",
+      "play-services-auth",
+      "play-services-auth-api-phone",
+      "play-services-auth-base",
+      "play-services-auth-blockstore",
+      "play-services-base",
+      "play-services-basement",
+      "play-services-cast",
+      "play-services-cast-framework",
+      "play-services-clearcut",
+      "play-services-cloud-messaging",
+      "play-services-fido",
+      "play-services-flags",
+      "play-services-gcm",
+      "play-services-identity-credentials",
+      "play-services-iid",
+      "play-services-instantapps",
+      "play-services-location",
+      "play-services-phenotype",
+      "play-services-stats",
+      "play-services-tasks",
+      "play-services-time",
+      "play-services-vision",
+      "play-services-vision-common",
+      "Plumber for Android - Core",
+      "png",
+      "Polymer",
+      "Polymer",
+      "Portaudio library for mac",
+      "potential_utf",
+      "pprof",
+      "Preference",
+      "Preferences DataStore",
+      "Preferences DataStore Core",
+      "Preferences DataStore Proto",
+      "Preferences External Protobuf",
+      "primal-check",
+      "Print",
+      "Privacy Sandbox for Ad Services",
+      "Private Join and Compute subset",
+      "proc-macro-error-attr2",
+      "proc-macro-error2",
+      "proc-macro2",
+      "Profile Installer",
+      "Protected Content Interface for libva",
+      "Protocol Buffers",
+      "Protocol Buffers (javascript)",
+      "Protocol Buffers [Lite]",
+      "protodatastore-cpp",
+      "PSM (Private Set Membership) client side",
+      "pthreadpool",
+      "Public Khronos WebGL Conformance Tests repository",
+      "Puffin deterministic deflate recompressor",
+      "Puppeteer Core",
+      "pxfm",
+      "pyasn1_modules",
+      "pybind11",
+      "pyfakefs",
+      "pyparsing",
+      "qr_code",
+      "QUICHE",
+      "quote",
+      "rapidhash",
+      "rapidhash",
+      "re2 - an efficient, principled regular expression library",
+      "reactive-streams",
+      "read-fonts",
+      "readability",
+      "Recurrent neural network for audio noise reduction",
+      "RecyclerView",
+      "Redux",
+      "ref-cast",
+      "ref-cast-impl",
+      "regex-automata",
+      "regex-lite",
+      "regex-syntax",
+      "resb",
+      "Resource Inspection - Annotations",
+      "review",
+      "rjsmin",
+      "Room-Common",
+      "Room-Runtime",
+      "rustfft",
+      "rustversion",
+      "RxAndroid",
+      "RxJava",
+      "rxjs",
+      "ryu",
+      "Saved State",
+      "Saved State Compose",
+      "SavedState Kotlin Extensions",
+      "scopeguard",
+      "ScreenAI Library",
+      "Search Engines resources",
+      "Secure Message",
+      "Selenium Atoms",
+      "Sentencepiece",
+      "serde",
+      "serde_core",
+      "serde_derive",
+      "serde_json",
+      "serde_json_lenient",
+      "Sframe",
+      "sfv",
+      "shared-brotli-patch-decoder",
+      "Shark",
+      "Shark for Android heaps",
+      "Shark Graph",
+      "Shark Hprof",
+      "Shark Log",
+      "simd-adler32",
+      "simdutf unicode transcoder",
+      "Simple Homomorphic Encryption Library with Lattices",
+      "simplejson",
+      "six",
+      "Sizzle",
+      "skera",
+      "Skia",
+      "skrifa",
+      "Sliding Pane Layout",
+      "smallvec",
+      "SMHasher",
+      "Snappy: A fast compressor/decompressor",
+      "source-map-scopes-codec",
+      "Speech Dispatcher",
+      "Speech Rule Engine",
+      "SPIR-V Headers",
+      "SPIR-V Tools",
+      "SPIRV-Headers",
+      "SPIRV-Tools",
+      "spl sqrt floor",
+      "SQLite",
+      "sqlite",
+      "SQLite Framework Integration",
+      "Squirrel",
+      "stable_deref_trait",
+      "Startup Runtime",
+      "static_assertions",
+      "strck",
+      "strength_reduce",
+      "strum",
+      "strum_macros",
+      "subtle",
+      "SwiftShader",
+      "Swipe Refresh Layout",
+      "symphonia",
+      "symphonia-bundle-flac",
+      "symphonia-bundle-mp3",
+      "symphonia-codec-pcm",
+      "symphonia-codec-vorbis",
+      "symphonia-common",
+      "symphonia-core",
+      "symphonia-metadata",
+      "syn",
+      "synstructure",
+      "Tamachiyomi",
+      "temporal_capi",
+      "temporal_rs",
+      "TensorFlow Lite",
+      "TensorFlow Lite Support",
+      "TensorFlow Models",
+      "TensorFlow Text",
+      "tensorflow-federated",
+      "termcolor",
+      "Text Fragments Polyfill",
+      "The Chromium Project",
+      "The Diff Match and Patch libraries offer robust algorithms to perform the operations required for synchronizing plain text.",
+      "The ITU G.722 codec, encode and decode part.",
+      "The ruy matrix multiplication library",
+      "The USB ID Repository",
+      "third-party-web",
+      "thiserror",
+      "thiserror-impl",
+      "timezone_provider",
+      "Tiny CBOR",
+      "tinystr",
+      "toktrie",
+      "Tracing",
+      "Tracing Kotlin Extensions",
+      "Transition",
+      "transport-api",
+      "transport-backend-cct",
+      "transport-runtime",
+      "transpose",
+      "TV Provider",
+      "typ",
+      "typed-arena",
+      "typed-path",
+      "UKey2",
+      "Unicode Common Locale Data Repository",
+      "unicode-ident",
+      "unicode-width",
+      "UnRAR source for decompressing .RAR and other files.",
+      "URI Template Parser",
+      "URL Pattern Library",
+      "url_parse",
+      "utf8_iter",
+      "uuid",
+      "v4l-utils",
+      "V8 fork of fdlibm",
+      "V8 JavaScript Engine",
+      "VectorDrawable",
+      "VersionedParcelable",
+      "ViewPager",
+      "ViewPager2",
+      "Volk Meta loader for Vulkan API",
+      "Vulkan API headers",
+      "Vulkan Deps",
+      "Vulkan Loader Components",
+      "VulkanMemoryAllocator",
+      "Wasmparser",
+      "wayland",
+      "wayland-protocols",
+      "Web Vitals",
+      "webapp2",
+      "WebKit",
+      "Webkit",
+      "WebM container parser and writer.",
+      "WebP image encoder/decoder",
+      "WebRTC",
+      "Wicked Good XPath",
+      "winapi-util",
+      "WindowManager",
+      "WindowManager Core",
+      "Windows Template Library (WTL)",
+      "windows-link",
+      "windows-sys",
+      "windows-targets",
+      "windows_aarch64_msvc",
+      "windows_i686_msvc",
+      "windows_x86_64_msvc",
+      "woff2",
+      "WorkManager Multiprocess",
+      "WorkManager Runtime",
+      "write-fonts",
+      "writeable",
+      "Wuffs (Wrangling Untrusted File Formats Safely)",
+      "x11proto",
+      "xdg-user-dirs",
+      "xml",
+      "XNNPACK",
+      "xnu",
+      "XR ARCore OpenXR",
+      "XR ARCore Runtime",
+      "XR Manifest Runtime",
+      "XR Projected ARCore",
+      "XR Runtime",
+      "XR Runtime interfaces",
+      "XR SceneCore",
+      "XR SceneCore Runtime",
+      "XR SceneCore Spatial Core",
+      "XR SceneCore Spatial Rendering",
+      "xr.runtime:runtime-openxr",
+      "xxHash",
+      "yoke",
+      "yoke-derive",
+      "zerofrom",
+      "zerofrom-derive",
+      "zeroize",
+      "zeroize_derive",
+      "zerotrie",
+      "zerovec",
+      "zerovec-derive",
+      "zip",
+      "zlib",
+      "zlib",
+      "zmij",
+      "zod",
+      "zoneinfo64",
+      "Zstandard",
+      "zune-core",
+      "zune-jpeg"
+    ],
+    "chromiumComponentsFile": "compliance/chromium-components.json",
+    "chromiumComponentCount": 780
+  },
+  "installer": {
+    "format": "msi",
+    "engine": "Windows Installer",
+    "hostComponents": [
+      {
+        "name": "makecab.exe",
+        "roles": [
+          "developer-build"
+        ],
+        "source": "本机 Windows 系统组件",
+        "version": "host-provided; varies across supported Windows installations",
+        "observedBuildHostSha256": "070a98b4f7c03f99048a10f490d5916a9a98417e0d0de2c414c76b3dd00cb35e",
+        "bundled": false,
+        "modified": false,
+        "license": "host-Windows-license-not-redistributed",
+        "obligations": "不复制 Windows 组件到产品；安装与更新身份核验使用用户系统已有的 Windows Installer/PowerShell；不可用或被策略限制时停止，不调整保护配置。",
+        "reviewStatus": "not-redistributed"
+      },
+      {
+        "name": "msiexec.exe",
+        "roles": [
+          "developer-verification",
+          "installed-app-update-installation"
+        ],
+        "source": "本机 Windows 系统组件",
+        "version": "host-provided; varies across supported Windows installations",
+        "observedBuildHostSha256": "954d7d13a11827116cc88a12b1e12ce34604264948cc32e4a3ef6d6d6afa2913",
+        "bundled": false,
+        "modified": false,
+        "license": "host-Windows-license-not-redistributed",
+        "obligations": "不复制 Windows 组件到产品；安装与更新身份核验使用用户系统已有的 Windows Installer/PowerShell；不可用或被策略限制时停止，不调整保护配置。",
+        "reviewStatus": "not-redistributed"
+      },
+      {
+        "name": "msi.dll",
+        "roles": [
+          "developer-build",
+          "developer-verification",
+          "installed-app-update-inspection"
+        ],
+        "source": "本机 Windows 系统组件",
+        "version": "host-provided; varies across supported Windows installations",
+        "observedBuildHostSha256": "6df15971d5d40d4bed69f228183a8b4583dc20f43c9f38b72f893a626bf63f2d",
+        "bundled": false,
+        "modified": false,
+        "license": "host-Windows-license-not-redistributed",
+        "obligations": "不复制 Windows 组件到产品；安装与更新身份核验使用用户系统已有的 Windows Installer/PowerShell；不可用或被策略限制时停止，不调整保护配置。",
+        "reviewStatus": "not-redistributed"
+      },
+      {
+        "name": "WindowsPowerShell/v1.0/powershell.exe",
+        "roles": [
+          "developer-build",
+          "developer-verification",
+          "installed-app-update-inspection"
+        ],
+        "source": "本机 Windows 系统组件",
+        "version": "host-provided; varies across supported Windows installations",
+        "observedBuildHostSha256": "8bb6fa8c283b4d92120b1ef249a9b311b0f804d4cabbe9981159976c8be76a5e",
+        "bundled": false,
+        "modified": false,
+        "license": "host-Windows-license-not-redistributed",
+        "obligations": "不复制 Windows 组件到产品；安装与更新身份核验使用用户系统已有的 Windows Installer/PowerShell；不可用或被策略限制时停止，不调整保护配置。",
+        "reviewStatus": "not-redistributed"
+      }
+    ],
+    "bundledExecutableStub": false,
+    "buildCode": "scripts/release-msi.cjs 独立编写"
+  },
+  "historicalDevelopmentTool": null,
+  "assets": [
+    {
+      "name": "界面字体",
+      "version": "host-system",
+      "bundled": false,
+      "source": "操作系统字体回退，无字体文件复制",
+      "license": "not-redistributed",
+      "reviewStatus": "file-list-check-required"
+    },
+    {
+      "name": "项目自绘图形与图标",
+      "version": "0.5.2",
+      "bundled": true,
+      "source": "本项目绘制的图形独立登记；UI 模板参考/适配的第三方归属另见 uiReuse，不将模板组件宣称为原创",
+      "license": "proprietary-undetermined-by-owner",
+      "reviewStatus": "authorship-file-list-check-required"
+    }
+  ],
+  "uiReuse": {
+    "schemaVersion": 1,
+    "updatedAt": "2026-09-11T04:42:25.236Z",
+    "upstream": {
+      "name": "Shadcn Admin",
+      "repository": "https://github.com/satnaing/shadcn-admin",
+      "commit": "e16c87f213a5ba5e45964e9b67c792105ec74d26",
+      "version": "2.2.1"
+    },
+    "licenseEvidence": [
+      {
+        "name": "Shadcn Admin",
+        "license": "MIT",
+        "copyright": "Copyright (c) 2024 Sat Naing",
+        "source": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/LICENSE",
+        "path": "compliance/ui-reuse/licenses/LICENSE-shadcn-admin.txt",
+        "sha256": "d28c723c33a18dfed6af67b1a0ac368724f79bcb80750d3e080dbcf8dedb9e4b",
+        "bytes": 1066,
+        "commit": "e16c87f213a5ba5e45964e9b67c792105ec74d26",
+        "modified": false,
+        "actualSha256": "d28c723c33a18dfed6af67b1a0ac368724f79bcb80750d3e080dbcf8dedb9e4b",
+        "includedWithProduct": true
+      },
+      {
+        "name": "shadcn/ui upstream license notice",
+        "license": "MIT",
+        "copyright": "Copyright (c) 2023 shadcn",
+        "source": "https://raw.githubusercontent.com/shadcn-ui/ui/6ea6856f5a1082d4d9c231559b6bc3ee73827493/LICENSE.md",
+        "path": "compliance/ui-reuse/licenses/LICENSE-shadcn-ui.txt",
+        "sha256": "1564074e13439397221ffd522e2e504d56561994a23d371aa5e3ad43e4f5423f",
+        "bytes": 1063,
+        "commit": "6ea6856f5a1082d4d9c231559b6bc3ee73827493",
+        "modified": false,
+        "scope": "License-only upstream notice retained because Shadcn Admin documents adaptations from shadcn/ui. This is the license-file revision, not the unrecorded original component-code revision.",
+        "actualSha256": "1564074e13439397221ffd522e2e504d56561994a23d371aa5e3ad43e4f5423f",
+        "includedWithProduct": true
+      }
+    ],
+    "implementation": "Vanilla DOM/CSS adaptation preserving the existing Electron bridge and business controllers; not the React template runtime.",
+    "runtimeDependenciesAdded": [],
+    "status": "module-mapping-recorded",
+    "modules": [
+      {
+        "id": "data-table",
+        "purpose": "表格排序与分页交互",
+        "category": "layout-reference",
+        "upstreamPaths": [
+          "src/components/data-table/pagination.tsx",
+          "src/components/data-table/column-header.tsx"
+        ],
+        "localFiles": [
+          {
+            "path": "src/renderer/ui-behaviors.js",
+            "exists": true,
+            "sha256": "edeab12339511509693264604187b3851704836437ef366822a52d7b19a38783",
+            "bytes": 23742
+          }
+        ],
+        "localSections": [
+          "表格分页、稳定排序、表头状态和单页选择逻辑"
+        ],
+        "modifications": "参考页大小、前后页和表头排序状态的交互组织；vanilla DOM 自行实现，不转写 React、TanStack 或 Radix 组件。",
+        "runtimeDependencies": [],
+        "reviewStatus": "recorded",
+        "evidenceBasis": "Author mapping and local source existence reviewed; classification applies only to the named sections, not every line in the destination file.",
+        "author": "business_core",
+        "upstreamFiles": [
+          {
+            "path": "src/components/data-table/pagination.tsx",
+            "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/data-table/pagination.tsx",
+            "sha256": "8af50acc0018f2a972581064efeb891636e180ecb268da10519965c75c04e5b0",
+            "bytes": 4522,
+            "gitBlob": "5e5991be86f0850c5d7fbae31646bcc18583cd35",
+            "role": "candidate-only; actual module usage recorded separately"
+          },
+          {
+            "path": "src/components/data-table/column-header.tsx",
+            "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/data-table/column-header.tsx",
+            "sha256": "b358ebbf433bef5e115e69d0d613b61bfa244a150d7eaf03b7ee5f7ba482aa68",
+            "bytes": 2262,
+            "gitBlob": "180037ab7fdc001c2477d304f34e47c11538124a",
+            "role": "candidate-only; actual module usage recorded separately"
+          }
+        ],
+        "mappingComplete": true,
+        "adaptedCodeBundled": false
+      },
+      {
+        "id": "command-menu",
+        "purpose": "键盘命令导航",
+        "category": "layout-reference",
+        "upstreamPaths": [
+          "src/components/command-menu.tsx"
+        ],
+        "localFiles": [
+          {
+            "path": "src/renderer/ui-behaviors.js",
+            "exists": true,
+            "sha256": "edeab12339511509693264604187b3851704836437ef366822a52d7b19a38783",
+            "bytes": 23742
+          }
+        ],
+        "localSections": [
+          "命令导航、搜索与键盘选择"
+        ],
+        "modifications": "只参考命令导航的交互组织；自行实现 DOM 与内存导航，不使用 React、cmdk 或模板路由代码。",
+        "runtimeDependencies": [],
+        "reviewStatus": "recorded",
+        "evidenceBasis": "Author mapping and local source existence reviewed; classification applies only to the named sections, not every line in the destination file.",
+        "author": "business_core",
+        "upstreamFiles": [
+          {
+            "path": "src/components/command-menu.tsx",
+            "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/command-menu.tsx",
+            "sha256": "e70c148fb73f4546f1970419b32debd4a355894bae8050b831efe37d7c9161e9",
+            "bytes": 3264,
+            "gitBlob": "223b04de01e0b7f0d83250703f1c07d75f7cda03",
+            "role": "candidate-only; actual module usage recorded separately"
+          }
+        ],
+        "mappingComplete": true,
+        "adaptedCodeBundled": false
+      },
+      {
+        "id": "chats",
+        "purpose": "会话列表与消息面板组织",
+        "category": "layout-reference",
+        "upstreamPaths": [
+          "src/features/chats/index.tsx"
+        ],
+        "localFiles": [
+          {
+            "path": "src/renderer/workspace-views.js",
+            "exists": true,
+            "sha256": "9b92506d2dc3e12db1a5248eb32f2348d2d9bf9c011685b09e58e5ff4082f2d5",
+            "bytes": 19404
+          }
+        ],
+        "localSections": [
+          "messages()"
+        ],
+        "modifications": "参考左右会话布局；未复制 React、日期分组、图标或演示数据逻辑。本地自行接入真实账号范围、买家、接管、预览与业务调用。",
+        "runtimeDependencies": [],
+        "reviewStatus": "recorded",
+        "evidenceBasis": "Author mapping and local source existence reviewed; classification applies only to the named sections, not every line in the destination file.",
+        "author": "root",
+        "upstreamFiles": [
+          {
+            "path": "src/features/chats/index.tsx",
+            "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/features/chats/index.tsx",
+            "sha256": "1045073ba1feffa6c5b672652cceef792fc1d4c0c25cfa4c6f52ec6203a004f5",
+            "bytes": 14491,
+            "gitBlob": "e9584a4348453d070e51f3959f90f6e10e13ab78",
+            "role": "candidate-only; actual module usage recorded separately"
+          }
+        ],
+        "mappingComplete": true,
+        "adaptedCodeBundled": false
+      },
+      {
+        "id": "settings",
+        "purpose": "设置分区导航",
+        "category": "layout-reference",
+        "upstreamPaths": [
+          "src/features/settings/index.tsx",
+          "src/features/settings/components/sidebar-nav.tsx"
+        ],
+        "localFiles": [
+          {
+            "path": "src/renderer/app.js",
+            "exists": true,
+            "sha256": "5e3a4eeb2b1261d47fe87654f65dcb1f5372778e1a4067b4f00ae050e06cde3d",
+            "bytes": 158464
+          }
+        ],
+        "localSections": [
+          "applyPageStructure() 的设置分区导航"
+        ],
+        "modifications": "参考分区与导航组织，点击 scrollIntoView 保持原页面 URL；没有使用模板路由和表单实现。",
+        "runtimeDependencies": [],
+        "reviewStatus": "recorded",
+        "evidenceBasis": "Author mapping and local source existence reviewed; classification applies only to the named sections, not every line in the destination file.",
+        "author": "root",
+        "upstreamFiles": [
+          {
+            "path": "src/features/settings/index.tsx",
+            "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/features/settings/index.tsx",
+            "sha256": "1581d66c136bc598320f6f9b43602583d2d72014c7e7156c2938bf8b4defd70f",
+            "bytes": 2050,
+            "gitBlob": "a1f4937999f09a103fd7c2b6a922f0279065ca65",
+            "role": "candidate-only; actual module usage recorded separately"
+          },
+          {
+            "path": "src/features/settings/components/sidebar-nav.tsx",
+            "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/features/settings/components/sidebar-nav.tsx",
+            "sha256": "207c2fa366d8f23948ae2568a395229a1a56bcbd13283e1dd62e4e01a17c1943",
+            "bytes": 2375,
+            "gitBlob": "114bc2417a937ddc26d70cf8f2957f0783210727",
+            "role": "candidate-only; actual module usage recorded separately"
+          }
+        ],
+        "mappingComplete": true,
+        "adaptedCodeBundled": false
+      },
+      {
+        "id": "original-business-views",
+        "purpose": "工作台及业务关联详情",
+        "category": "original",
+        "upstreamPaths": [],
+        "localFiles": [
+          {
+            "path": "src/renderer/workspace-views.js",
+            "exists": true,
+            "sha256": "9b92506d2dc3e12db1a5248eb32f2348d2d9bf9c011685b09e58e5ff4082f2d5",
+            "bytes": 19404
+          },
+          {
+            "path": "src/renderer/app.js",
+            "exists": true,
+            "sha256": "5e3a4eeb2b1261d47fe87654f65dcb1f5372778e1a4067b4f00ae050e06cde3d",
+            "bytes": 158464
+          }
+        ],
+        "localSections": [
+          "overview()",
+          "productDetail()/assetDetail()",
+          "商品、资料、订单与会话的关联业务入口"
+        ],
+        "modifications": "本项目独立新增业务视图及关联，不声称来源于模板业务或示例数据。共享基础组件归属另行登记。",
+        "runtimeDependencies": [],
+        "reviewStatus": "recorded",
+        "evidenceBasis": "Author mapping and local source existence reviewed; classification applies only to the named sections, not every line in the destination file.",
+        "author": "root",
+        "upstreamFiles": [],
+        "mappingComplete": true,
+        "adaptedCodeBundled": false
+      },
+      {
+        "id": "original-interaction-safety",
+        "purpose": "弹窗草稿、焦点及作用域保护",
+        "category": "original",
+        "upstreamPaths": [],
+        "localFiles": [
+          {
+            "path": "src/renderer/ui-behaviors.js",
+            "exists": true,
+            "sha256": "edeab12339511509693264604187b3851704836437ef366822a52d7b19a38783",
+            "bytes": 23742
+          }
+        ],
+        "localSections": [
+          "native dialog 未保存确认",
+          "焦点返回",
+          "内存范围隔离与 lock generation"
+        ],
+        "modifications": "本项目依据既有身份及权限边界独立实现；只使用浏览器 DOM、Intl、Event，无新增 npm 运行依赖。",
+        "runtimeDependencies": [],
+        "reviewStatus": "recorded",
+        "evidenceBasis": "Author mapping and local source existence reviewed; classification applies only to the named sections, not every line in the destination file.",
+        "author": "business_core",
+        "upstreamFiles": [],
+        "mappingComplete": true,
+        "adaptedCodeBundled": false
+      },
+      {
+        "id": "layout",
+        "purpose": "原生桌面侧栏与顶部区域",
+        "category": "code-adaptation",
+        "upstreamPaths": [
+          "src/components/layout/authenticated-layout.tsx",
+          "src/components/layout/app-sidebar.tsx",
+          "src/components/layout/header.tsx",
+          "src/components/layout/main.tsx",
+          "src/components/layout/nav-group.tsx",
+          "src/components/layout/nav-user.tsx",
+          "src/components/search.tsx"
+        ],
+        "localFiles": [
+          {
+            "path": "src/renderer/ui-components.js",
+            "exists": true,
+            "sha256": "c2a1096bebd2efb2c31f342117f6991617939b3fcaf61d5988e992de2e0895c7",
+            "bytes": 11607
+          }
+        ],
+        "localSections": [
+          "shell() 的 Sidebar/Header/Content/Footer/Inset、分组 active 与命令入口"
+        ],
+        "modifications": "选择性转写界面结构并改成原生 HTML 字符串；移除 React/router/cookie、示例团队邮箱、头像及外链。真实身份来自本机状态，导航使用 memory action，动态业务文字转义。",
+        "runtimeDependencies": [],
+        "reviewStatus": "recorded",
+        "evidenceBasis": "desktop_ui author mapping, source attribution header and named local sections; not a claim that every destination-file line was copied.",
+        "author": "desktop_ui",
+        "upstreamFiles": [
+          {
+            "path": "src/components/layout/authenticated-layout.tsx",
+            "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/layout/authenticated-layout.tsx",
+            "sha256": "e3ab0837b3bd3e39153aad8b7b3c07c8fe6768f23bb0dc362ab4a41a5ee6e1ff",
+            "bytes": 1516,
+            "gitBlob": "003e6e28dddcdc87b8484c247caae9c98c0b3a87",
+            "role": "Actual author-selected generic UI source; no template data or authentication implementation reused."
+          },
+          {
+            "path": "src/components/layout/app-sidebar.tsx",
+            "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/layout/app-sidebar.tsx",
+            "sha256": "cd363c86fe2e6ad838c013075c51f2c5e7cb61e08082020351c48896c882bc87",
+            "bytes": 1108,
+            "gitBlob": "32d944327f8ac30c65e4e573ad9adcc7f0cd3cf5",
+            "role": "candidate-only; actual module usage recorded separately"
+          },
+          {
+            "path": "src/components/layout/header.tsx",
+            "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/layout/header.tsx",
+            "sha256": "f19060d14bdcb6efa98f1eee05452ecdc22d39a8a358af0d6e319e7ec9563777",
+            "bytes": 1482,
+            "gitBlob": "4c07798c8bf207a79794d187294b54e9e39e18f2",
+            "role": "candidate-only; actual module usage recorded separately"
+          },
+          {
+            "path": "src/components/layout/main.tsx",
+            "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/layout/main.tsx",
+            "sha256": "e200dbc0e1b8cf383fdf6b7f7588ac1c9419de65f2658692e7941324bd09c572",
+            "bytes": 671,
+            "gitBlob": "b3d6d0a597ed9e0d5effbce9776442433fc85f45",
+            "role": "candidate-only; actual module usage recorded separately"
+          },
+          {
+            "path": "src/components/layout/nav-group.tsx",
+            "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/layout/nav-group.tsx",
+            "sha256": "dd90536e487751b28fd8c850a0728a67784d5185c589b62fca580c992b1d2ed6",
+            "bytes": 5674,
+            "gitBlob": "3a0b73c063f66b12f14abe494e464e0aec5fc69a",
+            "role": "candidate-only; actual module usage recorded separately"
+          },
+          {
+            "path": "src/components/layout/nav-user.tsx",
+            "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/layout/nav-user.tsx",
+            "sha256": "739f42c8f0b2afde6a0f202f751399dea4b0a72c36113488bffb707f09207b34",
+            "bytes": 4194,
+            "gitBlob": "daa75da3815b2065e5e4f977204e49b16426c3ac",
+            "role": "Actual author-selected generic UI source; no template data or authentication implementation reused."
+          },
+          {
+            "path": "src/components/search.tsx",
+            "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/search.tsx",
+            "sha256": "1e033ec1d193a777cb66715d52b48e04050d57181a75f09bc0a132e60ae50c8b",
+            "bytes": 1238,
+            "gitBlob": "a152edbcaabb8a3ac425be07bb97d6f73a93dee3",
+            "role": "Actual author-selected generic UI source; no template data or authentication implementation reused."
+          }
+        ],
+        "mappingComplete": true,
+        "adaptedCodeBundled": true
+      },
+      {
+        "id": "basic-ui",
+        "purpose": "按钮与状态标记变体",
+        "category": "code-adaptation",
+        "upstreamPaths": [
+          "src/components/ui/button.tsx",
+          "src/components/ui/badge.tsx"
+        ],
+        "localFiles": [
+          {
+            "path": "src/renderer/ui-components.js",
+            "exists": true,
+            "sha256": "c2a1096bebd2efb2c31f342117f6991617939b3fcaf61d5988e992de2e0895c7",
+            "bytes": 11607
+          }
+        ],
+        "localSections": [
+          "button()",
+          "badge()"
+        ],
+        "modifications": "转写 variant/size、data-slot 与不可收缩控件语义为原生 HTML；保留转义，不引 Radix 或 class-variance-authority。",
+        "runtimeDependencies": [],
+        "reviewStatus": "recorded",
+        "evidenceBasis": "desktop_ui author mapping, source attribution header and named local sections; not a claim that every destination-file line was copied.",
+        "author": "desktop_ui",
+        "upstreamFiles": [
+          {
+            "path": "src/components/ui/button.tsx",
+            "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/ui/button.tsx",
+            "sha256": "97ed8ef5651a6e264ded042b024b5be39673ba2ff222017fbcf845cf3ed37226",
+            "bytes": 2122,
+            "gitBlob": "27b86edc44d838f0b73b20264b90d2c12200f0c9",
+            "role": "candidate-only; actual module usage recorded separately"
+          },
+          {
+            "path": "src/components/ui/badge.tsx",
+            "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/ui/badge.tsx",
+            "sha256": "a642d7a932b91ec610f09078452d34c379900845066955311506b6d503ea11e6",
+            "bytes": 1630,
+            "gitBlob": "26769c3a9dfd2119985819b61d53bee4820039dd",
+            "role": "candidate-only; actual module usage recorded separately"
+          }
+        ],
+        "mappingComplete": true,
+        "adaptedCodeBundled": true
+      },
+      {
+        "id": "component-theme-css",
+        "purpose": "统一 tokens、控件状态及浮层布局",
+        "category": "code-adaptation",
+        "upstreamPaths": [
+          "src/styles/theme.css",
+          "src/components/ui/button.tsx",
+          "src/components/ui/badge.tsx",
+          "src/components/ui/input.tsx",
+          "src/components/ui/textarea.tsx",
+          "src/components/ui/table.tsx",
+          "src/components/ui/dialog.tsx",
+          "src/components/ui/sheet.tsx"
+        ],
+        "localFiles": [
+          {
+            "path": "src/renderer/styles.css",
+            "exists": true,
+            "sha256": "9be26ff45284beaaa2ad9dcada5f4b54a410ed295f7010f320bc6b3cd2e01ada",
+            "bytes": 45082
+          }
+        ],
+        "localSections": [
+          "主题 tokens 与组件 variants",
+          "focus/disabled 状态",
+          "表格容器",
+          "Dialog/Sheet 布局"
+        ],
+        "modifications": "将语义 tokens、变体、焦点/禁用状态及布局转为独立 CSS，没有拷贝 Tailwind 编译输出。白黑黄颜色、响应式细节与业务类为本地新增。实际样式文件已由界面作者确认落盘，物料生成逐次重算目的文件摘要。",
+        "runtimeDependencies": [],
+        "reviewStatus": "recorded",
+        "evidenceBasis": "desktop_ui author mapping, source attribution header and named local sections; not a claim that every destination-file line was copied.",
+        "author": "desktop_ui",
+        "upstreamFiles": [
+          {
+            "path": "src/styles/theme.css",
+            "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/styles/theme.css",
+            "sha256": "faee559c9a21b2084bf7bae193e70f0ab18b18a393a06fec1408669652c266a1",
+            "bytes": 3921,
+            "gitBlob": "2832133d7dd6654ba31c9ce39185f040bff54efb",
+            "role": "Actual author-selected generic UI source; no template data or authentication implementation reused."
+          },
+          {
+            "path": "src/components/ui/button.tsx",
+            "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/ui/button.tsx",
+            "sha256": "97ed8ef5651a6e264ded042b024b5be39673ba2ff222017fbcf845cf3ed37226",
+            "bytes": 2122,
+            "gitBlob": "27b86edc44d838f0b73b20264b90d2c12200f0c9",
+            "role": "candidate-only; actual module usage recorded separately"
+          },
+          {
+            "path": "src/components/ui/badge.tsx",
+            "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/ui/badge.tsx",
+            "sha256": "a642d7a932b91ec610f09078452d34c379900845066955311506b6d503ea11e6",
+            "bytes": 1630,
+            "gitBlob": "26769c3a9dfd2119985819b61d53bee4820039dd",
+            "role": "candidate-only; actual module usage recorded separately"
+          },
+          {
+            "path": "src/components/ui/input.tsx",
+            "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/ui/input.tsx",
+            "sha256": "4f7d443722b4aeacb1179b863b98f773f7950514ceb1d897b66c967521f08072",
+            "bytes": 966,
+            "gitBlob": "9b4ca0eb2238c567992e3ac9aad9e850fc4a6e2a",
+            "role": "candidate-only; actual module usage recorded separately"
+          },
+          {
+            "path": "src/components/ui/textarea.tsx",
+            "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/ui/textarea.tsx",
+            "sha256": "a2de9cec0ada9e39076f88c092cfc851f5159f39c0478c9c6c2aa2fe15ec672b",
+            "bytes": 758,
+            "gitBlob": "00e05213b0610d75ede73c938f69346ee8b2fb26",
+            "role": "Actual author-selected generic UI source; no template data or authentication implementation reused."
+          },
+          {
+            "path": "src/components/ui/table.tsx",
+            "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/ui/table.tsx",
+            "sha256": "8ebadfa3965fc72792d160579ff6beb0b80d9dd0d3acd56db7a34168e956b531",
+            "bytes": 2370,
+            "gitBlob": "70e5d189f6094da9b4f3ba911fd3f5f6ecb789b0",
+            "role": "candidate-only; actual module usage recorded separately"
+          },
+          {
+            "path": "src/components/ui/dialog.tsx",
+            "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/ui/dialog.tsx",
+            "sha256": "4fd152bd6a27516a017d77570e76c5c312ca561ee4a52b3edb37ec076401c02c",
+            "bytes": 3984,
+            "gitBlob": "1a55bcaae05ebeddf16bf78449e0517d223fb08a",
+            "role": "candidate-only; actual module usage recorded separately"
+          },
+          {
+            "path": "src/components/ui/sheet.tsx",
+            "url": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/src/components/ui/sheet.tsx",
+            "sha256": "2423f0e67f594198df542acabd32547896925e35786c6bb085f8a4eeed4273c4",
+            "bytes": 4080,
+            "gitBlob": "63cd6324485faf2ca99a5b83e9d5c972670a60f8",
+            "role": "candidate-only; actual module usage recorded separately"
+          }
+        ],
+        "mappingComplete": true,
+        "adaptedCodeBundled": true
+      },
+      {
+        "id": "original-ui-helpers-icons",
+        "purpose": "空态、标题、面包屑与几何图标",
+        "category": "original",
+        "upstreamPaths": [],
+        "localFiles": [
+          {
+            "path": "src/renderer/ui-components.js",
+            "exists": true,
+            "sha256": "c2a1096bebd2efb2c31f342117f6991617939b3fcaf61d5988e992de2e0895c7",
+            "bytes": 11607
+          }
+        ],
+        "localSections": [
+          "empty()",
+          "heading()",
+          "breadcrumb 组织",
+          "glyph() 和 paths"
+        ],
+        "modifications": "本地新增辅助结构及 sidebar/search/bell/lock/sun/moon/refresh/folder/grid/chevron 几何路径；其余沿用本项目 app.js 原创 paths。未读取或复制 Lucide/Tabler 图标源。",
+        "runtimeDependencies": [],
+        "reviewStatus": "recorded",
+        "evidenceBasis": "desktop_ui author mapping, source attribution header and named local sections; not a claim that every destination-file line was copied.",
+        "author": "desktop_ui",
+        "upstreamFiles": [],
+        "mappingComplete": true,
+        "adaptedCodeBundled": false
+      },
+      {
+        "id": "original-account-management",
+        "purpose": "扫码账号流程、独立状态和托管配置",
+        "category": "original",
+        "upstreamPaths": [],
+        "localFiles": [
+          {
+            "path": "src/renderer/accounts-controller.js",
+            "exists": true,
+            "sha256": "b0dc585a07e14f3b5667394ae99b4bde1e71b4f1713604326289ff7e2b3c13f8",
+            "bytes": 23152
+          },
+          {
+            "path": "src/renderer/accounts-views.js",
+            "exists": true,
+            "sha256": "7bc153b3ae941528803a1a745b60901b9c43cdd0df5d87b126ddd0adf2798875",
+            "bytes": 17513
+          }
+        ],
+        "localSections": [
+          "扫码尝试和界面代际隔离",
+          "账号列表、关联详情与逐项批量结果",
+          "托管授权与两种锁定入口"
+        ],
+        "modifications": "依据 v1.4 功能要求独立新增，复用本产品已登记的白黑黄基础组件；没有复制竞品账户代码、模拟业务或素材。",
+        "runtimeDependencies": [],
+        "reviewStatus": "recorded",
+        "evidenceBasis": "Independent account UI author and local source mapping; shared base components retain their existing attribution.",
+        "author": "independent-app-ui-task",
+        "upstreamFiles": [],
+        "mappingComplete": true,
+        "adaptedCodeBundled": false
+      }
+    ],
+    "notBundled": [
+      "reference Git checkout",
+      "React template runtime",
+      "Clerk",
+      "Radix",
+      "TanStack",
+      "Faker",
+      "template demo/mock data",
+      "third-party template icons"
+    ],
+    "obligations": [
+      "Keep Sat Naing copyright and full MIT permission/disclaimer with copies or substantial adapted portions.",
+      "Keep the documented shadcn upstream MIT notice as applicable; exact original component revisions were not recorded by the template and are not invented.",
+      "Record each actual adapted module separately from visual/layout reference and original local code."
+    ],
+    "commercialDistributionApproved": false,
+    "manifestPath": "compliance/ui-reuse/manifest.json",
+    "manifestSha256": "f82f4fef6598dad9d692806e18ff84aa100dcaee57e392fbefd44160eb8512b9",
+    "originPath": "compliance/ui-reuse/origin.json",
+    "adaptedCodeBundled": true,
+    "templateRuntimeBundled": false,
+    "moduleMappingComplete": true,
+    "reviewStatus": "source-and-license-recorded-not-commercial-approval",
+    "note": "只有逐模块源码转写/复制列为随包改编代码；布局参考不会被统计成 React 依赖或原样模板运行。源码出处记录不等于商业分发全部义务完成。"
+  },
+  "commercialDistributionApproved": false,
+  "unresolved": [
+    "Chromium 聚合许可中的每个原生/静态组件尚需与精确构建版本、适用许可和源码提供义务对应审查。",
+    "特别核验 FFmpeg、编解码器和任何具有源码提供要求的构建组件；聚合许可证存在不等于义务全部完成。",
+    "正式发行主体、产品许可、商标及代码签名未确定。"
+  ],
+  "distributionProvenance": "compliance/distribution-provenance.json"
+}

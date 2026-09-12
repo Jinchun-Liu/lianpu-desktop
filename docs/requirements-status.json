@@ -1,0 +1,1004 @@
+{
+  "requirementVersion": "1.1 + v1.2/v1.3 UI + v1.4 accounts + v1.5 persistent local login + v1.6 device licensing",
+  "updatedAt": "2026-09-11T13:17:35.444Z",
+  "platform": "Windows x64 first",
+  "overall": "未完成正式验收，不是完整商业发行版",
+  "statusMeaning": "本地验证通过只指已列本地证据；待平台、环境、发行、外部条件、后续阶段或开发中均未完成。",
+  "items": [
+    {
+      "id": "F01",
+      "title": "打开即可开始使用",
+      "status": "待环境验收",
+      "implemented": "当前主机 MSI 重试安装、程序打开、同版重装及本机加密身份通过",
+      "blockers": [
+        "仍缺干净标准用户和最低系统版本；新版生命周期结果见发行记录"
+      ],
+      "code": [
+        "src/main.cjs",
+        "src/auth.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F02",
+      "title": "管理软件自己的身份",
+      "status": "本地验证通过",
+      "implemented": "独立本机身份、首次登录后 Windows 用户范围持续登录、改密、恢复材料轮换；已删除本机锁定",
+      "blockers": [
+        "真实Windows用户环境下进一步验收；不等于闲鱼授权"
+      ],
+      "code": [
+        "src/auth.cjs",
+        "src/renderer/app.js"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F03",
+      "title": "接入自己的闲鱼账号",
+      "status": "待真实平台验证",
+      "implemented": "官方闲鱼 APP 扫码窗口、逐次状态、可信身份绑定与错账号保护；已观察真实二维码",
+      "blockers": [
+        "尚无人扫码；身份核验和会话恢复未验证"
+      ],
+      "code": [
+        "src/platform/xianyu.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F04",
+      "title": "集中管理多个账号",
+      "status": "待真实平台验证",
+      "implemented": "独立会话与账号状态、重复绑定更新原编号、五账号队列及并行本地验收",
+      "blockers": [
+        "至少两个本人真实账号同时在线尚未验证"
+      ],
+      "code": [
+        "src/core/service.cjs",
+        "src/platform/xianyu.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F05",
+      "title": "控制每个账号的运行",
+      "status": "待真实平台验证",
+      "implemented": "逐账号暂停/恢复、同步、撤销登录和保留历史的移除；逐项反馈",
+      "blockers": [
+        "真实失效、撤销及恢复仍需平台联调"
+      ],
+      "code": [
+        "src/main.cjs",
+        "src/platform/xianyu.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F06",
+      "title": "多人协作和权限",
+      "status": "开发中",
+      "implemented": "同机成员、角色、账号范围及主进程权限检查",
+      "blockers": [
+        "当前权限边界为受控应用；同Windows账户离线文件攻击隔离未实现，不提供跨电脑协同同步"
+      ],
+      "code": [
+        "src/auth.cjs",
+        "src/core/service.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F07",
+      "title": "找到要经营的商品",
+      "status": "待真实平台验证",
+      "implemented": "本地商品搜索列表详情和本人官网商品读取适配",
+      "blockers": [
+        "真实本人商品结构和范围未验证"
+      ],
+      "code": [
+        "src/renderer/app.js",
+        "src/core/service.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F08",
+      "title": "同步商品资料",
+      "status": "待真实平台验证",
+      "implemented": "官网商品读取、分页游标与逐项失败处理；缺失数量不造零",
+      "blockers": [
+        "本人扫码后的商品字段、分页和规格仍需联调"
+      ],
+      "code": [
+        "src/core/service.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F09",
+      "title": "编辑和组织商品",
+      "status": "本地验证通过",
+      "implemented": "标题、说明、图片、分类与商家编码本地编辑",
+      "blockers": [
+        "本地保存不更新平台；真实商品编辑同步需另行验证"
+      ],
+      "code": [
+        "src/renderer/app.js",
+        "src/services/media.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F10",
+      "title": "配置规格与数量",
+      "status": "本地验证通过",
+      "implemented": "规格、售价、数量与交付映射；未绑定和冲突门禁",
+      "blockers": [
+        "平台规格数据真实同步待接入"
+      ],
+      "code": [
+        "src/core/service.cjs",
+        "src/renderer/app.js"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F11",
+      "title": "保存草稿与批量刊登",
+      "status": "待真实平台验证",
+      "implemented": "草稿和批量任务、逐项回执状态、未知不重做",
+      "blockers": [
+        "真实发布权限与发布审核状态未接入"
+      ],
+      "code": [
+        "src/core/service.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F12",
+      "title": "批量维护已有商品",
+      "status": "待真实平台验证",
+      "implemented": "选中范围差异预览、逐项执行、暂停及恢复",
+      "blockers": [
+        "真实价格库存上下架接口未接入"
+      ],
+      "code": [
+        "src/core/service.cjs",
+        "src/renderer/app.js"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F13",
+      "title": "复用自己有权使用的素材",
+      "status": "待真实平台验证",
+      "implemented": "加密本地素材库、选图、自有商品副本、跨账号草稿复制",
+      "blockers": [
+        "跨账号真实发布迁移未验证；复制草稿需重新绑定目标资料"
+      ],
+      "code": [
+        "src/services/media.cjs",
+        "src/main.cjs",
+        "src/renderer/app.js"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F14",
+      "title": "设置商品运营任务",
+      "status": "待真实平台验证",
+      "implemented": "定时计划、暂停、频率与持久逐项记录",
+      "blockers": [
+        "擦亮/重发/上下架真实能力未接入"
+      ],
+      "code": [
+        "src/core/service.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F15",
+      "title": "建立固定资料包",
+      "status": "本地验证通过",
+      "implemented": "完整固定网盘资料包，多行说明、提取码和版本整体保存",
+      "blockers": [
+        "真实买家接收仍需正式连接"
+      ],
+      "code": [
+        "src/core/service.cjs",
+        "src/core/store.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F16",
+      "title": "管理唯一兑换内容",
+      "status": "本地验证通过",
+      "implemented": "唯一内容重复检查、有效期、成本和原子预留",
+      "blockers": [
+        "真实发送后的平台确认尚待联调"
+      ],
+      "code": [
+        "src/core/service.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F17",
+      "title": "分类、盘点与补充库存",
+      "status": "本地验证通过",
+      "implemented": "分类、入库、状态盘点、调整理由及低库存提醒",
+      "blockers": [
+        "Windows系统通知最终可见性受系统设置影响"
+      ],
+      "code": [
+        "src/core/service.cjs",
+        "src/main.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F18",
+      "title": "交付图片和资料组合",
+      "status": "开发中",
+      "implemented": "资料组合、顺序、图片保存及完整预览；必需图片缺发送能力时整份阻断",
+      "blockers": [
+        "图片消息发送连接器未实现，不能只发文字就称组合送达"
+      ],
+      "code": [
+        "src/core/service.cjs",
+        "src/services/media.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F19",
+      "title": "维护资料版本和失效链接",
+      "status": "本地验证通过",
+      "implemented": "资料更新生成新版本，历史交付快照不变，过期内容阻断",
+      "blockers": [
+        "网盘真实可访问性不能由本地保存证明"
+      ],
+      "code": [
+        "src/core/service.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F20",
+      "title": "可选的独立下载页",
+      "status": "开发中",
+      "implemented": "加密文件、逐订单随机令牌、期限/原子次数/撤回、HTTP页面与分别记录访问事实",
+      "blockers": [
+        "仅本机试运行；公网文件托管、TLS域名、买家访问与限制实测未完成"
+      ],
+      "code": [
+        "src/services/claims.cjs",
+        "src/main.cjs",
+        "src/renderer/app.js"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F21",
+      "title": "查看历史及新订单",
+      "status": "开发中",
+      "implemented": "订单目录、明确来源、会话交易关联及逐笔官网详情请求",
+      "blockers": [
+        "官网组件详情的付款/退款/双方身份转换尚未完成；不能更新旧订单核验时间"
+      ],
+      "code": [
+        "src/core/service.cjs",
+        "src/renderer/app.js"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F22",
+      "title": "单笔及批量刷新",
+      "status": "待真实平台验证",
+      "implemented": "单笔/范围刷新及逐笔可信证据检查；读取失败不刷新核验时间",
+      "blockers": [
+        "实际订单详情转换和真实部分失败未验证"
+      ],
+      "code": [
+        "src/core/service.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F23",
+      "title": "设置自动交付规则",
+      "status": "本地验证通过",
+      "implemented": "账号商品规格规则、份数延时优先级、启停及试运行",
+      "blockers": [
+        "真实付款事件触发需平台连接"
+      ],
+      "code": [
+        "src/core/service.cjs",
+        "src/renderer/app.js"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F24",
+      "title": "付款后自动送达资料",
+      "status": "待真实平台验证",
+      "implemented": "受限托管调度、可信新付款时间门禁、库存事务和持久发送记录；历史订单不自动回放",
+      "blockers": [
+        "真实订单转换未完成，付款到买家接收的完整链路未验证"
+      ],
+      "code": [
+        "src/core/service.cjs",
+        "src/main.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F25",
+      "title": "手动处理例外订单",
+      "status": "待真实平台验证",
+      "implemented": "人工交付预览、正确接收方与交易/消息事实分开",
+      "blockers": [
+        "真实发送及平台交易状态操作未接入"
+      ],
+      "code": [
+        "src/core/service.cjs",
+        "src/renderer/app.js"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F26",
+      "title": "核实结果不明的交付",
+      "status": "待真实平台验证",
+      "implemented": "unknown 与 accepted 保留库存并阻止直接补发；缺少可核验回执不记送达",
+      "blockers": [
+        "真实消息历史证据及核验操作待联调"
+      ],
+      "code": [
+        "src/core/service.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F27",
+      "title": "补发资料",
+      "status": "待真实平台验证",
+      "implemented": "独立补发记录、退款关闭门禁、原尝试不覆盖",
+      "blockers": [
+        "真实补发接收与回执需特定测试授权"
+      ],
+      "code": [
+        "src/core/service.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F28",
+      "title": "程序退出后的可靠恢复",
+      "status": "本地验证通过",
+      "implemented": "退出/重启保留资料、sending转未知、重复处理阻断",
+      "blockers": [
+        "物理断网与休眠恢复还需Windows安装环境验收"
+      ],
+      "code": [
+        "src/core/store.cjs",
+        "src/core/service.cjs",
+        "src/main.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F29",
+      "title": "交付说明和领取确认",
+      "status": "开发中",
+      "implemented": "整体使用说明，页面打开/响应开始/结束/中断分别记录，独立于平台送达和已读",
+      "blockers": [
+        "买家公网领取确认与真实访问证据未完成，不冒认完整下载"
+      ],
+      "code": [
+        "src/renderer/app.js",
+        "src/services/claims.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F30",
+      "title": "组合赠送和收货后服务",
+      "status": "待真实平台验证",
+      "implemented": "主资料和收货后服务分阶段；冻结赠品版本、可信事件、原子库存、防重、未知核验与人工原样重试",
+      "blockers": [
+        "本地服务链路已验证；真实个人账号收货事件、逐项权限及接收回执未接通"
+      ],
+      "code": [
+        "src/core/service.cjs",
+        "src/core/receipts.cjs",
+        "src/renderer/app.js"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F31",
+      "title": "管理售后",
+      "status": "待真实平台验证",
+      "implemented": "本地售后请求、理由、金额与期限档案",
+      "blockers": [
+        "真实退款/退货资金动作未接入"
+      ],
+      "code": [
+        "src/core/service.cjs",
+        "src/renderer/app.js"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F32",
+      "title": "兼容实物交付",
+      "status": "外部条件待满足",
+      "implemented": "物流扩展配置和受阻原因，禁止假快递完成数字单",
+      "blockers": [
+        "真实物流提供方、发货接口及联调未指定/完成"
+      ],
+      "code": [
+        "src/core/service.cjs",
+        "src/renderer/app.js"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F33",
+      "title": "外部货源及直充扩展",
+      "status": "外部条件待满足",
+      "implemented": "供应商连接档案和采购/充值能力阻断",
+      "blockers": [
+        "未指定合法供应商正式规范、授权与真实费用回执；未采购扣费"
+      ],
+      "code": [
+        "src/core/service.cjs",
+        "src/renderer/app.js"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F34",
+      "title": "集中处理买家消息",
+      "status": "待真实平台验证",
+      "implemented": "会话消息分页与去重、本人网页 IM 适配、会话范围核对及人工接管",
+      "blockers": [
+        "双账号 IM、真实消息结构和接收回查未验证"
+      ],
+      "code": [
+        "src/core/service.cjs",
+        "src/renderer/app.js"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F35",
+      "title": "快速回复常见问题",
+      "status": "待真实平台验证",
+      "implemented": "短语分组、搜索、变量检查及预览",
+      "blockers": [
+        "图片短语真实发送未实现；文本平台发送待联调"
+      ],
+      "code": [
+        "src/core/service.cjs",
+        "src/renderer/app.js"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F36",
+      "title": "按关键词自动回复",
+      "status": "待真实平台验证",
+      "implemented": "关键词规则、冲突/次数/人工接管/历史事件防重",
+      "blockers": [
+        "真实消息事件和回复需平台权限"
+      ],
+      "code": [
+        "src/core/service.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F37",
+      "title": "默认和商品专属回复",
+      "status": "待真实平台验证",
+      "implemented": "商品专属规则、全局排除、关键词→AI→每会话一次默认答复和次数策略",
+      "blockers": [
+        "真实会话中的默认策略联调待完成"
+      ],
+      "code": [
+        "src/core/service.cjs",
+        "src/renderer/app.js"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F38",
+      "title": "受约束的 AI 客服",
+      "status": "待真实平台验证",
+      "implemented": "模型只选批准答复，约束价格、动作和会话范围，可先试答",
+      "blockers": [
+        "仅loopback模型合同测试；用户所选模型和真实买家链路未验证"
+      ],
+      "code": [
+        "src/services/model.cjs",
+        "src/core/service.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F39",
+      "title": "管理客户备注及会话秩序",
+      "status": "本地验证通过",
+      "implemented": "客户备注、置顶、本机屏蔽、接待人与同会话接管",
+      "blockers": [
+        "平台屏蔽未执行；不提供跨电脑共享接待状态"
+      ],
+      "code": [
+        "src/core/service.cjs",
+        "src/renderer/app.js"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F40",
+      "title": "查询自动处理原因",
+      "status": "本地验证通过",
+      "implemented": "触发/跳过解释、去敏日志、诊断导出",
+      "blockers": [
+        "真实平台错误码映射待接入后补充"
+      ],
+      "code": [
+        "src/core/service.cjs",
+        "src/renderer/app.js"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F41",
+      "title": "配置买家互动",
+      "status": "待真实平台验证",
+      "implemented": "逐项互动档案、延时、事件匹配、原文预览、停止/重试和恢复防重；评价仅中性邀请",
+      "blockers": [
+        "真实收货/交付事件和逐项互动接口未接通；不得代写提交评价"
+      ],
+      "code": [
+        "src/core/receipts.cjs",
+        "src/renderer/app.js"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F42",
+      "title": "看清经营情况",
+      "status": "本地验证通过",
+      "implemented": "整数分收款/退款/成本/净额，日期账号口径，测试单隔离",
+      "blockers": [
+        "完整平台同步区间未取得，界面明确覆盖不完整"
+      ],
+      "code": [
+        "src/core/service.cjs",
+        "src/renderer/app.js"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F43",
+      "title": "批量导入导出业务数据",
+      "status": "本地验证通过",
+      "implemented": "文件/粘贴CSV字段映射、重复策略、预览和批量导出，唯一库存专用导入及回滚",
+      "blockers": [
+        "仅支持已实现CSV格式；平台数据来源和真实库存仍需连接核验"
+      ],
+      "code": [
+        "src/core/csv.cjs",
+        "src/core/service.cjs",
+        "src/renderer/app.js"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F44",
+      "title": "及时发现需要处理的问题",
+      "status": "外部条件待满足",
+      "implemented": "独立事件观察、账号/成员/类型范围、每成员读态、摘要去重及失败限次；备份不重放历史提醒",
+      "blockers": [
+        "本机中心已验证；外部通知渠道未指定/接通，Windows实际显示受系统设置影响"
+      ],
+      "code": [
+        "src/services/notifications.cjs",
+        "src/main.cjs",
+        "src/renderer/app.js"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F45",
+      "title": "备份和迁移自己的业务",
+      "status": "本地验证通过",
+      "implemented": "加密备份、恢复预览、历史合并、素材/领取文件同事务恢复；旧领取授权撤回且次数不回退",
+      "blockers": [
+        "当前单包100MB；网页登录会话/外部凭据/成员身份不随普通业务备份迁移"
+      ],
+      "code": [
+        "src/main.cjs",
+        "src/core/service.cjs",
+        "src/services/media.cjs",
+        "src/services/claims.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F46",
+      "title": "排查运行问题",
+      "status": "本地验证通过",
+      "implemented": "诊断、运行历史、脱敏导出和明确失败原因",
+      "blockers": [
+        "真实平台专属诊断需接入后补充"
+      ],
+      "code": [
+        "src/core/service.cjs",
+        "src/main.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F47",
+      "title": "设置、公告与版本升级",
+      "status": "待发行验收",
+      "implemented": "开发 Ed25519 清单签名、MSI身份和摘要复核、owner更新预览、锁定取消、安装请求与版本观察分开；0.2.0实际升级/卸载和末版替换分别存证",
+      "blockers": [
+        "公网更新源、商业代码签名及公告来源尚缺；0.3.0当前包升级结果以发行报告为准，应用内下一版安装链路尚待实测"
+      ],
+      "code": [
+        "src/services/updates.cjs",
+        "src/services/msi-inspect.cjs",
+        "src/main.cjs",
+        "scripts/release-msi.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F48",
+      "title": "外部服务连接管理",
+      "status": "待真实平台验证",
+      "implemented": "外部连接目录、逐项能力与模型目录真实测试",
+      "blockers": [
+        "闲鱼、托管、物流、供应商等实际接口条件未满足"
+      ],
+      "code": [
+        "src/platform/xianyu.cjs",
+        "src/services/model.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F49",
+      "title": "连续对话与商品知识",
+      "status": "待真实平台验证",
+      "implemented": "只给当前会话和公开商品事实，知识缺失转人工",
+      "blockers": [
+        "用户实际模型与连续真实买家会话未联调"
+      ],
+      "code": [
+        "src/services/model.cjs",
+        "src/core/service.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F50",
+      "title": "选择模型服务",
+      "status": "本地验证通过",
+      "implemented": "可选模型地址/名称/加密凭据，目录测试、费用提示、启停",
+      "blockers": [
+        "兼容用户选择服务需实际凭据测试；无内置默认付费服务"
+      ],
+      "code": [
+        "src/services/model.cjs",
+        "src/renderer/app.js"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F51",
+      "title": "试用自动规则",
+      "status": "本地验证通过",
+      "implemented": "隔离订单/消息试运行、匹配与内容预览无副作用",
+      "blockers": [
+        "试运行通过不代表真实平台验收"
+      ],
+      "code": [
+        "src/core/service.cjs",
+        "src/renderer/app.js"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F52",
+      "title": "保护本机业务资料",
+      "status": "开发中",
+      "implemented": "密码包裹密钥、加密SQLite/素材/备份、OS保护本机登录恢复、主进程身份及账号权限校验；不再有界面锁",
+      "blockers": [
+        "同Windows账户成员持有共同数据密钥的离线访问隔离尚未解决；需商业安全验收"
+      ],
+      "code": [
+        "src/auth.cjs",
+        "src/main.cjs",
+        "src/core/store.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F53",
+      "title": "看清连接能做什么",
+      "status": "待真实平台验证",
+      "implemented": "逐项会话代际和时效证据；界面不能写入已连接；登录与发送能力分开",
+      "blockers": [
+        "未验证能力继续关闭依赖动作"
+      ],
+      "code": [
+        "src/platform/xianyu.cjs",
+        "src/core/service.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F54",
+      "title": "控制议价承诺",
+      "status": "待真实平台验证",
+      "implemented": "商家底价和次数受核心约束，模型选确定报价、不自动改平台价",
+      "blockers": [
+        "真实议价链路和所选模型实测未完成"
+      ],
+      "code": [
+        "src/services/model.cjs",
+        "src/core/service.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F55",
+      "title": "日常值守与离开电脑",
+      "status": "待环境验收",
+      "implemented": "关闭到托盘、完全退出、开机启动、休眠暂停；本机持续登录，停止托管后可继续查看，唤醒/重启无需二次登录",
+      "blockers": [
+        "外层进程和MSI注册表视图差异原因未定；当前版本物理睡眠/唤醒、断网及干净机仍需实测；旧生命周期证据不能替代新版完整验收"
+      ],
+      "code": [
+        "src/main.cjs",
+        "scripts/release-msi.cjs",
+        "src/renderer/app.js"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F56",
+      "title": "协作中的敏感权限",
+      "status": "开发中",
+      "implemented": "主进程+业务层权限，发送/导出中途撤权回归",
+      "blockers": [
+        "同机离线数据域隔离与完整多人经营验收仍需完善"
+      ],
+      "code": [
+        "src/core/service.cjs",
+        "src/main.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F57",
+      "title": "使用原创易懂界面",
+      "status": "前端已实现待完整环境验收",
+      "implemented": "v1.3立即实施；Shadcn Admin选择性原生适配、16工作区、白黑黄主题、关联详情、分页排序、未保存保护及权限变更清屏已接入；源码桌面回归通过",
+      "blockers": [
+        "UI01-UI20当前证据和最终Windows载荷结果分开记录；物理系统缩放、原生中文输入法和长时运行尚未验证，不以合成事件替代"
+      ],
+      "code": [
+        "src/renderer",
+        "requirements/v1.2",
+        "requirements/v1.3"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F58",
+      "title": "正确处理数据边界",
+      "status": "本地验证通过",
+      "implemented": "长编号/前导零、整数分、特殊字符与多行CSV可逆，公式防护",
+      "blockers": [
+        "表格软件仍应按文本列识别导入，不将未知格式静默转换"
+      ],
+      "code": [
+        "src/core/csv.cjs",
+        "src/core/service.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F59",
+      "title": "安装与升级交付",
+      "status": "待发行验收",
+      "implemented": "当前主机 MSI 实际安装、载荷核对、无开发依赖启动和重装通过；历史失败保留，新版维护修复",
+      "blockers": [
+        "商业代码签名、干净标准用户、最低OS及完整ICE验证未齐；最新升级/卸载/留装证据见发行附录"
+      ],
+      "code": [
+        "scripts/package.cjs",
+        "scripts/release-msi.cjs",
+        "scripts/release-verify.cjs",
+        "scripts/branding.cjs"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "F60",
+      "title": "追踪独立开发与许可",
+      "status": "开发中",
+      "implemented": "输入原哈希、独立Git、设计决策、精确锁文件/SBOM/许可原文/原创资源与双哈希/失败和成功记录",
+      "blockers": [
+        "Chromium原生传递版本与逐项商业分发义务尚有未知，缺证据不计通过"
+      ],
+      "code": [
+        "requirements",
+        "compliance",
+        "SBOM.cdx.json",
+        "THIRD_PARTY_NOTICES.md"
+      ],
+      "evidence": [],
+      "accepted": false
+    },
+    {
+      "id": "L01",
+      "title": "核对、确认核销和恢复原授权",
+      "status": "真实云端协议通过，待客户设备兑换",
+      "implemented": "共享 Ed25519/P256 协议、D1 事务、原请求恢复；预核对不授予权益",
+      "blockers": [
+        "实际免费服务25次请求验证通过，但使用独立软件测试身份；实际TPM客户激活待完成。"
+      ],
+      "code": [
+        "cloud/licensing/worker.mjs",
+        "src/licensing/client.cjs"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "L02",
+      "title": "绑定安装设备",
+      "status": "待真实设备验证",
+      "implemented": "Windows TPM 2.0/CNG 机器密钥、不可导出策略、固定助手摘要、明确 UAC 准备入口",
+      "blockers": [
+        "新包一次准备明确等待超时，结果待确认；未标为取消或成功。需核对本人Windows窗口操作后再继续真实签名，未使用软件密钥替代。"
+      ],
+      "code": [
+        "src/licensing/device.cjs",
+        "src/licensing/native/LianpuTpm.cs"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "L03",
+      "title": "四种套餐、续期和到期只读",
+      "status": "本地与真实云端协议通过",
+      "implemented": "7/30/365 天与永久、续期保留、到期取消未提交动作、已提交回执及未知库存保留",
+      "blockers": [
+        "真实TPM客户、实际重装与到期经营行为仍有独立验收；完整旧机器快照回滚不在保证内。"
+      ],
+      "code": [
+        "src/licensing/client.cjs",
+        "src/core/service.cjs",
+        "src/core/account-runtime.cjs"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "L04",
+      "title": "发行方授权管理器",
+      "status": "管理器安装、启动和修复通过",
+      "implemented": "独立 Windows 管理器、随机批量码、摘要登记、销售门禁、状态查询、作废、加密备份",
+      "blockers": [
+        "已验证同机安装、真实桌面图标、空账本和修复；实际凭据导入、原生文件选择及管理器云端销售操作仍需验收。"
+      ],
+      "code": [
+        "tools/license-manager/main.cjs",
+        "tools/license-manager/manager.cjs"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "L05",
+      "title": "云端严格免费",
+      "status": "真实免费部署与协议验收通过",
+      "implemented": "当日 Workers Free 页面证据与实时订阅双核对；单 Worker/单 D1；无账单修改、自动升级或付费附加资源",
+      "blockers": [
+        "只使用单Worker和原D1，不申请账单修改或升级；生产逐操作D1计量未暴露，服务商政策变化须重新核验。"
+      ],
+      "code": [
+        "scripts/license-cloud-deploy.cjs",
+        "cloud/licensing/wrangler.jsonc",
+        "scripts/license-cloud-publish.cjs"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "L06",
+      "title": "安装归档检查与修复",
+      "status": "客户归档与管理器实际修复通过",
+      "implemented": "ASAR 完整性资源、官方 fuses、客户只含公钥；MSI 修复保留资料与授权，无自毁逻辑",
+      "blockers": [
+        "客户新包0.5.0-caffcbb3bf08启动、门禁及篡改拒绝通过；客户实际升级/重装待TPM验收，发布者签名未具备。"
+      ],
+      "code": [
+        "scripts/package-security.cjs",
+        "scripts/package.cjs",
+        "scripts/release-msi.cjs"
+      ],
+      "evidence": []
+    }
+  ],
+  "exportNote": "公开源码版：历史本机原始验收材料留在发行方归档中。请按当前构建测试记录判断能力，页面存在不等于真实平台接入完成。"
+}

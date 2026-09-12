@@ -1,0 +1,288 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-11T04:42:25.236Z",
+  "upstream": {
+    "name": "Shadcn Admin",
+    "repository": "https://github.com/satnaing/shadcn-admin",
+    "commit": "e16c87f213a5ba5e45964e9b67c792105ec74d26",
+    "version": "2.2.1"
+  },
+  "licenseEvidence": [
+    {
+      "name": "Shadcn Admin",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2024 Sat Naing",
+      "source": "https://github.com/satnaing/shadcn-admin/blob/e16c87f213a5ba5e45964e9b67c792105ec74d26/LICENSE",
+      "path": "compliance/ui-reuse/licenses/LICENSE-shadcn-admin.txt",
+      "sha256": "d28c723c33a18dfed6af67b1a0ac368724f79bcb80750d3e080dbcf8dedb9e4b",
+      "bytes": 1066,
+      "commit": "e16c87f213a5ba5e45964e9b67c792105ec74d26",
+      "modified": false
+    },
+    {
+      "name": "shadcn/ui upstream license notice",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2023 shadcn",
+      "source": "https://raw.githubusercontent.com/shadcn-ui/ui/6ea6856f5a1082d4d9c231559b6bc3ee73827493/LICENSE.md",
+      "path": "compliance/ui-reuse/licenses/LICENSE-shadcn-ui.txt",
+      "sha256": "1564074e13439397221ffd522e2e504d56561994a23d371aa5e3ad43e4f5423f",
+      "bytes": 1063,
+      "commit": "6ea6856f5a1082d4d9c231559b6bc3ee73827493",
+      "modified": false,
+      "scope": "License-only upstream notice retained because Shadcn Admin documents adaptations from shadcn/ui. This is the license-file revision, not the unrecorded original component-code revision."
+    }
+  ],
+  "implementation": "Vanilla DOM/CSS adaptation preserving the existing Electron bridge and business controllers; not the React template runtime.",
+  "runtimeDependenciesAdded": [],
+  "status": "module-mapping-recorded",
+  "modules": [
+    {
+      "id": "data-table",
+      "purpose": "表格排序与分页交互",
+      "category": "layout-reference",
+      "upstreamPaths": [
+        "src/components/data-table/pagination.tsx",
+        "src/components/data-table/column-header.tsx"
+      ],
+      "localFiles": [
+        "src/renderer/ui-behaviors.js"
+      ],
+      "localSections": [
+        "表格分页、稳定排序、表头状态和单页选择逻辑"
+      ],
+      "modifications": "参考页大小、前后页和表头排序状态的交互组织；vanilla DOM 自行实现，不转写 React、TanStack 或 Radix 组件。",
+      "runtimeDependencies": [],
+      "reviewStatus": "recorded",
+      "evidenceBasis": "Author mapping and local source existence reviewed; classification applies only to the named sections, not every line in the destination file.",
+      "author": "business_core"
+    },
+    {
+      "id": "command-menu",
+      "purpose": "键盘命令导航",
+      "category": "layout-reference",
+      "upstreamPaths": [
+        "src/components/command-menu.tsx"
+      ],
+      "localFiles": [
+        "src/renderer/ui-behaviors.js"
+      ],
+      "localSections": [
+        "命令导航、搜索与键盘选择"
+      ],
+      "modifications": "只参考命令导航的交互组织；自行实现 DOM 与内存导航，不使用 React、cmdk 或模板路由代码。",
+      "runtimeDependencies": [],
+      "reviewStatus": "recorded",
+      "evidenceBasis": "Author mapping and local source existence reviewed; classification applies only to the named sections, not every line in the destination file.",
+      "author": "business_core"
+    },
+    {
+      "id": "chats",
+      "purpose": "会话列表与消息面板组织",
+      "category": "layout-reference",
+      "upstreamPaths": [
+        "src/features/chats/index.tsx"
+      ],
+      "localFiles": [
+        "src/renderer/workspace-views.js"
+      ],
+      "localSections": [
+        "messages()"
+      ],
+      "modifications": "参考左右会话布局；未复制 React、日期分组、图标或演示数据逻辑。本地自行接入真实账号范围、买家、接管、预览与业务调用。",
+      "runtimeDependencies": [],
+      "reviewStatus": "recorded",
+      "evidenceBasis": "Author mapping and local source existence reviewed; classification applies only to the named sections, not every line in the destination file.",
+      "author": "root"
+    },
+    {
+      "id": "settings",
+      "purpose": "设置分区导航",
+      "category": "layout-reference",
+      "upstreamPaths": [
+        "src/features/settings/index.tsx",
+        "src/features/settings/components/sidebar-nav.tsx"
+      ],
+      "localFiles": [
+        "src/renderer/app.js"
+      ],
+      "localSections": [
+        "applyPageStructure() 的设置分区导航"
+      ],
+      "modifications": "参考分区与导航组织，点击 scrollIntoView 保持原页面 URL；没有使用模板路由和表单实现。",
+      "runtimeDependencies": [],
+      "reviewStatus": "recorded",
+      "evidenceBasis": "Author mapping and local source existence reviewed; classification applies only to the named sections, not every line in the destination file.",
+      "author": "root"
+    },
+    {
+      "id": "original-business-views",
+      "purpose": "工作台及业务关联详情",
+      "category": "original",
+      "upstreamPaths": [],
+      "localFiles": [
+        "src/renderer/workspace-views.js",
+        "src/renderer/app.js"
+      ],
+      "localSections": [
+        "overview()",
+        "productDetail()/assetDetail()",
+        "商品、资料、订单与会话的关联业务入口"
+      ],
+      "modifications": "本项目独立新增业务视图及关联，不声称来源于模板业务或示例数据。共享基础组件归属另行登记。",
+      "runtimeDependencies": [],
+      "reviewStatus": "recorded",
+      "evidenceBasis": "Author mapping and local source existence reviewed; classification applies only to the named sections, not every line in the destination file.",
+      "author": "root"
+    },
+    {
+      "id": "original-interaction-safety",
+      "purpose": "弹窗草稿、焦点及作用域保护",
+      "category": "original",
+      "upstreamPaths": [],
+      "localFiles": [
+        "src/renderer/ui-behaviors.js"
+      ],
+      "localSections": [
+        "native dialog 未保存确认",
+        "焦点返回",
+        "内存范围隔离与 lock generation"
+      ],
+      "modifications": "本项目依据既有身份及权限边界独立实现；只使用浏览器 DOM、Intl、Event，无新增 npm 运行依赖。",
+      "runtimeDependencies": [],
+      "reviewStatus": "recorded",
+      "evidenceBasis": "Author mapping and local source existence reviewed; classification applies only to the named sections, not every line in the destination file.",
+      "author": "business_core"
+    },
+    {
+      "id": "layout",
+      "purpose": "原生桌面侧栏与顶部区域",
+      "category": "code-adaptation",
+      "upstreamPaths": [
+        "src/components/layout/authenticated-layout.tsx",
+        "src/components/layout/app-sidebar.tsx",
+        "src/components/layout/header.tsx",
+        "src/components/layout/main.tsx",
+        "src/components/layout/nav-group.tsx",
+        "src/components/layout/nav-user.tsx",
+        "src/components/search.tsx"
+      ],
+      "localFiles": [
+        "src/renderer/ui-components.js"
+      ],
+      "localSections": [
+        "shell() 的 Sidebar/Header/Content/Footer/Inset、分组 active 与命令入口"
+      ],
+      "modifications": "选择性转写界面结构并改成原生 HTML 字符串；移除 React/router/cookie、示例团队邮箱、头像及外链。真实身份来自本机状态，导航使用 memory action，动态业务文字转义。",
+      "runtimeDependencies": [],
+      "reviewStatus": "recorded",
+      "evidenceBasis": "desktop_ui author mapping, source attribution header and named local sections; not a claim that every destination-file line was copied.",
+      "author": "desktop_ui"
+    },
+    {
+      "id": "basic-ui",
+      "purpose": "按钮与状态标记变体",
+      "category": "code-adaptation",
+      "upstreamPaths": [
+        "src/components/ui/button.tsx",
+        "src/components/ui/badge.tsx"
+      ],
+      "localFiles": [
+        "src/renderer/ui-components.js"
+      ],
+      "localSections": [
+        "button()",
+        "badge()"
+      ],
+      "modifications": "转写 variant/size、data-slot 与不可收缩控件语义为原生 HTML；保留转义，不引 Radix 或 class-variance-authority。",
+      "runtimeDependencies": [],
+      "reviewStatus": "recorded",
+      "evidenceBasis": "desktop_ui author mapping, source attribution header and named local sections; not a claim that every destination-file line was copied.",
+      "author": "desktop_ui"
+    },
+    {
+      "id": "component-theme-css",
+      "purpose": "统一 tokens、控件状态及浮层布局",
+      "category": "code-adaptation",
+      "upstreamPaths": [
+        "src/styles/theme.css",
+        "src/components/ui/button.tsx",
+        "src/components/ui/badge.tsx",
+        "src/components/ui/input.tsx",
+        "src/components/ui/textarea.tsx",
+        "src/components/ui/table.tsx",
+        "src/components/ui/dialog.tsx",
+        "src/components/ui/sheet.tsx"
+      ],
+      "localFiles": [
+        "src/renderer/styles.css"
+      ],
+      "localSections": [
+        "主题 tokens 与组件 variants",
+        "focus/disabled 状态",
+        "表格容器",
+        "Dialog/Sheet 布局"
+      ],
+      "modifications": "将语义 tokens、变体、焦点/禁用状态及布局转为独立 CSS，没有拷贝 Tailwind 编译输出。白黑黄颜色、响应式细节与业务类为本地新增。实际样式文件已由界面作者确认落盘，物料生成逐次重算目的文件摘要。",
+      "runtimeDependencies": [],
+      "reviewStatus": "recorded",
+      "evidenceBasis": "desktop_ui author mapping, source attribution header and named local sections; not a claim that every destination-file line was copied.",
+      "author": "desktop_ui"
+    },
+    {
+      "id": "original-ui-helpers-icons",
+      "purpose": "空态、标题、面包屑与几何图标",
+      "category": "original",
+      "upstreamPaths": [],
+      "localFiles": [
+        "src/renderer/ui-components.js"
+      ],
+      "localSections": [
+        "empty()",
+        "heading()",
+        "breadcrumb 组织",
+        "glyph() 和 paths"
+      ],
+      "modifications": "本地新增辅助结构及 sidebar/search/bell/lock/sun/moon/refresh/folder/grid/chevron 几何路径；其余沿用本项目 app.js 原创 paths。未读取或复制 Lucide/Tabler 图标源。",
+      "runtimeDependencies": [],
+      "reviewStatus": "recorded",
+      "evidenceBasis": "desktop_ui author mapping, source attribution header and named local sections; not a claim that every destination-file line was copied.",
+      "author": "desktop_ui"
+    },
+    {
+      "id": "original-account-management",
+      "purpose": "扫码账号流程、独立状态和托管配置",
+      "category": "original",
+      "upstreamPaths": [],
+      "localFiles": [
+        "src/renderer/accounts-controller.js",
+        "src/renderer/accounts-views.js"
+      ],
+      "localSections": [
+        "扫码尝试和界面代际隔离",
+        "账号列表、关联详情与逐项批量结果",
+        "托管授权与两种锁定入口"
+      ],
+      "modifications": "依据 v1.4 功能要求独立新增，复用本产品已登记的白黑黄基础组件；没有复制竞品账户代码、模拟业务或素材。",
+      "runtimeDependencies": [],
+      "reviewStatus": "recorded",
+      "evidenceBasis": "Independent account UI author and local source mapping; shared base components retain their existing attribution.",
+      "author": "independent-app-ui-task"
+    }
+  ],
+  "notBundled": [
+    "reference Git checkout",
+    "React template runtime",
+    "Clerk",
+    "Radix",
+    "TanStack",
+    "Faker",
+    "template demo/mock data",
+    "third-party template icons"
+  ],
+  "obligations": [
+    "Keep Sat Naing copyright and full MIT permission/disclaimer with copies or substantial adapted portions.",
+    "Keep the documented shadcn upstream MIT notice as applicable; exact original component revisions were not recorded by the template and are not invented.",
+    "Record each actual adapted module separately from visual/layout reference and original local code."
+  ],
+  "commercialDistributionApproved": false
+}
