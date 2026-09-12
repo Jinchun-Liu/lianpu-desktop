@@ -158,7 +158,7 @@ async function packageApp({ format = 'msi', signUpdate = false } = {}) {
   const inventory = generate({ installerFormat: format });
   if (inventory.runtime.files.some(f => f.architecture && f.architecture !== 'x64')) throw new Error('运行时包含非 x64 原生组件');
   const appFiles = walk(path.join(ROOT, 'src')).filter(f => !f.endsWith('.test.cjs') && !path.relative(ROOT,f).replaceAll('\\','/').startsWith('src/licensing/native/'));
-  const sharedFiles = walk(path.join(ROOT,'shared','licensing')).filter(f => f.endsWith('.mjs'));
+  const sharedFiles = walk(path.join(ROOT,'shared')).filter(f => f.endsWith('.mjs'));
   const nativeHelper = path.join(ROOT,'src','licensing','native','bin','Lianpu.Device.exe');
   const nativeIntegrity = path.join(ROOT,'src','licensing','native-integrity.json');
   if(!fs.existsSync(nativeHelper)||!fs.existsSync(nativeIntegrity)||JSON.parse(fs.readFileSync(nativeIntegrity,'utf8')).sha256!==sha(fs.readFileSync(nativeHelper)))throw new Error('设备保护组件缺失或摘要不符，请先构建并记录');
@@ -185,7 +185,7 @@ async function packageApp({ format = 'msi', signUpdate = false } = {}) {
   fs.mkdirSync(path.join(stage,'resources','licensing'),{recursive:true});
   fs.copyFileSync(nativeHelper,path.join(stage,'resources','licensing','Lianpu.Device.exe'));
   const { devDependencies, scripts, ...runtimeManifest } = manifest;
-  fs.writeFileSync(path.join(appDir, 'package.json'), JSON.stringify(runtimeManifest, null, 2));
+  fs.writeFileSync(path.join(appDir, 'package.json'), JSON.stringify({...runtimeManifest,build}, null, 2));
   const protection = await require('./package-security.cjs').securePackage({appDir,stage,executable:path.join(stage,'Lianpu.exe'),work:path.join(WORK,'package',`protection-${build}-${Date.now()}`)});
   fs.writeFileSync(path.join(ROOT,'evidence',`protection-${build}.json`),JSON.stringify(protection,null,2));
   const distributionProvenance = {build,branding,protection,runtimeFiles:inventory.runtime.files.filter(f=>f.bundled).map(file=>{

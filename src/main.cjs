@@ -20,6 +20,11 @@ const { ClaimsEngine, MAX_FILE_BYTES } = require('./services/claims.cjs');
 const { NotificationCenter } = require('./services/notifications.cjs');
 const { UpdateManager } = require('./services/updates.cjs');
 const { inspectMsi } = require('./services/msi-inspect.cjs');
+const { Reports } = require('./services/reports.cjs');
+const { createReportActions } = require('./services/report-actions.cjs');
+let reports, reportAction;
+function reportActor(){try{return getActor();}catch{return {id:'guest',role:'guest'};}}
+function recordOperation(action,error,result,actor,started,input={}){reports?.capture(action,error,result,actor,{...require('./services/report-context.cjs').reportContext(service,action,input,actor),source:'manual',role:actor.role,durationMs:Date.now()-started});}
 
 app.setName('Lianpu');
 app.setAppUserModelId('com.lianpu.desktop');
@@ -27,6 +32,7 @@ if (process.env.LIANPU_DATA_DIR && path.isAbsolute(process.env.LIANPU_DATA_DIR))
 protocol.registerSchemesAsPrivileged([{ scheme: 'lianpu', privileges: { standard: true, secure: true, supportFetchAPI: true, corsEnabled: false } }]);
 const hasLock = app.requestSingleInstanceLock();
 if (!hasLock) { app.quit(); } else { boot().catch(error => {
+  reports?.capture('app.startup',error,null,{id:'system',role:'owner'},{source:'system'});reports?.flushLogs();
   // Never include arbitrary exception messages, records, URLs or credentials in startup diagnostics.
   const message = `无法打开本机工作区（${safeCode(error.code)}）。资料不会自动清空。请重新打开，或使用经过验证的备份。`;
   dialog.showErrorBox('联铺启动未完成', message); app.exit(1);
@@ -76,6 +82,8 @@ function activateStore(user, first = false) {
   if (!member || member.enabled === false) { if(!retained){store.close();store=null;identity.lock();} throw new AccessError('FORBIDDEN', '成员已经停用或授权记录缺失，请联系管理员。'); }
   if (!retained) {
     service = new Service(store, { connector,assertLicense:requireLicense });
+    const invokeService=service.run.bind(service);
+    service.run=async(action,payload,actor)=>{const background=service.backgroundContexts.has(actor),started=Date.now();try{const result=await invokeService(action,payload,actor);if(background)reports?.capture(action,null,result,actor,{...require('./services/report-context.cjs').reportContext(service,action,payload,actor),source:'background',role:actor.role,durationMs:Date.now()-started});return result;}catch(error){if(background)reports?.capture(action,error,null,actor,{...require('./services/report-context.cjs').reportContext(service,action,payload,actor),source:'background',role:actor.role,durationMs:Date.now()-started});throw error;}};
     accountRuntime = new AccountRuntime({ store, service, connector, assertUi: actor => { const current=getActor(); if(actor.id!==current.id)throw new AccessError('LOCKED','本机成员已切换，此请求已取消。'); }, emit });
     claims = new ClaimsEngine(store);
     notificationCenter = new NotificationCenter(store);
@@ -142,6 +150,7 @@ async function requestQuit() {
     }
     quitting = true;
     await closeWorkspace('程序完全退出，停止值守');
+    reports?.close();
     tray?.destroy(); app.quit(); return true;
   })();
   try { return await exitTask; }
@@ -246,6 +255,7 @@ async function saveFile(content, defaultPath, filters) {
   return { saved: true, path: selected.filePath, sha256: createHash('sha256').update(bytes).digest('hex') };
 }
 async function dispatch(action, p) {
+  if(action.startsWith('feedback.'))return reportAction(action,p);
   if (updatePending && !['auth.status', 'auth.lock','auth.stopAndLock'].includes(action)) throw new AccessError('UPDATE_PENDING', '正在安全关闭工作区并启动安装，请稍候。');
   if (action === 'auth.status') {
     let user;if(identity.key&&!lockTask&&!uiLocked)try{user=getActor();}catch{}
@@ -521,6 +531,13 @@ async function dispatch(action, p) {
 }
 async function boot() {
   await app.whenReady();
+  reports=new Reports({directory:path.join(dataRoot,'support-v1'),protector:electron.safeStorage,version:app.getVersion(),build:require('../package.json').build||'development',endpoint:require('./licensing/config.json').endpoint,fetchImpl:(url,options)=>net.fetch(url,{...options,credentials:'omit'}),getLicense:async bytes=>{
+    const device=licenseClient?.device,license=licenseClient?.body?.license;if(!license||!device?.info?.publicKeySpki)return null;
+    const signed=await device.invoke('sign',bytes);const signature=Buffer.from(signed.signature||'','base64url');if(!device.verify(bytes,signature))return null;return {license,publicKey:device.info.publicKeySpki,signature:signature.toString('base64url')};
+  }});await reports.init();reportAction=createReportActions({reports,getActor,dialog,nativeImage,getWindow:()=>win});reports.start();
+  process.on('uncaughtExceptionMonitor',error=>{reports.capture('app.fatal',error,null,{id:'system',role:'owner'},{source:'system'});reports.flushLogs();if(accountRuntime)accountRuntime.accepting=false;});
+  process.on('unhandledRejection',error=>{reports.capture('app.rejection',error instanceof Error?error:new Error('Unhandled rejection'),null,{id:'system',role:'owner'},{source:'system'});void stopAllHosting('程序出现未处理异常，已停止接收新任务').catch(()=>{});});
+  app.on('web-contents-created',(_event,contents)=>{contents.on('render-process-gone',(_e,detail)=>reports.capture('renderer.process',null,{status:'failed',code:'RENDER_PROCESS_GONE'},reportActor(),{source:'system',result:detail.reason}));contents.on('unresponsive',()=>reports.capture('renderer.unresponsive',null,{status:'timeout',code:'RENDERER_UNRESPONSIVE'},reportActor(),{source:'system'}));});
   fs.mkdirSync(dataRoot, { recursive: true }); identity = new VaultIdentity(path.join(dataRoot, 'identity.json'));
   rememberedSession=new PersistentLocalSession({file:path.join(dataRoot,'local-session.bin'),safeStorage:electron.safeStorage});
   let licenseWasActive=false;
@@ -531,6 +548,7 @@ async function boot() {
     if(expired&&accountRuntime)void stopAllHosting(status.reason).catch(()=>{});
   }});
   await licenseClient.initialize();
+  reports.activate(licenseClient.status().active);
   updater = new UpdateManager({ getStore: () => identity?.key && !lockTask ? store : null, keys: require('./release-trust.json').keys,
     currentVersion: app.getVersion(), downloadRoot: path.join(dataRoot, 'updates') });
   connector = createXianyuConnector({ electron,authorizeTask:()=>{try{return requireLicense();}catch{return false;}}, onStatus: status => { try { accountRuntime?.observeStatus(status); } catch { /* Closed or changed sessions cannot restore account state. */ } } });
@@ -567,14 +585,16 @@ async function boot() {
   session.defaultSession.setPermissionCheckHandler(() => false);
   ipcMain.handle('desk:call', async (event, action, payload = {}) => {
     if (!validSender(event)) return { ok: false, error: { code: 'FORBIDDEN', message: '此页面无权访问本机资料。' } };
+    const started=Date.now(),reportWho=reportActor();
     try {
       validatePayload(action, payload);
+      if(action.startsWith('feedback.'))return {ok:true,data:await dispatch(action,payload)};
       // Authentication/stop calls must never wait for their own pending request.
       if (action.startsWith('auth.') || action.startsWith('license.') || action==='hosting.stopAll') {
         const signsIn=['auth.setup','auth.unlock','auth.recover'].includes(action);
         const epoch=uiGeneration,result=await (signsIn||action.startsWith('license.')||['auth.status','auth.lock','auth.stopAndLock'].includes(action)?dispatch(action,payload):uiRequests.run({generation:epoch},()=>dispatch(action,payload)));
         if((signsIn&&result.sessionGeneration!==uiGeneration)||(!signsIn&&!['auth.status','license.status','auth.lock','auth.stopAndLock'].includes(action)&&epoch!==uiGeneration))throw new AccessError('SESSION_CHANGED','当前成员已变更，旧请求结果已取消。');
-        return {ok:true,data:result};
+        reports.activate(licenseClient.status().active);recordOperation(action,null,result,reportWho,started,payload);return {ok:true,data:result};
       }
       const requestGeneration=uiGeneration;
       const operation = uiRequests.run({generation:requestGeneration,licensed:needsLicense(action,payload)},()=>dispatch(action, payload)); pending.add(operation);pendingActions.set(operation,action);
@@ -583,8 +603,9 @@ async function boot() {
       if (uiLocked || lockTask || !identity.key || requestGeneration!==uiGeneration) throw new AccessError('SESSION_CHANGED', '当前成员已变更，处理结果保留在本机记录中。');
       getActor();
       accountRuntime?.reconcile();
-      return { ok: true, data: result };
+      recordOperation(action,null,result,reportWho,started,payload);return { ok: true, data: result };
     } catch (error) {
+      recordOperation(action,error,null,reportWho,started,payload);
       return { ok: false, error: { code: safeCode(error.code), message: error.code && typeof error.message === 'string' ? error.message.slice(0, 500) : '本次操作未完成，请检查输入或打开运行诊断。' } };
     }
   });

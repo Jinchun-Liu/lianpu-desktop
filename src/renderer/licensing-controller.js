@@ -99,7 +99,7 @@
       if (name === 'batch-pause') {const batch=c.getBatch(element?.dataset.id);return batch?.paused !== true;}
       return !MUTATIONS.has(name);
     }
-    function canSubmit(form) {const id=form.getAttribute('id')||'';return full() || id.startsWith('license-') || READ_FORMS.has(id);}
+    function canSubmit(form) {const id=form.getAttribute('id')||'';return full() || id==='support-form' || id.startsWith('license-') || READ_FORMS.has(id);}
     function assertAction(name, element) {if(!canAction(name,element))throw new Error('当前软件授权仅允许查看与维护。请先在“软件授权”中激活或续期。');}
     function assertForm(form) {if(!canSubmit(form))throw new Error('当前为只读状态，尚不能保存新的经营变更。已有内容可查看、导出或备份。');}
     function enforce() {
